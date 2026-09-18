@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nileva — Sudan Culture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #FFFFFF;
+    --ivory: #FBF6EE;
+    --terracotta: #BC5730;
+    --terracotta-soft: #EFCBAE;
+    --saffron: #DDA62A;
+    --rose: #C13A5E;
+    --rose-soft: #F4D2DC;
+    --indigo: #33507E;
+    --indigo-soft: #DCE1EE;
+    --palm: #5B7A45;
+    --palm-soft: #DCE6D2;
+    --ink: #2B2620;
+    --ink-soft: #6B6357;
+    --line: #EAE3D6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { overflow-x: hidden; max-width: 100%; }
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, .display {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+  /* ---------- PROMO BAR ---------- */
+  .promo-bar {
+    background: var(--indigo);
+    color: var(--white);
+    text-align: center;
+    font-size: 13.5px;
+    padding: 10px 16px;
+  }
+  .promo-bar strong { font-weight: 600; }
+
+  /* ---------- APP HEADER ---------- */
+  .app-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 16px 20px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .header-accent {
+    height: 4px;
+    background: linear-gradient(90deg, var(--terracotta), var(--saffron), var(--rose), var(--indigo), var(--palm));
+  }
+  .menu-btn, .cart-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 4px;
+  }
+  .header-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    margin-left: auto;
+  }
+  .header-logo-img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    display: block;
+  }
+  .lang-codes {
+    display: flex;
+    gap: 2px;
+    background: var(--ivory);
+    border-radius: 100px;
+    padding: 3px;
+    flex-shrink: 0;
+  }
+  .lang-btn {
+    padding: 5px 8px 5px 6px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: 'Work Sans', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .lang-flag {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .lang-btn.active { background: var(--white); color: var(--ink); box-shadow: 0 0 0 1px var(--line); }
+  .cart-badge {
+    position: absolute;
+    top: -4px; right: -6px;
+    background: var(--rose);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 600;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .back-link { font-size: 14px; color: var(--terracotta); font-weight: 500; }
+  .back-link:hover { text-decoration: underline; }
+
+  /* ---------- DRAWER MENU ---------- */
+  .menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(43,38,32,0.45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 90;
+  }
+  .menu-overlay.open { opacity: 1; pointer-events: auto; }
+  .menu-drawer {
+    position: fixed;
+    top: 0; bottom: 0; left: 0;
+    width: 78%;
+    max-width: 320px;
+    background: var(--white);
+    z-index: 91;
+    transform: translateX(-100%);
+    transition: transform 0.28s ease;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 8px;
+    box-shadow: 2px 0 24px rgba(0,0,0,0.12);
+  }
+  .menu-drawer.open { transform: translateX(0); }
+  .menu-drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 14px 18px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 10px;
+  }
+  .menu-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--ink);
+    padding: 6px;
+    display: flex;
+  }
+  .menu-link {
+    display: block;
+    padding: 14px 16px;
+    font-size: 16px;
+    color: var(--ink);
+    border-radius: 10px;
+  }
+  .menu-link:hover, .menu-link:active { background: var(--ivory); }
+
+  /* ---------- VIDEO SECTION ---------- */
+  .culture-video-section { padding: 8px 0 0; }
+  .culture-video-wrap {
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    background: var(--ink);
+    position: relative;
+  }
+  .culture-video-wrap video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    background: var(--ink);
+  }
+  .culture-video-caption {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  /* Hero */
+  .culture-hero { padding: 40px 0 8px; }
+  .culture-hero-kicker { color: var(--terracotta); font-size: 14px; margin-bottom: 10px; }
+  .culture-hero h1 { font-size: 40px; line-height: 1.2; max-width: 780px; margin-bottom: 16px; }
+  .culture-hero p { font-size: 16.5px; color: var(--ink-soft); max-width: 680px; line-height: 1.75; margin-bottom: 28px; }
+  .culture-hero-img-wrap { border-radius: 20px; overflow: hidden; aspect-ratio: 21/9; background: var(--ivory); }
+  .culture-hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* City sections */
+  .city-section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+  .city-section:last-of-type { border-bottom: none; }
+  .city-kicker { color: var(--terracotta); font-size: 13.5px; letter-spacing: 0.03em; margin-bottom: 8px; text-transform: uppercase; }
+  .city-section h2 { font-size: 28px; margin-bottom: 14px; }
+  .city-section p { font-size: 15.5px; line-height: 1.75; color: var(--ink-soft); max-width: 760px; margin-bottom: 24px; }
+
+  .gallery-strip {
+    display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x proximity;
+    padding-bottom: 6px; -webkit-overflow-scrolling: touch;
+  }
+  .gallery-strip::-webkit-scrollbar { height: 6px; }
+  .gallery-strip::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+  .gallery-strip img {
+    flex: 0 0 auto; width: 180px; height: 130px; object-fit: cover;
+    border-radius: 12px; scroll-snap-align: start; cursor: pointer;
+    background: var(--ivory); transition: transform .15s ease;
+  }
+  .gallery-strip img:hover { transform: scale(1.03); }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed; inset: 0; background: rgba(20,16,12,0.92); z-index: 999;
+    display: none; align-items: center; justify-content: center; flex-direction: column;
+    touch-action: pan-y;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 76vh; border-radius: 10px; object-fit: contain; user-select: none; }
+  .lightbox-caption { color: var(--terracotta-soft); font-size: 14px; margin-top: 14px; }
+  .lightbox-close, .lightbox-prev, .lightbox-next {
+    position: absolute; background: rgba(255,255,255,0.12); border: none; color: #fff;
+    width: 44px; height: 44px; border-radius: 50%; font-size: 20px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lightbox-close { top: 20px; right: 20px; }
+  .lightbox-prev { left: 16px; top: 50%; transform: translateY(-50%); }
+  .lightbox-next { right: 16px; top: 50%; transform: translateY(-50%); }
+  .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover { background: rgba(255,255,255,0.25); }
+
+  /* ---------- FOOTER ---------- */
+  footer.wrap { border-top: 1px solid var(--line); padding: 64px 32px 40px; }
+  .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
+  .footer-tag { font-family: 'Fraunces', serif; font-size: 20px; max-width: 300px; }
+  .footer-cols { display: flex; flex-direction: column; gap: 36px; }
+  .footer-col h4 { font-size: 13.5px; color: var(--ink-soft); margin-bottom: 14px; font-weight: 500; }
+  .footer-col-subhead { margin-top: 22px; }
+  .footer-col a { display: block; font-size: 14.5px; margin-bottom: 10px; color: var(--ink); }
+  .footer-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-soft); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer-legal { display: flex; gap: 16px; }
+  .footer-legal a { color: var(--ink-soft); font-size: 13px; }
+  .footer-legal a:hover { color: var(--ink); text-decoration: underline; }
+  .footer-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .footer-social a {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--ink-soft);
+    overflow: hidden;
+  }
+  .footer-social a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .footer-payments {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .pay-badge {
+    width: 46px;
+    height: 30px;
+    padding: 4px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+  }
+  .pay-badge img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  .pay-fallback { font-size: 9.5px; color: var(--ink-soft); font-weight: 600; text-align: center; display: none; }
+
+  body { padding-bottom: 64px; }
+
+  /* ---------- BOTTOM NAV ---------- */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--white);
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 0 10px;
+    z-index: 50;
+  }
+  .bottom-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+  .bottom-nav a svg { width: 21px; height: 21px; }
+  .bottom-nav a.active { color: var(--indigo); }
+
+  :focus-visible { outline: 2px solid var(--indigo); outline-offset: 3px; }
+
+  @media (max-width: 860px) {
+    .footer-grid { flex-direction: column; }
+  }
+  @media (max-width: 640px) {
+    .culture-hero h1 { font-size: 28px; }
+    .city-section h2 { font-size: 22px; }
+    .gallery-strip img { width: 140px; height: 100px; }
+    .lightbox-prev, .lightbox-next { width: 38px; height: 38px; font-size: 17px; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 18px; }
+    .app-header { padding: 14px 14px; gap: 8px; }
+    .header-logo { font-size: 17px; }
+    .lang-btn { padding: 5px 6px 5px 5px; font-size: 10.5px; gap: 3px; }
+    .lang-flag { width: 12px; height: 12px; }
+    .footer-tag { max-width: 100%; }
+    .footer-cols { gap: 32px; flex-wrap: wrap; }
+    footer.wrap { padding: 56px 18px 32px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="promo-bar">Free delivery over €59.99 · €5.99 below</div>
+
+<header class="app-header">
+  <button class="menu-btn" id="menuBtn" aria-label="Menu">
+    <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+  </button>
+  <div class="header-logo"><img class="header-logo-img" src="Logo.jpg" alt="" onerror="this.style.display='none';"><span>Nileva</span></div>
+  <div class="lang-codes">
+    <button class="lang-btn active" data-lang="en"><img class="lang-flag" src="UK.png" alt="">EN</button>
+    <button class="lang-btn" data-lang="ar"><img class="lang-flag" src="Ara.png" alt="">AR</button>
+    <button class="lang-btn" data-lang="fi"><img class="lang-flag" src="Fin.png" alt="">FI</button>
+    <button class="lang-btn" data-lang="sv"><img class="lang-flag" src="Sw.png" alt="">SV</button>
+  </div>
+  <button class="cart-btn" id="cartBtn" aria-label="Cart">
+    <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M3 4h2l2.4 12.2a2 2 0 002 1.8h8.2a2 2 0 002-1.6L20 8H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="20" r="1.3" fill="currentColor"/><circle cx="17" cy="20" r="1.3" fill="currentColor"/></svg>
+    <span class="cart-badge" id="cartBadge">0</span>
+  </button>
+</header>
+<div class="header-accent"></div>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+<nav class="menu-drawer" id="menuDrawer" aria-label="Main menu">
+  <div class="menu-drawer-head">
+    <div class="header-logo"><img class="header-logo-img" src="Logo.jpg" alt="" onerror="this.style.display='none';"><span>Nileva</span></div>
+    <button class="menu-close" id="menuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <a href="shop.html" class="menu-link">Shop</a>
+  <a href="about.html" class="menu-link">About us</a>
+  <a href="contact.html" class="menu-link">Contact</a>
+  <a href="login.html" class="menu-link">Log in / Sign in</a>
+  <a href="track-order.html" class="menu-link">Track order</a>
+  <a href="sudan-culture.html" class="menu-link">Sudan culture</a>
+  <a href="meet-the-women.html" class="menu-link">Meet the women</a>
+</nav>
+
+<div class="wrap" style="padding-top:14px;">
+  <a class="back-link" href="index.html">← Back to home</a>
+</div>
+
+<header class="wrap culture-hero">
+  <div class="culture-hero-kicker">The land behind every harvest</div>
+  <h1>Sudan, in six places and a thousand small hands</h1>
+  <p>Before it reaches your kitchen, every gum arabic tear, every dried hibiscus flower, every handwoven basket has already travelled through a Sudan most of Europe never sees. Here's a closer look at the regions our cooperatives call home — their land, their light, and the work that happens there long before anything ships.</p>
+  <div class="culture-hero-img-wrap">
+    <img src="hero1.jpg" alt="Sudan landscape" onerror="this.style.display='none'">
+  </div>
+</header>
+
+<section class="wrap culture-video-section">
+  <div class="culture-video-wrap">
+    <video controls preload="metadata" poster="hero1.jpg">
+      <source src="video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <p class="culture-video-caption">A short journey through Sudan — the land, the markets and the hands behind every harvest.</p>
+</section>
+
+<main class="wrap">
+
+  <section class="city-section" id="kordofan">
+    <div class="city-kicker">Where the gum arabic trees grow</div>
+    <h2>Kordofan</h2>
+    <p>Kordofan is the heartland of Sudan's gum arabic belt, a wide stretch of acacia woodland where families have tapped the same trees for generations. Villages here rise with the sun and work by it too — sorting resin by hand, grading it by color and clarity, and drying it in open courtyards before it ever sees a scale. It's slow, patient work, done mostly by women who know each tree the way others know a street they grew up on. Fatima's cooperative, the one behind your gum arabic, is rooted here.</p>
+    <div class="gallery-strip" data-gallery="kordofan"></div>
+  </section>
+
+  <section class="city-section" id="darfur">
+    <div class="city-kicker">Sahel, savanna and centuries of craft</div>
+    <h2>Darfur</h2>
+    <p>Darfur stretches from dry savanna to volcanic highlands, and its markets are some of the liveliest in the country — stalls of woven mats, dyed textiles and leatherwork passed down through families of artisans. Despite hardship the region has known, its craft traditions have held: basket weaving, pottery and embroidery still done exactly as they were a century ago. It's a landscape of resilience, and every handwoven piece that leaves it carries that history stitched into it.</p>
+    <div class="gallery-strip" data-gallery="darfur"></div>
+  </section>
+
+  <section class="city-section" id="kassala">
+    <div class="city-kicker">Where the Taka hills meet the market square</div>
+    <h2>Kassala</h2>
+    <p>Kassala sits beneath the jagged Taka hills near the Eritrean border, its skyline unlike anywhere else in Sudan. The city is known for its fruit and spice markets, fragrant with cardamom, cinnamon and dried citrus, and for the henna and textile trade that draws traders from across the region. Life moves to the rhythm of the souq here — early mornings, unhurried bargaining, tea shared between strangers. Some of our spice blends begin in exactly this kind of market stall.</p>
+    <div class="gallery-strip" data-gallery="kassala"></div>
+  </section>
+
+  <section class="city-section" id="al-dender">
+    <div class="city-kicker">The green corridor along the river</div>
+    <h2>Al-Dender</h2>
+    <p>Al-Dender lies along a tributary of the Blue Nile, where the land turns unexpectedly green — reed beds, grazing cattle, and farmland that floods and blooms with the seasons. It's one of the quieter regions we work with, known for its wildlife-rich riverbanks and small farming communities that grow peanuts and sesame using methods barely changed in decades. The pace here is set by the river, not the clock.</p>
+    <div class="gallery-strip" data-gallery="aldender"></div>
+  </section>
+
+  <section class="city-section" id="port-sudan">
+    <div class="city-kicker">The gateway to the Red Sea</div>
+    <h2>Port Sudan</h2>
+    <p>Port Sudan is where the country meets the sea — a working port city of cranes, fishing boats and coral reefs just offshore that rank among the least disturbed in the world. It's also the last stop for nearly everything we ship: every batch of gum arabic, hibiscus and spice we send to Europe passes through these docks before it reaches open water. Behind the industry, the old town still keeps a slower, coastal rhythm.</p>
+    <div class="gallery-strip" data-gallery="portsudan"></div>
+  </section>
+
+  <section class="city-section" id="meroe">
+    <div class="city-kicker">Pyramids older than most of Europe's cities</div>
+    <h2>Meroe</h2>
+    <p>Long before it was part of any modern trade route, this stretch of desert along the Nile was the seat of an ancient kingdom — its pyramids, sharper and more numerous than Egypt's, still rise quietly from the sand. Meroe is a reminder of how old Sudan's story really is, and how much has passed through this land before a single one of our products ever did. We think of it as the quiet backdrop to everything else in this list.</p>
+    <div class="gallery-strip" data-gallery="meroe"></div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-tag">Nileva connects Sudan's women producers to European kitchens — one name, one story at a time.</div>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><img src="instagram.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"><span class="social-fallback" style="display:none;">IG</span></a>
+        <a href="#" aria-label="Twitter"><img src="twitter.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"><span class="social-fallback" style="display:none;">X</span></a>
+        <a href="#" aria-label="Facebook"><img src="facebook.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"><span class="social-fallback" style="display:none;">FB</span></a>
+        <a href="#" aria-label="TikTok"><img src="tik-tok.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"><span class="social-fallback" style="display:none;">TT</span></a>
+        <a href="#" aria-label="Pinterest"><img src="pinterest.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"><span class="social-fallback" style="display:none;">PI</span></a>
+      </div>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col" id="footer-about">
+        <h4>Shop</h4>
+        <a href="shop.html">Gum arabic</a>
+        <a href="shop.html">Spices</a>
+        <h4 class="footer-col-subhead">About</h4>
+        <a href="cooperatives.html">Our cooperatives</a>
+        <a href="payments.html">How payments work</a>
+        <a href="shipping.html">Shipping to the EU</a>
+      </div>
+      <div class="footer-col" id="footer-contact-col">
+        <h4>Company</h4>
+        <a href="about.html">Nileva Oy, Finland</a>
+        <a href="contact.html" id="footer-contact">Contact</a>
+        <a href="review.html">Reviews</a>
+        <div class="footer-payments">
+          <span class="pay-badge"><img src="visa.png" alt="Visa" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Visa</span></span>
+          <span class="pay-badge"><img src="mastercard.png" alt="Mastercard" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">MC</span></span>
+          <span class="pay-badge"><img src="paypal.png" alt="PayPal" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">PayPal</span></span>
+          <span class="pay-badge"><img src="google.png" alt="Google Pay" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">GPay</span></span>
+          <span class="pay-badge"><img src="klarna.png" alt="Klarna" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Klarna</span></span>
+          <span class="pay-badge"><img src="stripe.png" alt="Stripe" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Stripe</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Nileva Oy · Registered in Finland · Serving Western Europe</span>
+    <div class="footer-legal">
+      <a href="terms.html">Terms</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+  <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous">←</button>
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-next" id="lightboxNext" aria-label="Next">→</button>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<script>
+(function () {
+  var galleries = {
+    kordofan: { label: "Kordofan", files: ["K1.jpg","K2.jpg","K3.jpg","K4.jpg","K5.jpg","K6.jpg"] },
+    darfur: { label: "Darfur", files: ["D1.jpg","D2.jpg","D3.jpg","D4.jpg","D5.jpg","D6.jpg"] },
+    kassala: { label: "Kassala", files: ["SS1.jpg","SS2.jpg","SS3.jpg","SS4.jpg","SS5.jpg","SS6.jpg"] },
+    aldender: { label: "Al-Dender", files: ["E1.jpg","E2.jpg","E3.jpg","E4.jpg","E5.jpg","E6.jpg","E7.jpg","E8.jpg"] },
+    portsudan: { label: "Port Sudan", files: ["PS1.jpg","PS2.jpg","PS3.jpg","PS4.jpg","PS5.jpg","PS6.jpg"] },
+    meroe: { label: "Meroe", files: ["M1.jpg","M2.jpg","M3.jpg","M4.jpg","M5.jpg","M6.jpg","M7.jpg"] }
+  };
+
+  // Build thumbnail strips
+  document.querySelectorAll('.gallery-strip').forEach(function (strip) {
+    var key = strip.getAttribute('data-gallery');
+    var g = galleries[key];
+    g.files.forEach(function (file, i) {
+      var img = document.createElement('img');
+      img.src = file;
+      img.alt = g.label + ' ' + (i + 1);
+      img.loading = 'lazy';
+      img.onerror = function () { this.style.opacity = '0.15'; };
+      img.addEventListener('click', function () { openLightbox(key, i); });
+      strip.appendChild(img);
+    });
+  });
+
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxCaption = document.getElementById('lightboxCaption');
+  var currentKey = null, currentIndex = 0;
+
+  function openLightbox(key, index) {
+    currentKey = key;
+    currentIndex = index;
+    render();
+    lightbox.classList.add('open');
+  }
+  function render() {
+    var g = galleries[currentKey];
+    lightboxImg.src = g.files[currentIndex];
+    lightboxImg.alt = g.label + ' ' + (currentIndex + 1);
+    lightboxCaption.textContent = g.label + ' — ' + (currentIndex + 1) + ' / ' + g.files.length;
+  }
+  function closeLightbox() { lightbox.classList.remove('open'); }
+  function prev() {
+    var g = galleries[currentKey];
+    currentIndex = (currentIndex - 1 + g.files.length) % g.files.length;
+    render();
+  }
+  function next() {
+    var g = galleries[currentKey];
+    currentIndex = (currentIndex + 1) % g.files.length;
+    render();
+  }
+
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  document.getElementById('lightboxPrev').addEventListener('click', prev);
+  document.getElementById('lightboxNext').addEventListener('click', next);
+  lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') prev();
+    if (e.key === 'ArrowRight') next();
+  });
+
+  // Touch swipe support inside lightbox
+  var touchStartX = null;
+  lightbox.addEventListener('touchstart', function (e) { touchStartX = e.touches[0].clientX; });
+  lightbox.addEventListener('touchend', function (e) {
+    if (touchStartX === null) return;
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    if (dx > 40) prev();
+    else if (dx < -40) next();
+    touchStartX = null;
+  });
+  /* ---- Drawer menu ---- */
+  var menuBtn = document.getElementById('menuBtn');
+  var menuDrawer = document.getElementById('menuDrawer');
+  var menuOverlay = document.getElementById('menuOverlay');
+  var menuClose = document.getElementById('menuClose');
+
+  function openMenu() {
+    menuDrawer.classList.add('open');
+    menuOverlay.classList.add('open');
+  }
+  function closeMenu() {
+    menuDrawer.classList.remove('open');
+    menuOverlay.classList.remove('open');
+  }
+  if (menuBtn) menuBtn.addEventListener('click', openMenu);
+  if (menuClose) menuClose.addEventListener('click', closeMenu);
+  if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+  document.querySelectorAll('.menu-link').forEach(function (link) {
+    link.addEventListener('click', function () { closeMenu(); });
+  });
+
+  /* ---- Cart button (visual only on this page) ---- */
+  var cartBtn = document.getElementById('cartBtn');
+  if (cartBtn) {
+    cartBtn.addEventListener('click', function () {
+      window.location.href = 'cart.html';
+    });
+  }
+})();
+</script>
+
+<nav class="bottom-nav">
+  <a href="index.html">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M4 11l8-7 8 7v9a1 1 0 01-1 1h-4v-6H9v6H5a1 1 0 01-1-1v-9z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    <span>Home</span>
+  </a>
+  <a href="shop.html">
+    <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg>
+    <span>Shop</span>
+  </a>
+  <a href="cart.html">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.4 12.2a2 2 0 002 1.8h8.2a2 2 0 002-1.6L20 8H6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="20" r="1.2" fill="currentColor"/><circle cx="17" cy="20" r="1.2" fill="currentColor"/></svg>
+    <span>Cart</span>
+  </a>
+  <a href="search.html">
+    <svg viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="M20 20l-4.35-4.35" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <span>Search</span>
+  </a>
+  <a href="account.html">
+    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c1.2-3.4 4-5 7-5s5.8 1.6 7 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <span>Account</span>
+  </a>
+</nav>
+
+</body>
+</html>
