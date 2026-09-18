@@ -529,6 +529,19 @@
   .story-content .kicker { color: var(--terracotta); font-size: 14px; margin-bottom: 14px; }
   .story-content h2 { font-size: 32px; margin-bottom: 20px; max-width: 480px; }
   .story-content p { color: var(--ink-soft); font-size: 16px; max-width: 480px; margin-bottom: 16px; }
+  .story-readmore {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 18px;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--terracotta);
+    border-bottom: 1.5px solid var(--terracotta);
+    padding-bottom: 2px;
+    margin-bottom: 4px;
+  }
+  .story-readmore:hover { color: var(--ink); border-color: var(--ink); }
 
   .impact-bar {
     margin-top: 30px;
@@ -619,6 +632,21 @@
   }
   .add-to-cart:hover { background: var(--ink); color: var(--white); }
 
+  .shop-more-wrap { text-align: center; margin-top: 36px; }
+  .shop-more-btn {
+    display: inline-block;
+    padding: 13px 44px;
+    border-radius: 100px;
+    border: 1.5px solid var(--ink);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: transparent;
+  }
+  .shop-more-btn:hover { background: var(--ink); color: var(--white); }
+
   /* ---------- TESTIMONIALS ---------- */
   .testimonials { padding-top: 100px; padding-bottom: 100px; }
   .testi-sub { color: var(--ink-soft); font-size: 15.5px; margin-top: 14px; max-width: 480px; }
@@ -649,6 +677,53 @@
     flex-shrink: 0;
   }
 
+  .testimonials-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 32px;
+  }
+  .add-review-box {
+    border: 1.5px dashed var(--line);
+    border-radius: 14px;
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+  .add-review-box h3 { font-size: 16.5px; margin-bottom: 4px; font-weight: 500; }
+  .add-review-box p { color: var(--ink-soft); font-size: 13.5px; }
+  .add-review-btn {
+    background: var(--indigo);
+    color: var(--white);
+    padding: 12px 24px;
+    border-radius: 100px;
+    font-size: 13.5px;
+    font-weight: 500;
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .add-review-btn:hover { background: var(--ink); }
+  .testi-readmore {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    border-bottom: 1.5px solid var(--ink);
+    padding-bottom: 2px;
+    white-space: nowrap;
+  }
+  .testi-readmore:hover { color: var(--terracotta); border-color: var(--terracotta); }
+
   /* ---------- FOOTER ---------- */
   footer.wrap { border-top: 1px solid var(--line); padding: 64px 32px 40px; }
   .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
@@ -658,7 +733,10 @@
   .footer-col h4 { font-size: 13.5px; color: var(--ink-soft); margin-bottom: 14px; font-weight: 500; }
   .footer-col-subhead { margin-top: 22px; }
   .footer-col a { display: block; font-size: 14.5px; margin-bottom: 10px; color: var(--ink); }
-  .footer-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-soft); }
+  .footer-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-soft); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer-legal { display: flex; gap: 16px; }
+  .footer-legal a { color: var(--ink-soft); font-size: 13px; }
+  .footer-legal a:hover { color: var(--ink); text-decoration: underline; }
   .footer-social {
     display: flex;
     gap: 10px;
@@ -756,6 +834,10 @@
     .testimonial-grid { grid-template-columns: 1fr; }
     .testimonials { padding-top: 64px; padding-bottom: 64px; }
     footer.wrap { padding: 56px 18px 32px; }
+    .testimonials-footer { flex-direction: column; align-items: stretch; }
+    .add-review-box { flex-direction: column; align-items: flex-start; }
+    .testi-readmore { align-self: center; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
   }
 
   body { padding-bottom: 64px; }
@@ -820,13 +902,13 @@
       <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
     </button>
   </div>
-  <a href="#products" class="menu-link" data-i18n="menuShop">Shop</a>
-  <a href="#footer-about" class="menu-link" data-i18n="menuAbout">About us</a>
-  <a href="#footer-contact" class="menu-link" data-i18n="menuContact">Contact</a>
-  <a href="#" class="menu-link" data-menu-soon="1" data-i18n="menuLogin">Log in / Sign in</a>
-  <a href="#" class="menu-link" data-menu-soon="1" data-i18n="menuTrack">Track order</a>
-  <a href="#journey" class="menu-link" data-i18n="menuCulture">Sudan culture</a>
-  <a href="#stories" class="menu-link" data-i18n="menuWomen">Meet the women</a>
+  <a href="shop.html" class="menu-link" data-i18n="menuShop">Shop</a>
+  <a href="about.html" class="menu-link" data-i18n="menuAbout">About us</a>
+  <a href="contact.html" class="menu-link" data-i18n="menuContact">Contact</a>
+  <a href="login.html" class="menu-link" data-i18n="menuLogin">Log in / Sign in</a>
+  <a href="track-order.html" class="menu-link" data-i18n="menuTrack">Track order</a>
+  <a href="sudan-culture.html" class="menu-link" data-i18n="menuCulture">Sudan culture</a>
+  <a href="meet-the-women.html" class="menu-link" data-i18n="menuWomen">Meet the women</a>
 </nav>
 
 <header class="wrap hero" id="hero-intro">
@@ -835,8 +917,8 @@
     <h1 data-i18n="heroH1">Every basket carries a woman's name, not just a product.</h1>
     <p class="lede" data-i18n="heroLede">We bring gum arabic, hibiscus, spices and handwoven goods from Sudan's women farmers and artisans straight to your door in Europe — with her story on the label.</p>
     <div class="hero-actions">
-      <a class="btn-primary" href="#products" data-i18n="heroBtn1">Shop the harvest</a>
-      <a class="btn-secondary" href="#stories" data-i18n="heroBtn2">Meet the women</a>
+      <a class="btn-primary" href="shop.html" data-i18n="heroBtn1">Shop the harvest</a>
+      <a class="btn-secondary" href="meet-the-women.html" data-i18n="heroBtn2">Meet the women</a>
     </div>
   </div>
   <div class="hero-image-wrap">
@@ -853,25 +935,25 @@
     </div>
   </div>
   <div class="category-scroll">
-    <a class="category-card" href="#products">
+    <a class="category-card" href="shop.html">
       <div class="category-icon" style="background: var(--terracotta-soft);">
         <img src="Gum.jpg" onerror="this.style.display='none'" alt="Gum Arabic">
       </div>
       <div class="category-name" data-i18n="cat1">Gum Arabic</div>
     </a>
-    <a class="category-card" href="#products">
+    <a class="category-card" href="shop.html">
       <div class="category-icon" style="background: var(--rose-soft);">
         <img src="Hibiscus.jpg" onerror="this.style.display='none'" alt="Hibiscus & Tea">
       </div>
       <div class="category-name" data-i18n="cat2">Hibiscus &amp; Tea</div>
     </a>
-    <a class="category-card" href="#products">
+    <a class="category-card" href="shop.html">
       <div class="category-icon" style="background: #F2E4C5;">
         <img src="Seeds.jpg" onerror="this.style.display='none'" alt="Seeds">
       </div>
       <div class="category-name" data-i18n="cat3">Seeds</div>
     </a>
-    <a class="category-card" href="#products">
+    <a class="category-card" href="shop.html">
       <div class="category-icon" style="background: var(--palm-soft);">
         <img src="oils.jpg" onerror="this.style.display='none'" alt="Oils">
       </div>
@@ -888,6 +970,7 @@
     <div class="kicker" data-i18n="sudanKicker">The land this harvest calls home</div>
     <h2 data-i18n="sudanH2">Where two rivers meet, and hands have never stopped working</h2>
     <p data-i18n="sudanP">Sudan is desert and river in the same breath — market stalls waking at dawn, tea poured for strangers, pyramids older than memory rising quietly from the sand. It is also patience: generations of women who have tended this same soil, season after season, through hardship most of us will never know. Every harvest we send carries a piece of that story — of a land that gives generously, and of hands that never stopped believing the work was worth it.</p>
+    <a class="story-readmore" href="sudan-culture.html" data-i18n="sudanReadMore">Read more →</a>
   </div>
 </section>
 
@@ -938,6 +1021,7 @@
       <h2 data-i18n="storyH2">"This harvest is paying for my daughter's school fees."</h2>
       <p data-i18n="storyP1">Fatima has tapped gum arabic trees near her village in Kordofan for eleven years. She leads a cooperative of nine women who sort and grade every batch by hand before it leaves the region.</p>
       <p data-i18n="storyP2">This is the story that opens when a customer scans the code on her batch — written with her, in her words, and updated each season.</p>
+      <a class="story-readmore" href="fatima-story.html" data-i18n="storyReadMore">Read Fatima's full story →</a>
 
       <div class="impact-bar">
         <div class="impact-row"><span data-i18n="impactLabel">Where €9.50 goes</span><span data-i18n="impactBatch">this batch</span></div>
@@ -966,7 +1050,7 @@
   </div>
   <div class="product-grid">
     <div class="product-card">
-      <a class="product-link" href="#products">
+      <a class="product-link" href="shop.html">
         <div class="product-image p1"><img src="P1.jpg" alt="" onerror="this.style.display='none';"></div>
         <div class="product-info">
           <div class="origin" data-i18n="p1origin">Kordofan · harvested by Fatima</div>
@@ -978,7 +1062,7 @@
       <button class="add-to-cart" data-i18n="addToCart">Add to cart</button>
     </div>
     <div class="product-card">
-      <a class="product-link" href="#products">
+      <a class="product-link" href="shop.html">
         <div class="product-image p3"><img src="P3.jpg" alt="" onerror="this.style.display='none';"></div>
         <div class="product-info">
           <div class="origin" data-i18n="p3origin">Nile Valley · grown by Halima</div>
@@ -990,7 +1074,7 @@
       <button class="add-to-cart" data-i18n="addToCart">Add to cart</button>
     </div>
     <div class="product-card">
-      <a class="product-link" href="#products">
+      <a class="product-link" href="shop.html">
         <div class="product-image p1" style="background: linear-gradient(150deg, var(--rose), var(--saffron));"><img src="P4.jpg" alt="" onerror="this.style.display='none';"></div>
         <div class="product-info">
           <div class="origin" data-i18n="p4origin">Darfur · grown by Amira's family</div>
@@ -1002,7 +1086,7 @@
       <button class="add-to-cart" data-i18n="addToCart">Add to cart</button>
     </div>
     <div class="product-card">
-      <a class="product-link" href="#products">
+      <a class="product-link" href="shop.html">
         <div class="product-image p2" style="background: linear-gradient(150deg, var(--indigo), var(--terracotta-soft));"><img src="P5.jpg" alt="" onerror="this.style.display='none';"></div>
         <div class="product-info">
           <div class="origin" data-i18n="p5origin">Kordofan · pressed with Fatima's cooperative</div>
@@ -1014,7 +1098,7 @@
       <button class="add-to-cart" data-i18n="addToCart">Add to cart</button>
     </div>
     <div class="product-card">
-      <a class="product-link" href="#products">
+      <a class="product-link" href="shop.html">
         <div class="product-image p3" style="background: linear-gradient(150deg, var(--saffron), var(--rose-soft));"><img src="P6.jpg" alt="" onerror="this.style.display='none';"></div>
         <div class="product-info">
           <div class="origin" data-i18n="p6origin">Blue Nile · roasted by Halima's cooperative</div>
@@ -1025,6 +1109,9 @@
       </a>
       <button class="add-to-cart" data-i18n="addToCart">Add to cart</button>
     </div>
+  </div>
+  <div class="shop-more-wrap">
+    <a class="shop-more-btn" href="shop.html" data-i18n="shopMoreBtn">More</a>
   </div>
 </section>
 
@@ -1060,6 +1147,17 @@
       </div>
     </div>
   </div>
+
+  <div class="testimonials-footer">
+    <div class="add-review-box">
+      <div>
+        <h3 data-i18n="addReviewTitle">Tried Nileva?</h3>
+        <p data-i18n="addReviewText">Tell other customers what you thought.</p>
+      </div>
+      <a class="add-review-btn" href="review.html" data-i18n="addReviewBtn">Write a review</a>
+    </div>
+    <a class="testi-readmore" href="review.html" data-i18n="testiReadMore">Read more reviews →</a>
+  </div>
 </section>
 
 <footer class="wrap">
@@ -1077,17 +1175,18 @@
     <div class="footer-cols">
       <div class="footer-col" id="footer-about">
         <h4 data-i18n="footerShop">Shop</h4>
-        <a href="#products" data-i18n="footerShop1">Gum arabic</a>
-        <a href="#products" data-i18n="footerShop2">Spices</a>
+        <a href="shop.html" data-i18n="footerShop1">Gum arabic</a>
+        <a href="shop.html" data-i18n="footerShop2">Spices</a>
         <h4 class="footer-col-subhead" data-i18n="footerAbout">About</h4>
-        <a href="#" data-i18n="footerAbout1">Our cooperatives</a>
-        <a href="#" data-i18n="footerAbout2">How payments work</a>
-        <a href="#" data-i18n="footerAbout3">Shipping to the EU</a>
+        <a href="cooperatives.html" data-i18n="footerAbout1">Our cooperatives</a>
+        <a href="payments.html" data-i18n="footerAbout2">How payments work</a>
+        <a href="shipping.html" data-i18n="footerAbout3">Shipping to the EU</a>
       </div>
       <div class="footer-col" id="footer-contact-col">
         <h4 data-i18n="footerCompany">Company</h4>
-        <a href="#" data-i18n="footerCompany1">Nileva Oy, Finland</a>
-        <a href="#" id="footer-contact" data-i18n="footerCompany2">Contact</a>
+        <a href="about.html" data-i18n="footerCompany1">Nileva Oy, Finland</a>
+        <a href="contact.html" id="footer-contact" data-i18n="footerCompany2">Contact</a>
+        <a href="review.html" data-i18n="footerReviews">Reviews</a>
         <div class="footer-payments">
           <span class="pay-badge"><img src="visa.png" alt="Visa" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Visa</span></span>
           <span class="pay-badge"><img src="mastercard.png" alt="Mastercard" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">MC</span></span>
@@ -1099,7 +1198,13 @@
       </div>
     </div>
   </div>
-  <div class="footer-bottom" data-i18n="footerBottom">Nileva Oy · Registered in Finland · Serving Western Europe</div>
+  <div class="footer-bottom">
+    <span data-i18n="footerBottom">Nileva Oy · Registered in Finland · Serving Western Europe</span>
+    <div class="footer-legal">
+      <a href="terms.html" data-i18n="footerTerms">Terms</a>
+      <a href="privacy-policy.html" data-i18n="footerPrivacy">Privacy Policy</a>
+    </div>
+  </div>
 </footer>
 
 <script>
@@ -1144,6 +1249,7 @@
       footerAbout: "About", footerAbout1: "Our cooperatives", footerAbout2: "How payments work", footerAbout3: "Shipping to the EU",
       footerCompany: "Company", footerCompany1: "Nileva Oy, Finland", footerCompany2: "Contact",
       footerBottom: "Nileva Oy · Registered in Finland · Serving Western Europe",
+      footerTerms: "Terms", footerPrivacy: "Privacy Policy",
       gumTitle: "Gum Arabic", gumOrigin: "Tapped by Fatima's cooperative · Kordofan",
       gumDesc: "Sudanese gum arabic is considered among the finest natural gum in the world, carefully tapped from acacia trees across Kordofan and the Blue Nile.",
       gumB1: "Supports digestive health", gumB2: "Enhances immunity", gumB3: "A versatile natural ingredient",
@@ -1165,7 +1271,9 @@
       testi1Text: "The gum arabic tastes exactly like what my grandmother used to buy at home. Fast shipping to Helsinki and beautiful packaging too.", testi1Name: "Elin Karlsson",
       testi2Text: "Loved reading Fatima's story after scanning the QR code. It's rare to know exactly who grew what you're eating.", testi2Name: "Jonas Mäkinen",
       testi3Text: "The hibiscus tea is incredible, and knowing my order supports women's cooperatives in Sudan makes it even better.", testi3Name: "Sara Ahmed",
-      menuShop: "Shop", menuAbout: "About us", menuContact: "Contact", menuLogin: "Log in / Sign in", menuTrack: "Track order", menuCulture: "Sudan culture", menuWomen: "Meet the women"
+      menuShop: "Shop", menuAbout: "About us", menuContact: "Contact", menuLogin: "Log in / Sign in", menuTrack: "Track order", menuCulture: "Sudan culture", menuWomen: "Meet the women",
+      storyReadMore: "Read Fatima's full story →", shopMoreBtn: "More", sudanReadMore: "Read more →",
+      addReviewTitle: "Tried Nileva?", addReviewText: "Tell other customers what you thought.", addReviewBtn: "Write a review", testiReadMore: "Read more reviews →", footerReviews: "Reviews"
     },
     ar: {
       promoBar: "توصيل مجاني فوق ٥٩٫٩٩ يورو · ٥٫٩٩ يورو دون ذلك",
@@ -1206,6 +1314,7 @@
       footerAbout: "عن نيليڤا", footerAbout1: "تعاونياتنا", footerAbout2: "كيف تعمل المدفوعات", footerAbout3: "الشحن إلى الاتحاد الأوروبي",
       footerCompany: "الشركة", footerCompany1: "Nileva Oy، فنلندا", footerCompany2: "تواصلي معنا",
       footerBottom: "Nileva Oy · مسجّلة في فنلندا · تخدم أوروبا الغربية",
+      footerTerms: "الشروط والأحكام", footerPrivacy: "سياسة الخصوصية",
       gumTitle: "الصمغ العربي", gumOrigin: "استخرجته تعاونية فاطمة · كردفان",
       gumDesc: "يُعد الصمغ العربي السوداني من أجود أنواع الصمغ الطبيعي في العالم، ويُستخرج بعناية من أشجار الهشاب في كردفان والنيل الأزرق.",
       gumB1: "يدعم صحة الجهاز الهضمي", gumB2: "يعزز المناعة", gumB3: "مكوّن طبيعي متعدد الاستخدامات",
@@ -1227,7 +1336,9 @@
       testi1Text: "طعم الصمغ العربي تمامًا كما كانت جدتي تشتريه. توصيل سريع إلى هلسنكي وتغليف جميل أيضًا.", testi1Name: "إيلين كارلسون",
       testi2Text: "أحببت قراءة قصة فاطمة بعد مسح رمز الاستجابة السريعة. من النادر أن تعرفي بالضبط من زرع ما تأكلينه.", testi2Name: "يوناس ماكينن",
       testi3Text: "شاي الكركدي رائع، ومعرفة أن طلبي يدعم تعاونيات نسائية في السودان يجعله أفضل.", testi3Name: "سارة أحمد",
-      menuShop: "المتجر", menuAbout: "من نحن", menuContact: "تواصلي معنا", menuLogin: "تسجيل الدخول", menuTrack: "تتبعي طلبك", menuCulture: "ثقافة السودان", menuWomen: "تعرّفي على النساء"
+      menuShop: "المتجر", menuAbout: "من نحن", menuContact: "تواصلي معنا", menuLogin: "تسجيل الدخول", menuTrack: "تتبعي طلبك", menuCulture: "ثقافة السودان", menuWomen: "تعرّفي على النساء",
+      storyReadMore: "اقرئي قصة فاطمة كاملة ←", shopMoreBtn: "المزيد", sudanReadMore: "اقرئي المزيد ←",
+      addReviewTitle: "جربتِ منتجاتنا؟", addReviewText: "شاركي رأيك مع عملاء آخرين.", addReviewBtn: "اكتبي تقييمًا", testiReadMore: "اقرئي المزيد من التقييمات ←", footerReviews: "التقييمات"
     },
     fi: {
       promoBar: "Ilmainen toimitus yli 59,99 € tilauksiin · 5,99 € sitä pienemmistä",
@@ -1268,6 +1379,7 @@
       footerAbout: "Tietoa meistä", footerAbout1: "Osuuskuntamme", footerAbout2: "Miten maksut toimivat", footerAbout3: "Toimitukset EU:hun",
       footerCompany: "Yritys", footerCompany1: "Nileva Oy, Suomi", footerCompany2: "Ota yhteyttä",
       footerBottom: "Nileva Oy · Rekisteröity Suomessa · Palvelee Länsi-Eurooppaa",
+      footerTerms: "Käyttöehdot", footerPrivacy: "Tietosuojakäytäntö",
       gumTitle: "Gummiarabicum", gumOrigin: "Kerätty Fatiman osuuskunnassa · Kordofan",
       gumDesc: "Sudanilaista gummiarabicumia pidetään yhtenä maailman hienoimmista luonnonkumeista, ja se kerätään käsin akaasiapuista Kordofanissa ja Sinisen Niilin alueella.",
       gumB1: "Tukee ruoansulatusta", gumB2: "Vahvistaa immuniteettia", gumB3: "Monikäyttöinen luonnollinen raaka-aine",
@@ -1289,7 +1401,9 @@
       testi1Text: "Gummiarabicum maistuu täsmälleen samalta kuin isoäitini osti sitä kotona. Nopea toimitus Helsinkiin ja kaunis pakkaus.", testi1Name: "Elin Karlsson",
       testi2Text: "Pidin Fatiman tarinan lukemisesta QR-koodin skannauksen jälkeen. On harvinaista tietää tarkalleen, kuka kasvatti syömäsi tuotteen.", testi2Name: "Jonas Mäkinen",
       testi3Text: "Hibiskustee on mahtavaa, ja tieto siitä, että tilaukseni tukee naisosuuskuntia Sudanissa, tekee siitä vielä paremman.", testi3Name: "Sara Ahmed",
-      menuShop: "Kauppa", menuAbout: "Meistä", menuContact: "Ota yhteyttä", menuLogin: "Kirjaudu sisään", menuTrack: "Seuraa tilausta", menuCulture: "Sudanin kulttuuri", menuWomen: "Tutustu naisiin"
+      menuShop: "Kauppa", menuAbout: "Meistä", menuContact: "Ota yhteyttä", menuLogin: "Kirjaudu sisään", menuTrack: "Seuraa tilausta", menuCulture: "Sudanin kulttuuri", menuWomen: "Tutustu naisiin",
+      storyReadMore: "Lue Fatiman koko tarina →", shopMoreBtn: "Lisää", sudanReadMore: "Lue lisää →",
+      addReviewTitle: "Kokeilitko Nilevaa?", addReviewText: "Kerro muille asiakkaille kokemuksestasi.", addReviewBtn: "Kirjoita arvostelu", testiReadMore: "Lue lisää arvosteluja →", footerReviews: "Arvostelut"
     },
     sv: {
       promoBar: "Fri frakt över 59,99 € · 5,99 € därunder",
@@ -1330,6 +1444,7 @@
       footerAbout: "Om oss", footerAbout1: "Våra kooperativ", footerAbout2: "Hur betalningar fungerar", footerAbout3: "Frakt till EU",
       footerCompany: "Företag", footerCompany1: "Nileva Oy, Finland", footerCompany2: "Kontakt",
       footerBottom: "Nileva Oy · Registrerat i Finland · Betjänar Västeuropa",
+      footerTerms: "Villkor", footerPrivacy: "Integritetspolicy",
       gumTitle: "Gummiarabicum", gumOrigin: "Tappat av Fatimas kooperativ · Kordofan",
       gumDesc: "Sudanesiskt gummiarabicum räknas som ett av världens finaste naturliga gummin, försiktigt tappat från akacieträd i Kordofan och Blå Nilen.",
       gumB1: "Stödjer matsmältningen", gumB2: "Stärker immunförsvaret", gumB3: "En mångsidig naturlig ingrediens",
@@ -1351,7 +1466,9 @@
       testi1Text: "Gummiarabicumet smakar precis som det min mormor brukade köpa hemma. Snabb frakt till Helsingfors och vacker förpackning också.", testi1Name: "Elin Karlsson",
       testi2Text: "Älskade att läsa Fatimas berättelse efter att ha skannat QR-koden. Det är sällsynt att veta exakt vem som odlade det man äter.", testi2Name: "Jonas Mäkinen",
       testi3Text: "Hibiskusteet är fantastiskt, och att veta att min beställning stödjer kvinnokooperativ i Sudan gör det ännu bättre.", testi3Name: "Sara Ahmed",
-      menuShop: "Butik", menuAbout: "Om oss", menuContact: "Kontakta oss", menuLogin: "Logga in", menuTrack: "Spåra beställning", menuCulture: "Sudans kultur", menuWomen: "Möt kvinnorna"
+      menuShop: "Butik", menuAbout: "Om oss", menuContact: "Kontakta oss", menuLogin: "Logga in", menuTrack: "Spåra beställning", menuCulture: "Sudans kultur", menuWomen: "Möt kvinnorna",
+      storyReadMore: "Läs Fatimas hela berättelse →", shopMoreBtn: "Mer", sudanReadMore: "Läs mer →",
+      addReviewTitle: "Har du provat Nileva?", addReviewText: "Berätta för andra kunder vad du tyckte.", addReviewBtn: "Skriv en recension", testiReadMore: "Läs fler recensioner →", footerReviews: "Recensioner"
     }
   };
 
@@ -1469,19 +1586,19 @@
     <svg viewBox="0 0 24 24" fill="none"><path d="M4 11l8-7 8 7v9a1 1 0 01-1 1h-4v-6H9v6H5a1 1 0 01-1-1v-9z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
     <span data-i18n="navHome">Home</span>
   </a>
-  <a href="#products">
+  <a href="shop.html">
     <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg>
     <span data-i18n="navShop">Shop</span>
   </a>
-  <a href="#">
+  <a href="cart.html">
     <svg viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.4 12.2a2 2 0 002 1.8h8.2a2 2 0 002-1.6L20 8H6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="20" r="1.2" fill="currentColor"/><circle cx="17" cy="20" r="1.2" fill="currentColor"/></svg>
     <span data-i18n="navCartLabel">Cart</span>
   </a>
-  <a href="#">
+  <a href="search.html">
     <svg viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="M20 20l-4.35-4.35" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
     <span data-i18n="navSearch">Search</span>
   </a>
-  <a href="#">
+  <a href="account.html">
     <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c1.2-3.4 4-5 7-5s5.8 1.6 7 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
     <span data-i18n="navAccount">Account</span>
   </a>
