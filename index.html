@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nileva — Sudan to your table</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&family=Noto+Kufi+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #FFFFFF;
+    --ivory: #FBF6EE;
+    --terracotta: #BC5730;
+    --terracotta-soft: #EFCBAE;
+    --saffron: #DDA62A;
+    --rose: #C13A5E;
+    --rose-soft: #F4D2DC;
+    --indigo: #33507E;
+    --indigo-soft: #DCE1EE;
+    --palm: #5B7A45;
+    --palm-soft: #DCE6D2;
+    --ink: #2B2620;
+    --ink-soft: #6B6357;
+    --line: #EAE3D6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  h1, h2, h3, p, span, a, div { overflow-wrap: break-word; word-break: break-word; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+    max-width: 100%;
+    position: relative;
+  }
+
+  body[dir="rtl"] { font-family: 'Noto Kufi Arabic', sans-serif; }
+  body[dir="rtl"] h1, body[dir="rtl"] h2, body[dir="rtl"] h3, body[dir="rtl"] .display {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-weight: 600;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+  /* ---------- PROMO BAR ---------- */
+  .promo-bar {
+    background: var(--indigo);
+    color: var(--white);
+    text-align: center;
+    font-size: 13.5px;
+    padding: 10px 16px;
+  }
+  .promo-bar strong { font-weight: 600; }
+
+  /* ---------- APP HEADER ---------- */
+  .app-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 16px 20px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .header-accent {
+    height: 4px;
+    background: linear-gradient(90deg, var(--terracotta), var(--saffron), var(--rose), var(--indigo), var(--palm));
+  }
+
+  .menu-btn, .cart-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 4px;
+  }
+  .header-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    margin-left: auto;
+  }
+  body[dir="rtl"] .header-logo { font-family: 'Noto Kufi Arabic', sans-serif; }
+  .lang-codes {
+    display: flex;
+    gap: 2px;
+    background: var(--ivory);
+    border-radius: 100px;
+    padding: 3px;
+    flex-shrink: 0;
+  }
+  .lang-btn {
+    padding: 5px 8px 5px 6px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: 'Work Sans', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .lang-flag {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .lang-btn.active { background: var(--white); color: var(--ink); box-shadow: 0 0 0 1px var(--line); }
+  .cart-badge {
+    position: absolute;
+    top: -4px; right: -6px;
+    background: var(--rose);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 600;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ---------- HERO BANNER ---------- */
+  .hero-banner {
+    max-width: 1120px;
+    margin: 8px auto 0;
+    padding: 0 20px;
+  }
+  .hero-banner-inner {
+    aspect-ratio: 16/9;
+    border-radius: 22px;
+    background: linear-gradient(135deg, var(--indigo) 0%, var(--rose) 55%, var(--saffron) 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 26px;
+  }
+  .hero-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 45%);
+  }
+  .hero-banner-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-banner-text {
+    position: relative;
+    color: var(--white);
+    max-width: 320px;
+  }
+  .hero-banner-text .kicker { font-size: 12.5px; opacity: 0.9; margin-bottom: 6px; }
+  .hero-banner-text h2 { font-size: 24px; color: var(--white); line-height: 1.25; }
+  .banner-dots {
+    position: absolute;
+    bottom: 22px;
+    left: 26px;
+    display: flex;
+    gap: 6px;
+  }
+  .banner-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.5); }
+  .banner-dots span:first-child { background: var(--white); width: 16px; border-radius: 4px; }
+  body[dir="rtl"] .banner-dots { left: auto; right: 26px; }
+
+  /* ---------- TOP CATEGORIES ---------- */
+  .top-categories { padding: 40px 0 8px; margin-top: 16px; }
+  .categories-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .categories-head h2 { font-size: 26px; }
+  .cat-nav { display: flex; gap: 8px; }
+  .cat-arrow {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: none;
+    background: var(--ivory);
+    color: var(--ink);
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .category-scroll {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x;
+    max-width: 100%;
+  }
+  .category-scroll::-webkit-scrollbar { display: none; }
+  .category-card {
+    flex: 0 0 84px;
+    text-align: center;
+  }
+  .category-icon {
+    width: 64px; height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 8px;
+    overflow: hidden;
+  }
+  .category-icon img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .category-name { font-size: 12.5px; font-weight: 500; margin-bottom: 1px; }
+  .category-count { font-size: 11px; color: var(--ink-soft); }
+
+  /* ---------- NAV (legacy anchors kept for section links) ---------- */
+  .nav-links { display: flex; gap: 36px; font-size: 15px; color: var(--ink-soft); }
+  .nav-cta {
+    background: var(--ink);
+    color: var(--white);
+    padding: 10px 22px;
+    border-radius: 100px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    display: block;
+    padding: 40px 0 56px;
+  }
+  .hero-eyebrow {
+    font-size: 15px;
+    color: var(--rose);
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-size: 54px;
+    line-height: 1.1;
+    max-width: 560px;
+  }
+  body[dir="rtl"] .hero h1 { font-size: 44px; line-height: 1.35; }
+  .hero p.lede {
+    font-size: 18px;
+    color: var(--ink-soft);
+    max-width: 460px;
+    margin-top: 24px;
+  }
+  .hero-actions { display: flex; gap: 16px; margin-top: 36px; }
+  .btn-primary {
+    background: var(--indigo);
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 500;
+    display: inline-block;
+  }
+  .btn-secondary {
+    padding: 14px 6px;
+    font-size: 15px;
+    color: var(--ink);
+    border-bottom: 1.5px solid var(--ink);
+  }
+
+  .hero-visual { position: relative; }
+  .thread-svg { width: 100%; height: auto; }
+  body[dir="rtl"] .hero-visual { transform: scaleX(-1); }
+
+  /* ---------- INGREDIENTS ---------- */
+  .ingredient-band { color: var(--white); }
+  .ingredient-band.terracotta { background: var(--terracotta); }
+  .ingredient-band.rose { background: var(--rose); }
+  .ingredient-band.saffron { background: var(--saffron); }
+  .ingredient-block {
+    padding: 64px 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .ingredient-text h3 {
+    font-size: 32px;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  body[dir="rtl"] .ingredient-text h3 { font-family: 'Noto Kufi Arabic', sans-serif; }
+  .ingredient-text .origin-line {
+    font-size: 13.5px;
+    opacity: 0.85;
+    margin-bottom: 14px;
+  }
+  .ingredient-text p.desc {
+    font-size: 15.5px;
+    line-height: 1.6;
+    opacity: 0.95;
+    max-width: 440px;
+    margin-bottom: 22px;
+  }
+  .benefit-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+  .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14.5px;
+  }
+  .benefit-check {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 12px;
+  }
+  .ingredient-cta { font-size: 14px; font-weight: 500; opacity: 0.95; }
+  .ingredient-visual {
+    aspect-ratio: 4/3;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.16);
+  }
+
+  /* ---------- JOURNEY ---------- */
+  .journey { padding: 110px 0 100px; }
+  .section-head { max-width: 560px; margin-bottom: 64px; }
+  .section-head .kicker { color: var(--rose); font-size: 15px; margin-bottom: 16px; }
+  .section-head h2 { font-size: 36px; line-height: 1.25; }
+
+  .journey-row {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 28px;
+    padding: 34px 0;
+    border-top: 1px solid var(--line);
+  }
+  body[dir="rtl"] .journey-row { grid-template-columns: 1fr 60px; }
+  body[dir="rtl"] .journey-num { order: 2; text-align: left; }
+  .journey-row:last-child { border-bottom: 1px solid var(--line); }
+  .journey-num {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    color: var(--terracotta-soft);
+  }
+  body[dir="rtl"] .journey-num { font-family: 'Noto Kufi Arabic', sans-serif; }
+  .journey-body h3 { font-size: 21px; margin-bottom: 8px; font-weight: 500; }
+  .journey-body p { color: var(--ink-soft); max-width: 520px; font-size: 15.5px; }
+
+  /* ---------- STORY ---------- */
+  .story-section {
+    background: var(--ivory);
+    padding: 100px 0;
+  }
+  .story-card {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .story-portrait {
+    aspect-ratio: 4/5;
+    border-radius: 18px;
+    background: linear-gradient(160deg, var(--rose-soft), var(--terracotta-soft));
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 22px;
+  }
+  .story-portrait span {
+    position: relative;
+    z-index: 1;
+    background: rgba(255,255,255,0.85);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 13px;
+    color: var(--ink);
+  }
+  .story-portrait img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .story-content .kicker { color: var(--terracotta); font-size: 14px; margin-bottom: 14px; }
+  .story-content h2 { font-size: 32px; margin-bottom: 20px; max-width: 480px; }
+  .story-content p { color: var(--ink-soft); font-size: 16px; max-width: 480px; margin-bottom: 16px; }
+
+  .impact-bar {
+    margin-top: 30px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 26px;
+    max-width: 480px;
+  }
+  .impact-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .impact-track {
+    height: 8px;
+    background: var(--line);
+    border-radius: 100px;
+    overflow: hidden;
+    display: flex;
+  }
+  .impact-fill-1 { width: 62%; background: var(--terracotta); }
+  .impact-fill-2 { width: 38%; background: var(--saffron); }
+  .impact-legend { display: flex; gap: 20px; margin-top: 12px; font-size: 13px; color: var(--ink-soft); flex-wrap: wrap; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-inline-end: 6px; }
+
+  .qr-note {
+    margin-top: 34px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .qr-box {
+    width: 54px; height: 54px;
+    border-radius: 8px;
+    background: var(--ink);
+    flex-shrink: 0;
+  }
+
+  /* ---------- PRODUCTS ---------- */
+  .products { padding: 100px 0; }
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .product-card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .product-image { aspect-ratio: 4/3; position: relative; overflow: hidden; }
+  .product-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .p1 { background: linear-gradient(150deg, var(--saffron), var(--terracotta-soft)); }
+  .p2 { background: linear-gradient(150deg, var(--rose-soft), var(--indigo)); }
+  .p3 { background: linear-gradient(150deg, var(--terracotta), var(--saffron)); }
+  .product-info { padding: 10px 12px 12px; }
+  .product-info .origin { font-size: 10px; color: var(--terracotta); margin-bottom: 3px; }
+  .product-info h3 { font-size: 13px; font-weight: 500; margin-bottom: 3px; line-height: 1.25; }
+  .product-info .price { color: var(--ink-soft); font-size: 12px; margin-bottom: 8px; }
+  .product-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .stars { color: var(--saffron); letter-spacing: 1px; font-size: 11px; }
+  .add-to-cart {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 7px 0;
+    border-radius: 100px;
+    background: var(--white);
+    border: 1.5px solid var(--ink);
+    font-size: 11.5px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .add-to-cart:hover { background: var(--ink); color: var(--white); }
+
+  /* ---------- FOOTER ---------- */
+  footer.wrap { border-top: 1px solid var(--line); padding: 64px 32px 40px; }
+  .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
+  .footer-tag { font-family: 'Fraunces', serif; font-size: 20px; max-width: 300px; }
+  body[dir="rtl"] .footer-tag { font-family: 'Noto Kufi Arabic', sans-serif; }
+  .footer-cols { display: flex; gap: 56px; }
+  .footer-col h4 { font-size: 13.5px; color: var(--ink-soft); margin-bottom: 14px; font-weight: 500; }
+  .footer-col a { display: block; font-size: 14.5px; margin-bottom: 10px; color: var(--ink); }
+  .footer-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-soft); }
+  .footer-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .footer-social a {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .footer-payments {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .pay-badge {
+    width: 46px;
+    height: 30px;
+    padding: 4px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+  }
+  .pay-badge img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  .pay-fallback { font-size: 9.5px; color: var(--ink-soft); font-weight: 600; text-align: center; display: none; }
+
+  @media (max-width: 860px) {
+    .hero h1 { font-size: 38px; }
+    .story-card { grid-template-columns: 1fr; }
+    .product-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { flex-direction: column; }
+    .ingredient-block { grid-template-columns: 1fr; padding: 48px 0; }
+    .ingredient-block .ingredient-visual { order: 0 !important; aspect-ratio: 16/9; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 18px; }
+    .app-header { padding: 14px 14px; gap: 8px; }
+    .header-logo { font-size: 17px; }
+    .lang-btn { padding: 5px 6px 5px 5px; font-size: 10.5px; gap: 3px; }
+    .lang-flag { width: 12px; height: 12px; }
+    .nav-links { display: none; }
+    .product-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .journey-row { grid-template-columns: 1fr; }
+    body[dir="rtl"] .journey-row { grid-template-columns: 1fr; }
+    .hero-banner { padding: 0 14px; }
+    .hero-banner-text h2 { font-size: 19px; line-height: 1.3; }
+    .hero-banner-text { max-width: 100%; }
+    .categories-head h2 { font-size: 21px; }
+    .top-categories { margin-top: 20px; }
+    .hero h1 { font-size: 30px; max-width: 100%; }
+    .hero p.lede { font-size: 15.5px; max-width: 100%; }
+    .hero-actions { flex-wrap: wrap; }
+    .section-head h2 { font-size: 25px; }
+    .section-head { margin-bottom: 40px; }
+    .journey { padding: 64px 0 60px; }
+    .story-content h2 { font-size: 24px; }
+    .story-content p { max-width: 100%; }
+    .impact-bar, .impact-bar * { max-width: 100%; }
+    .qr-note { font-size: 13px; }
+    .footer-tag { max-width: 100%; }
+    .footer-cols { gap: 32px; flex-wrap: wrap; }
+    footer.wrap { padding: 56px 18px 32px; }
+  }
+
+  body { padding-bottom: 64px; }
+
+  /* ---------- BOTTOM NAV ---------- */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--white);
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 0 10px;
+    z-index: 50;
+  }
+  .bottom-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+  .bottom-nav a svg { width: 21px; height: 21px; }
+  .bottom-nav a.active { color: var(--indigo); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .thread-path { stroke-dasharray: 6 8; animation: dash 40s linear infinite; }
+    @keyframes dash { to { stroke-dashoffset: -1000; } }
+  }
+
+  :focus-visible { outline: 2px solid var(--indigo); outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<div class="promo-bar" data-i18n="promoBar">Free delivery over €59.99 · €5.99 below</div>
+
+<header class="app-header">
+  <button class="menu-btn" aria-label="Menu">
+    <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+  </button>
+  <div class="header-logo"><span>Nileva</span></div>
+  <div class="lang-codes">
+    <button class="lang-btn active" data-lang="en"><img class="lang-flag" src="UK.png" alt="">EN</button>
+    <button class="lang-btn" data-lang="ar"><img class="lang-flag" src="Ara.png" alt="">AR</button>
+    <button class="lang-btn" data-lang="fi"><img class="lang-flag" src="Fin.png" alt="">FI</button>
+    <button class="lang-btn" data-lang="sv"><img class="lang-flag" src="Sw.png" alt="">SV</button>
+  </div>
+  <button class="cart-btn" aria-label="Cart">
+    <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M3 4h2l2.4 12.2a2 2 0 002 1.8h8.2a2 2 0 002-1.6L20 8H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="20" r="1.3" fill="currentColor"/><circle cx="17" cy="20" r="1.3" fill="currentColor"/></svg>
+    <span class="cart-badge">0</span>
+  </button>
+</header>
+<div class="header-accent"></div>
+
+<div class="hero-banner">
+  <div class="hero-banner-inner">
+    <img class="hero-banner-img" src="B1.jpg" alt="" onerror="this.style.display='none';">
+    <div class="hero-banner-overlay"></div>
+    <div class="banner-dots"><span></span><span></span><span></span></div>
+    <div class="hero-banner-text">
+      <div class="kicker" data-i18n="bannerKicker">This week's harvest</div>
+      <h2 data-i18n="bannerH2">Taste the gum arabic Fatima tapped by hand in Kordofan.</h2>
+    </div>
+  </div>
+</div>
+
+<section class="wrap top-categories" id="categories">
+  <div class="categories-head">
+    <h2 data-i18n="catH2">Top Categories</h2>
+    <div class="cat-nav">
+      <button class="cat-arrow" aria-label="Previous">←</button>
+      <button class="cat-arrow" aria-label="Next">→</button>
+    </div>
+  </div>
+  <div class="category-scroll">
+    <div class="category-card">
+      <div class="category-icon" style="background: var(--terracotta-soft);">
+        <img src="T1.jpg" onerror="this.style.display='none'" alt="Gum Arabic">
+      </div>
+      <div class="category-name" data-i18n="cat1">Gum Arabic</div>
+      <div class="category-count" data-i18n="cat1n">12 items</div>
+    </div>
+    <div class="category-card">
+      <div class="category-icon" style="background: var(--rose-soft);">
+        <img src="T2.jpg" onerror="this.style.display='none'" alt="Hibiscus & Tea">
+      </div>
+      <div class="category-name" data-i18n="cat2">Hibiscus &amp; Tea</div>
+      <div class="category-count" data-i18n="cat2n">18 items</div>
+    </div>
+    <div class="category-card">
+      <div class="category-icon" style="background: #F2E4C5;">
+        <img src="T3.jpg" onerror="this.style.display='none'" alt="Spices & Seeds">
+      </div>
+      <div class="category-name" data-i18n="cat3">Spices &amp; Seeds</div>
+      <div class="category-count" data-i18n="cat3n">27 items</div>
+    </div>
+    <div class="category-card">
+      <div class="category-icon" style="background: #DCE1EE;">
+        <img src="T4.jpg" onerror="this.style.display='none'" alt="Woven Goods">
+      </div>
+      <div class="category-name" data-i18n="cat4">Woven Goods</div>
+      <div class="category-count" data-i18n="cat4n">9 items</div>
+    </div>
+    <div class="category-card">
+      <div class="category-icon" style="background: var(--palm-soft);">
+        <img src="T5.jpg" onerror="this.style.display='none'" alt="Oils">
+      </div>
+      <div class="category-name" data-i18n="cat5">Oils</div>
+      <div class="category-count" data-i18n="cat5n">6 items</div>
+    </div>
+  </div>
+</section>
+
+<header class="wrap hero" id="hero-intro">
+  <div>
+    <div class="hero-eyebrow" data-i18n="heroEyebrow">Nileva — from the Nile to your home</div>
+    <h1 data-i18n="heroH1">Every basket carries a woman's name, not just a product.</h1>
+    <p class="lede" data-i18n="heroLede">We bring gum arabic, hibiscus, spices and handwoven goods from Sudan's women farmers and artisans straight to your door in Europe — with her story on the label.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#products" data-i18n="heroBtn1">Shop the harvest</a>
+      <a class="btn-secondary" href="#stories" data-i18n="heroBtn2">Meet the women</a>
+    </div>
+  </div>
+</header>
+
+<section class="wrap journey" id="journey">
+  <div class="section-head">
+    <div class="kicker" data-i18n="journeyKicker">How your order reaches you</div>
+    <h2 data-i18n="journeyH2">From her hands in Kordofan to your kitchen in Helsinki.</h2>
+  </div>
+
+  <div class="journey-row">
+    <div class="journey-num">01</div>
+    <div class="journey-body">
+      <h3 data-i18n="j1h">She grows and harvests</h3>
+      <p data-i18n="j1p">Fatima and her cooperative tap and sort gum arabic by hand, the way her mother taught her. She's paid on collection, not on delivery.</p>
+    </div>
+  </div>
+  <div class="journey-row">
+    <div class="journey-num">02</div>
+    <div class="journey-body">
+      <h3 data-i18n="j2h">We verify and pack in Sudan</h3>
+      <p data-i18n="j2p">Our partner cooperative weighs, records and packs each batch, linking it to the woman who produced it and what she was paid.</p>
+    </div>
+  </div>
+  <div class="journey-row">
+    <div class="journey-num">03</div>
+    <div class="journey-body">
+      <h3 data-i18n="j3h">It ships to Helsinki, then to you</h3>
+      <p data-i18n="j3p">Batches arrive at our Finland warehouse, where we fulfil orders across Western Europe with full customs handling.</p>
+    </div>
+  </div>
+  <div class="journey-row">
+    <div class="journey-num">04</div>
+    <div class="journey-body">
+      <h3 data-i18n="j4h">You scan, and you meet her</h3>
+      <p data-i18n="j4p">A QR code on the pack opens her page — her name, her region, a photo, and exactly how your purchase reached her.</p>
+    </div>
+  </div>
+</section>
+
+<section class="story-section" id="stories">
+  <div class="wrap story-card">
+    <div class="story-portrait">
+      <img src="S1.jpg" alt="" onerror="this.style.display='none';">
+      <span data-i18n="storyTag">Fatima · Kordofan, Sudan</span>
+    </div>
+    <div class="story-content">
+      <div class="kicker" data-i18n="storyKicker">Meet the woman behind your order</div>
+      <h2 data-i18n="storyH2">"This harvest is paying for my daughter's school fees."</h2>
+      <p data-i18n="storyP1">Fatima has tapped gum arabic trees near her village in Kordofan for eleven years. She leads a cooperative of nine women who sort and grade every batch by hand before it leaves the region.</p>
+      <p data-i18n="storyP2">This is the story that opens when a customer scans the code on her batch — written with her, in her words, and updated each season.</p>
+
+      <div class="impact-bar">
+        <div class="impact-row"><span data-i18n="impactLabel">Where €9.50 goes</span><span data-i18n="impactBatch">this batch</span></div>
+        <div class="impact-track">
+          <div class="impact-fill-1"></div>
+          <div class="impact-fill-2"></div>
+        </div>
+        <div class="impact-legend">
+          <div><span class="dot" style="background:var(--terracotta)"></span><span data-i18n="impact1">€5.90 to Fatima's cooperative</span></div>
+          <div><span class="dot" style="background:var(--saffron)"></span><span data-i18n="impact2">€3.60 shipping, packing, customs</span></div>
+        </div>
+      </div>
+
+      <div class="qr-note">
+        <div class="qr-box"></div>
+        <div data-i18n="qrNote">Printed on the back of every pack: "Scan to meet Fatima, who harvested this batch in Kordofan."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap products" id="products">
+  <div class="section-head">
+    <div class="kicker" data-i18n="productsKicker">From the shop</div>
+    <h2 data-i18n="productsH2">Each product, one woman's name on it.</h2>
+  </div>
+  <div class="product-grid">
+    <div class="product-card">
+      <div class="product-image p1"><img src="P1.jpg" alt="" onerror="this.style.display='none';"></div>
+      <div class="product-info">
+        <div class="origin" data-i18n="p1origin">Kordofan · harvested by Fatima</div>
+        <h3 data-i18n="p1name">Gum Arabic, whole</h3>
+        <div class="product-rating"><span class="stars">★★★★★</span><span>(24)</span></div>
+        <div class="price" data-i18n="p1price">€9.50 / 250g</div>
+        <button class="add-to-cart" data-i18n="addToCart">Add to cart</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-image p2"><img src="P2.jpg" alt="" onerror="this.style.display='none';"></div>
+      <div class="product-info">
+        <div class="origin" data-i18n="p2origin">Darfur · woven by Amira</div>
+        <h3 data-i18n="p2name">Handwoven palm basket</h3>
+        <div class="product-rating"><span class="stars">★★★★★</span><span>(9)</span></div>
+        <div class="price" data-i18n="p2price">€22.00</div>
+        <button class="add-to-cart" data-i18n="addToCart">Add to cart</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-image p3"><img src="P3.jpg" alt="" onerror="this.style.display='none';"></div>
+      <div class="product-info">
+        <div class="origin" data-i18n="p3origin">Nile Valley · grown by Halima</div>
+        <h3 data-i18n="p3name">Dried hibiscus, karkade</h3>
+        <div class="product-rating"><span class="stars">★★★★★</span><span>(17)</span></div>
+        <div class="price" data-i18n="p3price">€6.80 / 200g</div>
+        <button class="add-to-cart" data-i18n="addToCart">Add to cart</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-image p1" style="background: linear-gradient(150deg, var(--rose), var(--saffron));"><img src="P4.jpg" alt="" onerror="this.style.display='none';"></div>
+      <div class="product-info">
+        <div class="origin" data-i18n="p4origin">Darfur · grown by Amira's family</div>
+        <h3 data-i18n="p4name">Roasted peanuts</h3>
+        <div class="product-rating"><span class="stars">★★★★★</span><span>(13)</span></div>
+        <div class="price" data-i18n="p4price">€5.20 / 300g</div>
+        <button class="add-to-cart" data-i18n="addToCart">Add to cart</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-image p2" style="background: linear-gradient(150deg, var(--indigo), var(--terracotta-soft));"><img src="P5.jpg" alt="" onerror="this.style.display='none';"></div>
+      <div class="product-info">
+        <div class="origin" data-i18n="p5origin">Kordofan · pressed with Fatima's cooperative</div>
+        <h3 data-i18n="p5name">Sesame oil, cold-pressed</h3>
+        <div class="product-rating"><span class="stars">★★★★★</span><span>(8)</span></div>
+        <div class="price" data-i18n="p5price">€7.90 / 450ml</div>
+        <button class="add-to-cart" data-i18n="addToCart">Add to cart</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-image p3" style="background: linear-gradient(150deg, var(--saffron), var(--rose-soft));"><img src="P6.jpg" alt="" onerror="this.style.display='none';"></div>
+      <div class="product-info">
+        <div class="origin" data-i18n="p6origin">Blue Nile · roasted by Halima's cooperative</div>
+        <h3 data-i18n="p6name">Black tea, loose leaf</h3>
+        <div class="product-rating"><span class="stars">★★★★★</span><span>(11)</span></div>
+        <div class="price" data-i18n="p6price">€6.50 / 100g</div>
+        <button class="add-to-cart" data-i18n="addToCart">Add to cart</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-tag" data-i18n="footerTag">Nileva connects Sudan's women producers to European kitchens — one name, one story at a time.</div>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="TikTok">TT</a>
+        <a href="#" aria-label="Pinterest">PI</a>
+      </div>
+      <div class="footer-payments">
+        <span class="pay-badge"><img src="PAY1.png" alt="Visa" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Visa</span></span>
+        <span class="pay-badge"><img src="PAY2.png" alt="Mastercard" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">MC</span></span>
+        <span class="pay-badge"><img src="PAY3.png" alt="PayPal" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">PayPal</span></span>
+        <span class="pay-badge"><img src="PAY4.png" alt="Apple Pay" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Apple</span></span>
+        <span class="pay-badge"><img src="PAY5.png" alt="Google Pay" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">GPay</span></span>
+        <span class="pay-badge"><img src="PAY6.png" alt="Klarna" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Klarna</span></span>
+        <span class="pay-badge"><img src="PAY7.png" alt="MobilePay" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Mobile Pay</span></span>
+        <span class="pay-badge"><img src="PAY8.png" alt="Pivo" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Pivo</span></span>
+      </div>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4 data-i18n="footerShop">Shop</h4>
+        <a href="#" data-i18n="footerShop1">Gum arabic</a>
+        <a href="#" data-i18n="footerShop2">Spices</a>
+        <a href="#" data-i18n="footerShop3">Woven goods</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footerAbout">About</h4>
+        <a href="#" data-i18n="footerAbout1">Our cooperatives</a>
+        <a href="#" data-i18n="footerAbout2">How payments work</a>
+        <a href="#" data-i18n="footerAbout3">Shipping to the EU</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footerCompany">Company</h4>
+        <a href="#" data-i18n="footerCompany1">Nileva Oy, Finland</a>
+        <a href="#" data-i18n="footerCompany2">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom" data-i18n="footerBottom">Nileva Oy · Registered in Finland · Serving Western Europe</div>
+</footer>
+
+<script>
+(function () {
+  var translations = {
+    en: {
+      promoBar: "Free delivery over €59.99 · €5.99 below",
+      bannerKicker: "This week's harvest",
+      bannerH2: "Taste the gum arabic Fatima tapped by hand in Kordofan.",
+      catH2: "Top Categories",
+      cat1: "Gum Arabic", cat1n: "12 items",
+      cat2: "Hibiscus & Tea", cat2n: "18 items",
+      cat3: "Spices & Seeds", cat3n: "27 items",
+      cat4: "Woven Goods", cat4n: "9 items",
+      cat5: "Oils", cat5n: "6 items",
+      navHome: "Home", navShop: "Shop", navCartLabel: "Cart", navSearch: "Search", navAccount: "Account",
+      nav1: "How it works", nav2: "Stories", nav3: "Shop", navCta: "Shop now",
+      heroEyebrow: "Nileva — from the Nile to your home",
+      heroH1: "Every basket carries a woman's name, not just a product.",
+      heroLede: "We bring gum arabic, hibiscus, spices and handwoven goods from Sudan's women farmers and artisans straight to your door in Europe — with her story on the label.",
+      heroBtn1: "Shop the harvest", heroBtn2: "Meet the women",
+      strip1: "women producers paid directly", strip2num: "€3–6", strip2: "of each item reaches her, tracked openly", strip3: "regions across Sudan represented",
+      journeyKicker: "How your order reaches you", journeyH2: "From her hands in Kordofan to your kitchen in Helsinki.",
+      j1h: "She grows and harvests", j1p: "Fatima and her cooperative tap and sort gum arabic by hand, the way her mother taught her. She's paid on collection, not on delivery.",
+      j2h: "We verify and pack in Sudan", j2p: "Our partner cooperative weighs, records and packs each batch, linking it to the woman who produced it and what she was paid.",
+      j3h: "It ships to Helsinki, then to you", j3p: "Batches arrive at our Finland warehouse, where we fulfil orders across Western Europe with full customs handling.",
+      j4h: "You scan, and you meet her", j4p: "A QR code on the pack opens her page — her name, her region, a photo, and exactly how your purchase reached her.",
+      storyTag: "Fatima · Kordofan, Sudan", storyKicker: "Meet the woman behind your order",
+      storyH2: "\"This harvest is paying for my daughter's school fees.\"",
+      storyP1: "Fatima has tapped gum arabic trees near her village in Kordofan for eleven years. She leads a cooperative of nine women who sort and grade every batch by hand before it leaves the region.",
+      storyP2: "This is the story that opens when a customer scans the code on her batch — written with her, in her words, and updated each season.",
+      impactLabel: "Where €9.50 goes", impactBatch: "this batch",
+      impact1: "€5.90 to Fatima's cooperative", impact2: "€3.60 shipping, packing, customs",
+      qrNote: "Printed on the back of every pack: \"Scan to meet Fatima, who harvested this batch in Kordofan.\"",
+      productsKicker: "From the shop", productsH2: "Each product, one woman's name on it.",
+      p1origin: "Kordofan · harvested by Fatima", p1name: "Gum Arabic, whole", p1price: "€9.50 / 250g",
+      p2origin: "Darfur · woven by Amira", p2name: "Handwoven palm basket", p2price: "€22.00",
+      p3origin: "Nile Valley · grown by Halima", p3name: "Dried hibiscus, karkade", p3price: "€6.80 / 200g",
+      footerTag: "Nileva connects Sudan's women producers to European kitchens — one name, one story at a time.",
+      footerShop: "Shop", footerShop1: "Gum arabic", footerShop2: "Spices", footerShop3: "Woven goods",
+      footerAbout: "About", footerAbout1: "Our cooperatives", footerAbout2: "How payments work", footerAbout3: "Shipping to the EU",
+      footerCompany: "Company", footerCompany1: "Nileva Oy, Finland", footerCompany2: "Contact",
+      footerBottom: "Nileva Oy · Registered in Finland · Serving Western Europe",
+      gumTitle: "Gum Arabic", gumOrigin: "Tapped by Fatima's cooperative · Kordofan",
+      gumDesc: "Sudanese gum arabic is considered among the finest natural gum in the world, carefully tapped from acacia trees across Kordofan and the Blue Nile.",
+      gumB1: "Supports digestive health", gumB2: "Enhances immunity", gumB3: "A versatile natural ingredient",
+      gumCta: "Shop gum arabic, direct from Kordofan.",
+      hibTitle: "Hibiscus, Karkade", hibOrigin: "Grown by Halima · Nile Valley",
+      hibDesc: "Grown in northern Sudan, our hibiscus flowers are hand-harvested and naturally dried to preserve their deep colour and flavour.",
+      hibB1: "Rich in antioxidants", hibB2: "Supports heart health", hibB3: "A source of vitamins and minerals",
+      hibCta: "Bring a Sudanese touch to your drinks.",
+      peanutTitle: "Peanuts", peanutOrigin: "Grown by Amira's family farm · Darfur",
+      peanutDesc: "Grown in Sudan's warm soil using traditional methods, our peanuts are prized for their large kernels and rich flavour.",
+      peanutB1: "Rich source of protein", peanutB2: "Rich in fibre", peanutB3: "Healthy fats",
+      peanutCta: "Taste the authentic flavour of Sudanese peanuts.",
+      addToCart: "Add to cart",
+      p4origin: "Darfur · grown by Amira's family", p4name: "Roasted peanuts", p4price: "€5.20 / 300g",
+      p5origin: "Kordofan · pressed with Fatima's cooperative", p5name: "Sesame oil, cold-pressed", p5price: "€7.90 / 450ml",
+      p6origin: "Blue Nile · roasted by Halima's cooperative", p6name: "Black tea, loose leaf", p6price: "€6.50 / 100g"
+    },
+    ar: {
+      promoBar: "توصيل مجاني فوق ٥٩٫٩٩ يورو · ٥٫٩٩ يورو دون ذلك",
+      bannerKicker: "حصاد هذا الأسبوع",
+      bannerH2: "تذوّقي الصمغ العربي الذي استخرجته فاطمة يدويًا في كردفان.",
+      catH2: "أهم الأقسام",
+      cat1: "الصمغ العربي", cat1n: "١٢ منتجًا",
+      cat2: "الكركدي والشاي", cat2n: "١٨ منتجًا",
+      cat3: "توابل وبذور", cat3n: "٢٧ منتجًا",
+      cat4: "مصنوعات منسوجة", cat4n: "٩ منتجات",
+      cat5: "زيوت", cat5n: "٦ منتجات",
+      navHome: "الرئيسية", navShop: "المتجر", navCartLabel: "السلة", navSearch: "بحث", navAccount: "حسابي",
+      nav1: "كيف نعمل", nav2: "القصص", nav3: "المتجر", navCta: "تسوقي الآن",
+      heroEyebrow: "نيليڤا — من النيل إلى بيتك",
+      heroH1: "كل سلة تحمل اسم امرأة، لا مجرد منتج.",
+      heroLede: "نجلب لكِ الصمغ العربي والكركدي والتوابل والمصنوعات اليدوية من مزارعات وحرفيات السودان مباشرة إلى بابك في أوروبا — مع قصتها على الملصق.",
+      heroBtn1: "تسوقي المحصول", heroBtn2: "تعرّفي على النساء",
+      strip1: "منتِجة يُدفع لهن مباشرة", strip2num: "٣–٦ يورو", strip2: "من كل منتج يصل إليها، بشفافية كاملة", strip3: "مناطق سودانية ممثَّلة",
+      journeyKicker: "كيف يصلكِ طلبك", journeyH2: "من يدَيها في كردفان إلى مطبخكِ في هلسنكي.",
+      j1h: "تزرع وتحصد", j1p: "تستخرج فاطمة وتعاونيتها الصمغ العربي وتفرزه يدويًا، كما علّمتها والدتها. يُدفع لها عند الاستلام لا عند التسليم.",
+      j2h: "نتحقق ونُغلّف في السودان", j2p: "تزن تعاونيتنا الشريكة كل دفعة وتسجّلها وتُغلّفها، مع ربطها بالمرأة التي أنتجتها وما دُفع لها.",
+      j3h: "تُشحن إلى هلسنكي ثم إليكِ", j3p: "تصل الدفعات إلى مستودعنا في فنلندا، حيث نُنفّذ الطلبات في جميع أنحاء أوروبا الغربية مع إتمام إجراءات الجمارك.",
+      j4h: "تمسحين الرمز، فتتعرّفين عليها", j4p: "يفتح رمز الاستجابة السريعة على العبوة صفحتها — اسمها ومنطقتها وصورتها، وكيف وصل شراؤكِ إليها بالتحديد.",
+      storyTag: "فاطمة · كردفان، السودان", storyKicker: "تعرّفي على المرأة وراء طلبك",
+      storyH2: "«هذا الموسم يدفع مصاريف مدرسة ابنتي.»",
+      storyP1: "تستخرج فاطمة الصمغ العربي قرب قريتها في كردفان منذ أحد عشر عامًا. تقود تعاونية من تسع نساء يفرزن ويصنّفن كل دفعة يدويًا قبل أن تغادر المنطقة.",
+      storyP2: "هذه هي القصة التي تظهر عندما يمسح الزبون الرمز على دفعتها — مكتوبة معها، بكلماتها، ومُحدَّثة كل موسم.",
+      impactLabel: "أين يذهب ٩٫٥٠ يورو", impactBatch: "لهذه الدفعة",
+      impact1: "٥٫٩٠ يورو لتعاونية فاطمة", impact2: "٣٫٦٠ يورو للشحن والتغليف والجمارك",
+      qrNote: "مطبوع على ظهر كل عبوة: «امسحي لتتعرّفي على فاطمة، التي حصدت هذه الدفعة في كردفان.»",
+      productsKicker: "من المتجر", productsH2: "كل منتج يحمل اسم امرأة.",
+      p1origin: "كردفان · حصدته فاطمة", p1name: "صمغ عربي، كامل", p1price: "٩٫٥٠ يورو / ٢٥٠ غ",
+      p2origin: "دارفور · نسجتها أميرة", p2name: "سلة منسوجة من سعف النخيل", p2price: "٢٢٫٠٠ يورو",
+      p3origin: "وادي النيل · زرعته حليمة", p3name: "كركدي مجفف", p3price: "٦٫٨٠ يورو / ٢٠٠ غ",
+      footerTag: "نيليڤا تربط منتِجات السودان بمطابخ أوروبا — اسم وقصة في كل مرة.",
+      footerShop: "المتجر", footerShop1: "صمغ عربي", footerShop2: "توابل", footerShop3: "مصنوعات منسوجة",
+      footerAbout: "عن نيليڤا", footerAbout1: "تعاونياتنا", footerAbout2: "كيف تعمل المدفوعات", footerAbout3: "الشحن إلى الاتحاد الأوروبي",
+      footerCompany: "الشركة", footerCompany1: "Nileva Oy، فنلندا", footerCompany2: "تواصلي معنا",
+      footerBottom: "Nileva Oy · مسجّلة في فنلندا · تخدم أوروبا الغربية",
+      gumTitle: "الصمغ العربي", gumOrigin: "استخرجته تعاونية فاطمة · كردفان",
+      gumDesc: "يُعد الصمغ العربي السوداني من أجود أنواع الصمغ الطبيعي في العالم، ويُستخرج بعناية من أشجار الهشاب في كردفان والنيل الأزرق.",
+      gumB1: "يدعم صحة الجهاز الهضمي", gumB2: "يعزز المناعة", gumB3: "مكوّن طبيعي متعدد الاستخدامات",
+      gumCta: "تسوّقي الصمغ العربي، مباشرة من كردفان.",
+      hibTitle: "الكركدي", hibOrigin: "زرعته حليمة · وادي النيل",
+      hibDesc: "يُزرع الكركدي في شمال السودان، وتُحصد أزهاره يدويًا وتُجفَّف طبيعيًا للحفاظ على لونه ونكهته القوية.",
+      hibB1: "غني بمضادات الأكسدة", hibB2: "يدعم صحة القلب", hibB3: "مصدر للفيتامينات والمعادن",
+      hibCta: "أضيفي لمسة سودانية إلى مشروباتك.",
+      peanutTitle: "الفول السوداني", peanutOrigin: "زرعته مزرعة عائلة أميرة · دارفور",
+      peanutDesc: "يُزرع في تربة السودان الدافئة بطرق تقليدية، ويتميّز بحبّاته الكبيرة ونكهته الغنية.",
+      peanutB1: "مصدر غني بالبروتين", peanutB2: "غني بالألياف", peanutB3: "دهون صحية",
+      peanutCta: "تذوّقي النكهة الأصيلة للفول السوداني.",
+      addToCart: "أضيفي إلى السلة",
+      p4origin: "دارفور · زرعته عائلة أميرة", p4name: "فول سوداني محمّص", p4price: "٥٫٢٠ يورو / ٣٠٠ غ",
+      p5origin: "كردفان · عُصر مع تعاونية فاطمة", p5name: "زيت سمسم معصور على البارد", p5price: "٧٫٩٠ يورو / ٤٥٠ مل",
+      p6origin: "النيل الأزرق · حمّصته تعاونية حليمة", p6name: "شاي أسود، أوراق فضفاضة", p6price: "٦٫٥٠ يورو / ١٠٠ غ"
+    },
+    fi: {
+      promoBar: "Ilmainen toimitus yli 59,99 € tilauksiin · 5,99 € sitä pienemmistä",
+      bannerKicker: "Tämän viikon sato",
+      bannerH2: "Maista gummiarabicumia, jonka Fatima keräsi käsin Kordofanissa.",
+      catH2: "Suositut kategoriat",
+      cat1: "Gummiarabicum", cat1n: "12 tuotetta",
+      cat2: "Hibiskus & tee", cat2n: "18 tuotetta",
+      cat3: "Mausteet & siemenet", cat3n: "27 tuotetta",
+      cat4: "Kudotut tuotteet", cat4n: "9 tuotetta",
+      cat5: "Öljyt", cat5n: "6 tuotetta",
+      navHome: "Koti", navShop: "Kauppa", navCartLabel: "Ostoskori", navSearch: "Haku", navAccount: "Tili",
+      nav1: "Näin se toimii", nav2: "Tarinat", nav3: "Kauppa", navCta: "Osta nyt",
+      heroEyebrow: "Nileva — Niilistä kotiisi",
+      heroH1: "Jokainen kori kantaa naisen nimeä, ei vain tuotetta.",
+      heroLede: "Tuomme gummiarabicumia, hibiskusta, mausteita ja käsintehtyjä tuotteita Sudanin naisviljelijöiltä ja käsityöläisiltä suoraan ovellesi Euroopassa — hänen tarinansa mukana pakkauksessa.",
+      heroBtn1: "Osta satoa", heroBtn2: "Tutustu naisiin",
+      strip1: "naistuottajaa saa maksun suoraan", strip2num: "3–6 €", strip2: "jokaisesta tuotteesta menee hänelle, avoimesti seurattuna", strip3: "aluetta Sudanissa edustettuna",
+      journeyKicker: "Näin tilauksesi kulkee", journeyH2: "Hänen käsistään Kordofanissa keittiöösi Helsingissä.",
+      j1h: "Hän kasvattaa ja korjaa sadon", j1p: "Fatima ja hänen osuuskuntansa kokoavat ja lajittelevat gummiarabicumin käsin, kuten hänen äitinsä opetti. Hänelle maksetaan keräyshetkellä, ei toimituksen jälkeen.",
+      j2h: "Tarkistamme ja pakkaamme Sudanissa", j2p: "Kumppaniosuuskuntamme punnitsee, kirjaa ja pakkaa jokaisen erän, ja yhdistää sen sen tehneeseen naiseen ja hänen saamaansa korvaukseen.",
+      j3h: "Erä kulkee Helsinkiin ja sieltä sinulle", j3p: "Erät saapuvat varastollemme Suomessa, josta toimitamme tilaukset koko Länsi-Eurooppaan tullauksineen.",
+      j4h: "Skannaat ja tapaat hänet", j4p: "Pakkauksen QR-koodi avaa hänen sivunsa — nimen, alueen, kuvan ja tarkan kuvauksen siitä, miten ostoksesi päätyi hänelle.",
+      storyTag: "Fatima · Kordofan, Sudan", storyKicker: "Tapaa nainen tilauksesi takana",
+      storyH2: "”Tämä sato maksaa tyttäreni koulumaksut.”",
+      storyP1: "Fatima on kerännyt gummiarabicumia kylänsä läheltä Kordofanista yksitoista vuotta. Hän johtaa yhdeksän naisen osuuskuntaa, joka lajittelee ja luokittelee jokaisen erän käsin ennen kuin se lähtee alueelta.",
+      storyP2: "Tämä tarina avautuu, kun asiakas skannaa koodin hänen eränsä pakkauksesta — kirjoitettu yhdessä hänen kanssaan, hänen sanoillaan, ja päivitetty joka kausi.",
+      impactLabel: "Mihin 9,50 € menee", impactBatch: "tästä erästä",
+      impact1: "5,90 € Fatiman osuuskunnalle", impact2: "3,60 € kuljetukseen, pakkaukseen ja tulliin",
+      qrNote: "Painettu jokaisen pakkauksen kääntöpuolelle: ”Skannaa ja tapaa Fatima, joka korjasi tämän erän Kordofanissa.”",
+      productsKicker: "Kaupasta", productsH2: "Jokaisessa tuotteessa yhden naisen nimi.",
+      p1origin: "Kordofan · korjannut Fatima", p1name: "Gummiarabicum, kokonainen", p1price: "9,50 € / 250 g",
+      p2origin: "Darfur · kutonut Amira", p2name: "Käsinkudottu palmukori", p2price: "22,00 €",
+      p3origin: "Niilinlaakso · kasvattanut Halima", p3name: "Kuivattu hibiskus, karkade", p3price: "6,80 € / 200 g",
+      footerTag: "Nileva yhdistää Sudanin naistuottajat eurooppalaisiin keittiöihin — yksi nimi, yksi tarina kerrallaan.",
+      footerShop: "Kauppa", footerShop1: "Gummiarabicum", footerShop2: "Mausteet", footerShop3: "Kudotut tuotteet",
+      footerAbout: "Tietoa meistä", footerAbout1: "Osuuskuntamme", footerAbout2: "Miten maksut toimivat", footerAbout3: "Toimitukset EU:hun",
+      footerCompany: "Yritys", footerCompany1: "Nileva Oy, Suomi", footerCompany2: "Ota yhteyttä",
+      footerBottom: "Nileva Oy · Rekisteröity Suomessa · Palvelee Länsi-Eurooppaa",
+      gumTitle: "Gummiarabicum", gumOrigin: "Kerätty Fatiman osuuskunnassa · Kordofan",
+      gumDesc: "Sudanilaista gummiarabicumia pidetään yhtenä maailman hienoimmista luonnonkumeista, ja se kerätään käsin akaasiapuista Kordofanissa ja Sinisen Niilin alueella.",
+      gumB1: "Tukee ruoansulatusta", gumB2: "Vahvistaa immuniteettia", gumB3: "Monikäyttöinen luonnollinen raaka-aine",
+      gumCta: "Osta gummiarabicumia suoraan Kordofanista.",
+      hibTitle: "Hibiskus, karkade", hibOrigin: "Kasvattanut Halima · Niilin laakso",
+      hibDesc: "Pohjois-Sudanissa kasvatetut hibiskuskukat korjataan käsin ja kuivataan luonnollisesti, jotta syvä väri ja maku säilyvät.",
+      hibB1: "Runsaasti antioksidantteja", hibB2: "Tukee sydämen terveyttä", hibB3: "Vitamiinien ja kivennäisaineiden lähde",
+      hibCta: "Tuo sudanilainen tunnelma juomiisi.",
+      peanutTitle: "Maapähkinät", peanutOrigin: "Kasvattanut Amiran perhetila · Darfur",
+      peanutDesc: "Sudanin lämpimässä maaperässä perinteisin menetelmin kasvatetut maapähkinät tunnetaan suurista jyvistään ja täyteläisestä mausta.",
+      peanutB1: "Runsaasti proteiinia", peanutB2: "Runsaasti kuitua", peanutB3: "Terveellisiä rasvoja",
+      peanutCta: "Maista aidon sudanilaisen maapähkinän makua.",
+      addToCart: "Lisää ostoskoriin",
+      p4origin: "Darfur · kasvattanut Amiran perhe", p4name: "Paahdetut maapähkinät", p4price: "5,20 € / 300 g",
+      p5origin: "Kordofan · puristettu Fatiman osuuskunnassa", p5name: "Kylmäpuristettu seesamiöljy", p5price: "7,90 € / 450 ml",
+      p6origin: "Sininen Niili · paahtanut Haliman osuuskunta", p6name: "Musta tee, irtolehti", p6price: "6,50 € / 100 g"
+    },
+    sv: {
+      promoBar: "Fri frakt över 59,99 € · 5,99 € därunder",
+      bannerKicker: "Veckans skörd",
+      bannerH2: "Smaka gummiarabicumet som Fatima tappade för hand i Kordofan.",
+      catH2: "Populära kategorier",
+      cat1: "Gummiarabicum", cat1n: "12 varor",
+      cat2: "Hibiskus & te", cat2n: "18 varor",
+      cat3: "Kryddor & frön", cat3n: "27 varor",
+      cat4: "Vävda varor", cat4n: "9 varor",
+      cat5: "Oljor", cat5n: "6 varor",
+      navHome: "Hem", navShop: "Butik", navCartLabel: "Varukorg", navSearch: "Sök", navAccount: "Konto",
+      nav1: "Så fungerar det", nav2: "Berättelser", nav3: "Butik", navCta: "Handla nu",
+      heroEyebrow: "Nileva — från Nilen till ditt hem",
+      heroH1: "Varje korg bär en kvinnas namn, inte bara en produkt.",
+      heroLede: "Vi tar med gummiarabicum, hibiskus, kryddor och handvävda varor från Sudans kvinnliga odlare och hantverkare direkt till din dörr i Europa — med hennes berättelse på etiketten.",
+      heroBtn1: "Handla skörden", heroBtn2: "Möt kvinnorna",
+      strip1: "kvinnliga producenter får betalt direkt", strip2num: "3–6 €", strip2: "av varje produkt når henne, öppet spårat", strip3: "regioner i Sudan representerade",
+      journeyKicker: "Så här når din beställning dig", journeyH2: "Från hennes händer i Kordofan till ditt kök i Helsingfors.",
+      j1h: "Hon odlar och skördar", j1p: "Fatima och hennes kooperativ tappar och sorterar gummiarabicum för hand, precis som hennes mor lärde henne. Hon får betalt vid insamlingen, inte vid leverans.",
+      j2h: "Vi verifierar och packar i Sudan", j2p: "Vårt partnerkooperativ väger, registrerar och packar varje sats, kopplad till kvinnan som producerade den och vad hon fick betalt.",
+      j3h: "Den skeppas till Helsingfors, sedan till dig", j3p: "Satserna anländer till vårt lager i Finland, där vi levererar beställningar i hela Västeuropa med fullständig tullhantering.",
+      j4h: "Du skannar och möter henne", j4p: "En QR-kod på förpackningen öppnar hennes sida — hennes namn, region, ett foto och exakt hur ditt köp nådde henne.",
+      storyTag: "Fatima · Kordofan, Sudan", storyKicker: "Möt kvinnan bakom din beställning",
+      storyH2: "”Den här skörden betalar min dotters skolavgifter.”",
+      storyP1: "Fatima har tappat gummiarabicumträd nära sin by i Kordofan i elva år. Hon leder ett kooperativ med nio kvinnor som sorterar och graderar varje sats för hand innan den lämnar regionen.",
+      storyP2: "Det här är berättelsen som öppnas när en kund skannar koden på hennes sats — skriven tillsammans med henne, med hennes egna ord, och uppdaterad varje säsong.",
+      impactLabel: "Vart 9,50 € tar vägen", impactBatch: "denna sats",
+      impact1: "5,90 € till Fatimas kooperativ", impact2: "3,60 € frakt, packning, tull",
+      qrNote: "Tryckt på baksidan av varje förpackning: ”Skanna för att möta Fatima, som skördade denna sats i Kordofan.”",
+      productsKicker: "Från butiken", productsH2: "Varje produkt bär en kvinnas namn.",
+      p1origin: "Kordofan · skördad av Fatima", p1name: "Gummiarabicum, hel", p1price: "9,50 € / 250 g",
+      p2origin: "Darfur · vävd av Amira", p2name: "Handvävd palmkorg", p2price: "22,00 €",
+      p3origin: "Nildalen · odlad av Halima", p3name: "Torkad hibiskus, karkade", p3price: "6,80 € / 200 g",
+      footerTag: "Nileva knyter samman Sudans kvinnliga producenter med europeiska kök — ett namn, en berättelse i taget.",
+      footerShop: "Butik", footerShop1: "Gummiarabicum", footerShop2: "Kryddor", footerShop3: "Vävda varor",
+      footerAbout: "Om oss", footerAbout1: "Våra kooperativ", footerAbout2: "Hur betalningar fungerar", footerAbout3: "Frakt till EU",
+      footerCompany: "Företag", footerCompany1: "Nileva Oy, Finland", footerCompany2: "Kontakt",
+      footerBottom: "Nileva Oy · Registrerat i Finland · Betjänar Västeuropa",
+      gumTitle: "Gummiarabicum", gumOrigin: "Tappat av Fatimas kooperativ · Kordofan",
+      gumDesc: "Sudanesiskt gummiarabicum räknas som ett av världens finaste naturliga gummin, försiktigt tappat från akacieträd i Kordofan och Blå Nilen.",
+      gumB1: "Stödjer matsmältningen", gumB2: "Stärker immunförsvaret", gumB3: "En mångsidig naturlig ingrediens",
+      gumCta: "Handla gummiarabicum direkt från Kordofan.",
+      hibTitle: "Hibiskus, karkade", hibOrigin: "Odlad av Halima · Nildalen",
+      hibDesc: "Odlad i norra Sudan, våra hibiskusblommor skördas för hand och torkas naturligt för att bevara sin djupa färg och smak.",
+      hibB1: "Rik på antioxidanter", hibB2: "Stödjer hjärthälsan", hibB3: "En källa till vitaminer och mineraler",
+      hibCta: "Ge dina drycker en sudanesisk touch.",
+      peanutTitle: "Jordnötter", peanutOrigin: "Odlade på Amiras familjegård · Darfur",
+      peanutDesc: "Odlade i Sudans varma jord med traditionella metoder, våra jordnötter är kända för sina stora kärnor och rika smak.",
+      peanutB1: "Rik källa till protein", peanutB2: "Rik på fiber", peanutB3: "Nyttiga fetter",
+      peanutCta: "Smaka den äkta smaken av sudanesiska jordnötter.",
+      addToCart: "Lägg i varukorgen",
+      p4origin: "Darfur · odlad av Amiras familj", p4name: "Rostade jordnötter", p4price: "5,20 € / 300 g",
+      p5origin: "Kordofan · pressad med Fatimas kooperativ", p5name: "Kallpressad sesamolja", p5price: "7,90 € / 450 ml",
+      p6origin: "Blå Nilen · rostat av Halimas kooperativ", p6name: "Svart te, löst blad", p6price: "6,50 € / 100 g"
+    }
+  };
+
+  var nodes = document.querySelectorAll('[data-i18n]');
+  var buttons = document.querySelectorAll('.lang-btn');
+
+  function setLang(lang) {
+    var dict = translations[lang] || translations.en;
+    nodes.forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (dict[key]) el.textContent = dict[key];
+    });
+    buttons.forEach(function (btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('lang', lang);
+  }
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      setLang(btn.getAttribute('data-lang'));
+    });
+  });
+})();
+</script>
+
+<nav class="bottom-nav">
+  <a href="#hero-intro" class="active">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M4 11l8-7 8 7v9a1 1 0 01-1 1h-4v-6H9v6H5a1 1 0 01-1-1v-9z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    <span data-i18n="navHome">Home</span>
+  </a>
+  <a href="#products">
+    <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg>
+    <span data-i18n="navShop">Shop</span>
+  </a>
+  <a href="#">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.4 12.2a2 2 0 002 1.8h8.2a2 2 0 002-1.6L20 8H6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="20" r="1.2" fill="currentColor"/><circle cx="17" cy="20" r="1.2" fill="currentColor"/></svg>
+    <span data-i18n="navCartLabel">Cart</span>
+  </a>
+  <a href="#">
+    <svg viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="M20 20l-4.35-4.35" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <span data-i18n="navSearch">Search</span>
+  </a>
+  <a href="#">
+    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c1.2-3.4 4-5 7-5s5.8 1.6 7 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <span data-i18n="navAccount">Account</span>
+  </a>
+</nav>
+
+</body>
+</html>
