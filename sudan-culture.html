@@ -6,7 +6,7 @@
 <title>Nileva — Sudan Culture</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&family=Noto+Kufi+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --white: #FFFFFF;
@@ -41,6 +41,14 @@
   }
   a { color: inherit; text-decoration: none; }
   .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+  body[dir="rtl"] { font-family: 'Noto Kufi Arabic', sans-serif; }
+  body[dir="rtl"] h1, body[dir="rtl"] h2, body[dir="rtl"] h3, body[dir="rtl"] .display, body[dir="rtl"] .header-logo {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-weight: 600;
+  }
+  body[dir="rtl"] .menu-drawer { right: 0; left: auto; transform: translateX(100%); box-shadow: -2px 0 24px rgba(0,0,0,0.12); }
+  body[dir="rtl"] .menu-drawer.open { transform: translateX(0); }
 
   /* ---------- PROMO BAR ---------- */
   .promo-bar {
@@ -368,7 +376,7 @@
 </head>
 <body>
 
-<div class="promo-bar">Free delivery over €59.99 · €5.99 below</div>
+<div class="promo-bar" data-i18n="promoBar">Free delivery over €59.99 · €5.99 below</div>
 
 <header class="app-header">
   <button class="menu-btn" id="menuBtn" aria-label="Menu">
@@ -396,23 +404,23 @@
       <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
     </button>
   </div>
-  <a href="shop.html" class="menu-link">Shop</a>
-  <a href="about.html" class="menu-link">About us</a>
-  <a href="contact.html" class="menu-link">Contact</a>
-  <a href="login.html" class="menu-link">Log in / Sign in</a>
-  <a href="track-order.html" class="menu-link">Track order</a>
-  <a href="sudan-culture.html" class="menu-link">Sudan culture</a>
-  <a href="meet-the-women.html" class="menu-link">Meet the women</a>
+  <a href="shop.html" class="menu-link" data-i18n="menuShop">Shop</a>
+  <a href="about.html" class="menu-link" data-i18n="menuAbout">About us</a>
+  <a href="contact.html" class="menu-link" data-i18n="menuContact">Contact</a>
+  <a href="login.html" class="menu-link" data-i18n="menuLogin">Log in / Sign in</a>
+  <a href="track-order.html" class="menu-link" data-i18n="menuTrack">Track order</a>
+  <a href="sudan-culture.html" class="menu-link" data-i18n="menuCulture">Sudan culture</a>
+  <a href="meet-the-women.html" class="menu-link" data-i18n="menuWomen">Meet the women</a>
 </nav>
 
-<div class="wrap" style="padding-top:14px;">
-  <a class="back-link" href="index.html">← Back to home</a>
+<div class="wrap" style="padding-top:14px; padding-bottom: 28px;">
+  <a class="back-link" href="index.html" data-i18n="backLink">← Back to home</a>
 </div>
 
 <header class="wrap culture-hero">
-  <div class="culture-hero-kicker">The land behind every harvest</div>
-  <h1>Sudan, in six places and a thousand small hands</h1>
-  <p>Before it reaches your kitchen, every gum arabic tear, every dried hibiscus flower, every handwoven basket has already travelled through a Sudan most of Europe never sees. Here's a closer look at the regions our cooperatives call home — their land, their light, and the work that happens there long before anything ships.</p>
+  <div class="culture-hero-kicker" data-i18n="heroKicker">The land behind every harvest</div>
+  <h1 data-i18n="heroH1">Sudan, in six places and a thousand small hands</h1>
+  <p data-i18n="heroP">Before it reaches your kitchen, every gum arabic tear, every dried hibiscus flower, every handwoven basket has already travelled through a Sudan most of Europe never sees. Here's a closer look at the regions our cooperatives call home — their land, their light, and the work that happens there long before anything ships.</p>
 </header>
 
 <section class="wrap culture-video-section">
@@ -422,71 +430,71 @@
       Your browser does not support the video tag.
     </video>
   </div>
-  <p class="culture-video-caption">A short journey through Sudan — the land, the markets and the hands behind every harvest.</p>
+  <p class="culture-video-caption" data-i18n="videoCaption">A short journey through Sudan — the land, the markets and the hands behind every harvest.</p>
 </section>
 
 <main class="wrap">
 
   <section class="city-section" id="kordofan">
-    <div class="city-kicker">Where the gum arabic trees grow</div>
+    <div class="city-kicker" data-i18n="kordofanKicker">Where the gum arabic trees grow</div>
     <h2>Kordofan</h2>
-    <p>Kordofan is the heartland of Sudan's gum arabic belt, a wide stretch of acacia woodland where families have tapped the same trees for generations. Villages here rise with the sun and work by it too — sorting resin by hand, grading it by color and clarity, and drying it in open courtyards before it ever sees a scale. It's slow, patient work, done mostly by women who know each tree the way others know a street they grew up on. Fatima's cooperative, the one behind your gum arabic, is rooted here.</p>
+    <p data-i18n="kordofanP">Kordofan is the heartland of Sudan's gum arabic belt, a wide stretch of acacia woodland where families have tapped the same trees for generations. Villages here rise with the sun and work by it too — sorting resin by hand, grading it by color and clarity, and drying it in open courtyards before it ever sees a scale. It's slow, patient work, done mostly by women who know each tree the way others know a street they grew up on. Fatima's cooperative, the one behind your gum arabic, is rooted here.</p>
     <div class="gallery-strip" data-gallery="kordofan"></div>
   </section>
 
   <section class="city-section" id="darfur">
-    <div class="city-kicker">Sahel, savanna and centuries of craft</div>
+    <div class="city-kicker" data-i18n="darfurKicker">Sahel, savanna and centuries of craft</div>
     <h2>Darfur</h2>
-    <p>Darfur stretches from dry savanna to volcanic highlands, and its markets are some of the liveliest in the country — stalls of woven mats, dyed textiles and leatherwork passed down through families of artisans. Despite hardship the region has known, its craft traditions have held: basket weaving, pottery and embroidery still done exactly as they were a century ago. It's a landscape of resilience, and every handwoven piece that leaves it carries that history stitched into it.</p>
+    <p data-i18n="darfurP">Darfur stretches from dry savanna to volcanic highlands, and its markets are some of the liveliest in the country — stalls of woven mats, dyed textiles and leatherwork passed down through families of artisans. Despite hardship the region has known, its craft traditions have held: basket weaving, pottery and embroidery still done exactly as they were a century ago. It's a landscape of resilience, and every handwoven piece that leaves it carries that history stitched into it.</p>
     <div class="gallery-strip" data-gallery="darfur"></div>
   </section>
 
   <section class="city-section" id="kassala">
-    <div class="city-kicker">Where the Taka hills meet the market square</div>
+    <div class="city-kicker" data-i18n="kassalaKicker">Where the Taka hills meet the market square</div>
     <h2>Kassala</h2>
-    <p>Kassala sits beneath the jagged Taka hills near the Eritrean border, its skyline unlike anywhere else in Sudan. The city is known for its fruit and spice markets, fragrant with cardamom, cinnamon and dried citrus, and for the henna and textile trade that draws traders from across the region. Life moves to the rhythm of the souq here — early mornings, unhurried bargaining, tea shared between strangers. Some of our spice blends begin in exactly this kind of market stall.</p>
+    <p data-i18n="kassalaP">Kassala sits beneath the jagged Taka hills near the Eritrean border, its skyline unlike anywhere else in Sudan. The city is known for its fruit and spice markets, fragrant with cardamom, cinnamon and dried citrus, and for the henna and textile trade that draws traders from across the region. Life moves to the rhythm of the souq here — early mornings, unhurried bargaining, tea shared between strangers. Some of our spice blends begin in exactly this kind of market stall.</p>
     <div class="gallery-strip" data-gallery="kassala"></div>
   </section>
 
   <section class="city-section" id="al-dender">
-    <div class="city-kicker">The green corridor along the river</div>
+    <div class="city-kicker" data-i18n="alDenderKicker">The green corridor along the river</div>
     <h2>Al-Dender</h2>
-    <p>Al-Dender lies along a tributary of the Blue Nile, where the land turns unexpectedly green — reed beds, grazing cattle, and farmland that floods and blooms with the seasons. It's one of the quieter regions we work with, known for its wildlife-rich riverbanks and small farming communities that grow peanuts and sesame using methods barely changed in decades. The pace here is set by the river, not the clock.</p>
+    <p data-i18n="alDenderP">Al-Dender lies along a tributary of the Blue Nile, where the land turns unexpectedly green — reed beds, grazing cattle, and farmland that floods and blooms with the seasons. It's one of the quieter regions we work with, known for its wildlife-rich riverbanks and small farming communities that grow peanuts and sesame using methods barely changed in decades. The pace here is set by the river, not the clock.</p>
     <div class="gallery-strip" data-gallery="aldender"></div>
   </section>
 
   <section class="city-section" id="port-sudan">
-    <div class="city-kicker">The gateway to the Red Sea</div>
+    <div class="city-kicker" data-i18n="portSudanKicker">The gateway to the Red Sea</div>
     <h2>Port Sudan</h2>
-    <p>Port Sudan is where the country meets the sea — a working port city of cranes, fishing boats and coral reefs just offshore that rank among the least disturbed in the world. It's also the last stop for nearly everything we ship: every batch of gum arabic, hibiscus and spice we send to Europe passes through these docks before it reaches open water. Behind the industry, the old town still keeps a slower, coastal rhythm.</p>
+    <p data-i18n="portSudanP">Port Sudan is where the country meets the sea — a working port city of cranes, fishing boats and coral reefs just offshore that rank among the least disturbed in the world. It's also the last stop for nearly everything we ship: every batch of gum arabic, hibiscus and spice we send to Europe passes through these docks before it reaches open water. Behind the industry, the old town still keeps a slower, coastal rhythm.</p>
     <div class="gallery-strip" data-gallery="portsudan"></div>
   </section>
 
   <section class="city-section" id="meroe">
-    <div class="city-kicker">Pyramids older than most of Europe's cities</div>
+    <div class="city-kicker" data-i18n="meroeKicker">Pyramids older than most of Europe's cities</div>
     <h2>Meroe</h2>
-    <p>Long before it was part of any modern trade route, this stretch of desert along the Nile was the seat of an ancient kingdom — its pyramids, sharper and more numerous than Egypt's, still rise quietly from the sand. Meroe is a reminder of how old Sudan's story really is, and how much has passed through this land before a single one of our products ever did. We think of it as the quiet backdrop to everything else in this list.</p>
+    <p data-i18n="meroeP">Long before it was part of any modern trade route, this stretch of desert along the Nile was the seat of an ancient kingdom — its pyramids, sharper and more numerous than Egypt's, still rise quietly from the sand. Meroe is a reminder of how old Sudan's story really is, and how much has passed through this land before a single one of our products ever did. We think of it as the quiet backdrop to everything else in this list.</p>
     <div class="gallery-strip" data-gallery="meroe"></div>
   </section>
 
   <section class="city-section" id="religions">
-    <div class="city-kicker">Faith, woven into daily life</div>
-    <h2>Religions of Sudan</h2>
-    <p>Islam is the majority faith across Sudan, shaping the rhythm of daily life from the call to prayer that marks each day to the festivals that bring whole communities together, like Eid al-Fitr and Eid al-Adha. Sufi traditions run especially deep here, with local orders known for their music, poetry and communal gatherings that feel as much like celebration as worship. Christianity has its own long history in the country too, practiced mainly among communities in the south and among diaspora congregations in cities like Khartoum, with churches that have stood for generations. Across both traditions, faith in Sudan tends to be lived communally — shared meals, shared prayer, and a hospitality that welcomes neighbors regardless of which mosque or church they belong to.</p>
+    <div class="city-kicker" data-i18n="religionsKicker">Faith, woven into daily life</div>
+    <h2 data-i18n="religionsH2">Religions of Sudan</h2>
+    <p data-i18n="religionsP">Islam is the majority faith across Sudan, shaping the rhythm of daily life from the call to prayer that marks each day to the festivals that bring whole communities together, like Eid al-Fitr and Eid al-Adha. Sufi traditions run especially deep here, with local orders known for their music, poetry and communal gatherings that feel as much like celebration as worship. Christianity has its own long history in the country too, practiced mainly among communities in the south and among diaspora congregations in cities like Khartoum, with churches that have stood for generations. Across both traditions, faith in Sudan tends to be lived communally — shared meals, shared prayer, and a hospitality that welcomes neighbors regardless of which mosque or church they belong to.</p>
     <div class="gallery-strip" data-gallery="religions"></div>
   </section>
 
   <section class="city-section" id="culture">
-    <div class="city-kicker">Music, food and the everyday art of hospitality</div>
-    <h2>Culture</h2>
-    <p>Sudanese culture is built on hospitality — a stranger is rarely allowed to leave a home without being offered tea, and often a full meal besides. Music runs through everyday life too, from the string-driven sounds of oud and tambour to wedding songs that can last long into the night. Food carries its own traditions: kisra and ful medames on family tables, spiced coffee poured with ceremony, and dishes that change slightly from Kordofan to the Nile valley to the Red Sea coast. Traditional dress remains part of daily life as well, from the flowing white jalabiya worn by men to the colorful toub wrapped by women, patterns and colors that often carry regional meaning. It's a culture shaped as much by generosity and gathering as by any single tradition.</p>
+    <div class="city-kicker" data-i18n="cultureKicker">Music, food and the everyday art of hospitality</div>
+    <h2 data-i18n="cultureH2">Culture</h2>
+    <p data-i18n="cultureP">Sudanese culture is built on hospitality — a stranger is rarely allowed to leave a home without being offered tea, and often a full meal besides. Music runs through everyday life too, from the string-driven sounds of oud and tambour to wedding songs that can last long into the night. Food carries its own traditions: kisra and ful medames on family tables, spiced coffee poured with ceremony, and dishes that change slightly from Kordofan to the Nile valley to the Red Sea coast. Traditional dress remains part of daily life as well, from the flowing white jalabiya worn by men to the colorful toub wrapped by women, patterns and colors that often carry regional meaning. It's a culture shaped as much by generosity and gathering as by any single tradition.</p>
     <div class="gallery-strip" data-gallery="culture"></div>
   </section>
 
   <section class="city-section" id="people">
-    <div class="city-kicker">The many communities behind one country</div>
-    <h2>People</h2>
-    <p>Sudan is home to an extraordinary mix of communities — Arab, Nubian, Beja, Fur, Nuba and dozens of other ethnic groups, each with its own language, customs and history stretching back centuries. That diversity shows up in everything from the dialects spoken in a single market to the patterns woven into a basket or a scarf. What ties these communities together is often less about shared background and more about shared values: a deep respect for elders, warmth toward guests, and a sense of community that shapes how people work, celebrate and get through hard seasons together. The cooperatives behind Nileva's products reflect that same diversity — women from different regions and backgrounds, working side by side.</p>
+    <div class="city-kicker" data-i18n="peopleKicker">The many communities behind one country</div>
+    <h2 data-i18n="peopleH2">People</h2>
+    <p data-i18n="peopleP">Sudan is home to an extraordinary mix of communities — Arab, Nubian, Beja, Fur, Nuba and dozens of other ethnic groups, each with its own language, customs and history stretching back centuries. That diversity shows up in everything from the dialects spoken in a single market to the patterns woven into a basket or a scarf. What ties these communities together is often less about shared background and more about shared values: a deep respect for elders, warmth toward guests, and a sense of community that shapes how people work, celebrate and get through hard seasons together. The cooperatives behind Nileva's products reflect that same diversity — women from different regions and backgrounds, working side by side.</p>
     <div class="gallery-strip" data-gallery="people"></div>
   </section>
 
@@ -495,7 +503,7 @@
 <footer class="wrap">
   <div class="footer-grid">
     <div>
-      <div class="footer-tag">Nileva connects Sudan's women producers to European kitchens — one name, one story at a time.</div>
+      <div class="footer-tag" data-i18n="footerTag">Nileva connects Sudan's women producers to European kitchens — one name, one story at a time.</div>
       <div class="footer-social">
         <a href="#" aria-label="Instagram"><img src="instagram.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"><span class="social-fallback" style="display:none;">IG</span></a>
         <a href="#" aria-label="Twitter"><img src="twitter.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"><span class="social-fallback" style="display:none;">X</span></a>
@@ -506,19 +514,19 @@
     </div>
     <div class="footer-cols">
       <div class="footer-col" id="footer-about">
-        <h4>Shop</h4>
-        <a href="shop.html">Gum arabic</a>
-        <a href="shop.html">Spices</a>
-        <h4 class="footer-col-subhead">About</h4>
-        <a href="cooperatives.html">Our cooperatives</a>
-        <a href="payments.html">How payments work</a>
-        <a href="shipping.html">Shipping to the EU</a>
+        <h4 data-i18n="footerShop">Shop</h4>
+        <a href="shop.html" data-i18n="footerShop1">Gum arabic</a>
+        <a href="shop.html" data-i18n="footerShop2">Spices</a>
+        <h4 class="footer-col-subhead" data-i18n="footerAbout">About</h4>
+        <a href="cooperatives.html" data-i18n="footerAbout1">Our cooperatives</a>
+        <a href="payments.html" data-i18n="footerAbout2">How payments work</a>
+        <a href="shipping.html" data-i18n="footerAbout3">Shipping to the EU</a>
       </div>
       <div class="footer-col" id="footer-contact-col">
-        <h4>Company</h4>
-        <a href="about.html">Nileva Oy, Finland</a>
-        <a href="contact.html" id="footer-contact">Contact</a>
-        <a href="review.html">Reviews</a>
+        <h4 data-i18n="footerCompany">Company</h4>
+        <a href="about.html" data-i18n="footerCompany1">Nileva Oy, Finland</a>
+        <a href="contact.html" id="footer-contact" data-i18n="footerCompany2">Contact</a>
+        <a href="review.html" data-i18n="footerCompany3">Reviews</a>
         <div class="footer-payments">
           <span class="pay-badge"><img src="visa.png" alt="Visa" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Visa</span></span>
           <span class="pay-badge"><img src="mastercard.png" alt="Mastercard" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">MC</span></span>
@@ -531,10 +539,10 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>Nileva Oy · Registered in Finland · Serving Western Europe</span>
+    <span data-i18n="footerBottom">Nileva Oy · Registered in Finland · Serving Western Europe</span>
     <div class="footer-legal">
-      <a href="terms.html">Terms</a>
-      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms.html" data-i18n="footerTerms">Terms</a>
+      <a href="privacy-policy.html" data-i18n="footerPrivacy">Privacy Policy</a>
     </div>
   </div>
 </footer>
@@ -549,6 +557,183 @@
 
 <script>
 (function () {
+  var translations = {
+    en: {
+      promoBar: "Free delivery over €59.99 · €5.99 below",
+      menuShop: "Shop", menuAbout: "About us", menuContact: "Contact", menuLogin: "Log in / Sign in",
+      menuTrack: "Track order", menuCulture: "Sudan culture", menuWomen: "Meet the women",
+      backLink: "← Back to home",
+      heroKicker: "The land behind every harvest",
+      heroH1: "Sudan, in six places and a thousand small hands",
+      heroP: "Before it reaches your kitchen, every gum arabic tear, every dried hibiscus flower, every handwoven basket has already travelled through a Sudan most of Europe never sees. Here's a closer look at the regions our cooperatives call home — their land, their light, and the work that happens there long before anything ships.",
+      videoCaption: "A short journey through Sudan — the land, the markets and the hands behind every harvest.",
+      kordofanKicker: "Where the gum arabic trees grow",
+      kordofanP: "Kordofan is the heartland of Sudan's gum arabic belt, a wide stretch of acacia woodland where families have tapped the same trees for generations. Villages here rise with the sun and work by it too — sorting resin by hand, grading it by color and clarity, and drying it in open courtyards before it ever sees a scale. It's slow, patient work, done mostly by women who know each tree the way others know a street they grew up on. Fatima's cooperative, the one behind your gum arabic, is rooted here.",
+      darfurKicker: "Sahel, savanna and centuries of craft",
+      darfurP: "Darfur stretches from dry savanna to volcanic highlands, and its markets are some of the liveliest in the country — stalls of woven mats, dyed textiles and leatherwork passed down through families of artisans. Despite hardship the region has known, its craft traditions have held: basket weaving, pottery and embroidery still done exactly as they were a century ago. It's a landscape of resilience, and every handwoven piece that leaves it carries that history stitched into it.",
+      kassalaKicker: "Where the Taka hills meet the market square",
+      kassalaP: "Kassala sits beneath the jagged Taka hills near the Eritrean border, its skyline unlike anywhere else in Sudan. The city is known for its fruit and spice markets, fragrant with cardamom, cinnamon and dried citrus, and for the henna and textile trade that draws traders from across the region. Life moves to the rhythm of the souq here — early mornings, unhurried bargaining, tea shared between strangers. Some of our spice blends begin in exactly this kind of market stall.",
+      alDenderKicker: "The green corridor along the river",
+      alDenderP: "Al-Dender lies along a tributary of the Blue Nile, where the land turns unexpectedly green — reed beds, grazing cattle, and farmland that floods and blooms with the seasons. It's one of the quieter regions we work with, known for its wildlife-rich riverbanks and small farming communities that grow peanuts and sesame using methods barely changed in decades. The pace here is set by the river, not the clock.",
+      portSudanKicker: "The gateway to the Red Sea",
+      portSudanP: "Port Sudan is where the country meets the sea — a working port city of cranes, fishing boats and coral reefs just offshore that rank among the least disturbed in the world. It's also the last stop for nearly everything we ship: every batch of gum arabic, hibiscus and spice we send to Europe passes through these docks before it reaches open water. Behind the industry, the old town still keeps a slower, coastal rhythm.",
+      meroeKicker: "Pyramids older than most of Europe's cities",
+      meroeP: "Long before it was part of any modern trade route, this stretch of desert along the Nile was the seat of an ancient kingdom — its pyramids, sharper and more numerous than Egypt's, still rise quietly from the sand. Meroe is a reminder of how old Sudan's story really is, and how much has passed through this land before a single one of our products ever did. We think of it as the quiet backdrop to everything else in this list.",
+      religionsKicker: "Faith, woven into daily life",
+      religionsH2: "Religions of Sudan",
+      religionsP: "Islam is the majority faith across Sudan, shaping the rhythm of daily life from the call to prayer that marks each day to the festivals that bring whole communities together, like Eid al-Fitr and Eid al-Adha. Sufi traditions run especially deep here, with local orders known for their music, poetry and communal gatherings that feel as much like celebration as worship. Christianity has its own long history in the country too, practiced mainly among communities in the south and among diaspora congregations in cities like Khartoum, with churches that have stood for generations. Across both traditions, faith in Sudan tends to be lived communally — shared meals, shared prayer, and a hospitality that welcomes neighbors regardless of which mosque or church they belong to.",
+      cultureKicker: "Music, food and the everyday art of hospitality",
+      cultureH2: "Culture",
+      cultureP: "Sudanese culture is built on hospitality — a stranger is rarely allowed to leave a home without being offered tea, and often a full meal besides. Music runs through everyday life too, from the string-driven sounds of oud and tambour to wedding songs that can last long into the night. Food carries its own traditions: kisra and ful medames on family tables, spiced coffee poured with ceremony, and dishes that change slightly from Kordofan to the Nile valley to the Red Sea coast. Traditional dress remains part of daily life as well, from the flowing white jalabiya worn by men to the colorful toub wrapped by women, patterns and colors that often carry regional meaning. It's a culture shaped as much by generosity and gathering as by any single tradition.",
+      peopleKicker: "The many communities behind one country",
+      peopleH2: "People",
+      peopleP: "Sudan is home to an extraordinary mix of communities — Arab, Nubian, Beja, Fur, Nuba and dozens of other ethnic groups, each with its own language, customs and history stretching back centuries. That diversity shows up in everything from the dialects spoken in a single market to the patterns woven into a basket or a scarf. What ties these communities together is often less about shared background and more about shared values: a deep respect for elders, warmth toward guests, and a sense of community that shapes how people work, celebrate and get through hard seasons together. The cooperatives behind Nileva's products reflect that same diversity — women from different regions and backgrounds, working side by side.",
+      footerTag: "Nileva connects Sudan's women producers to European kitchens — one name, one story at a time.",
+      footerShop: "Shop", footerShop1: "Gum arabic", footerShop2: "Spices",
+      footerAbout: "About", footerAbout1: "Our cooperatives", footerAbout2: "How payments work", footerAbout3: "Shipping to the EU",
+      footerCompany: "Company", footerCompany1: "Nileva Oy, Finland", footerCompany2: "Contact", footerCompany3: "Reviews",
+      footerBottom: "Nileva Oy · Registered in Finland · Serving Western Europe",
+      footerTerms: "Terms", footerPrivacy: "Privacy Policy",
+      navHome: "Home", navShop: "Shop", navCartLabel: "Cart", navSearch: "Search", navAccount: "Account"
+    },
+    ar: {
+      promoBar: "توصيل مجاني فوق ٥٩٫٩٩ يورو · ٥٫٩٩ يورو دون ذلك",
+      menuShop: "المتجر", menuAbout: "من نحن", menuContact: "تواصل معنا", menuLogin: "تسجيل الدخول",
+      menuTrack: "تتبع الطلب", menuCulture: "ثقافة السودان", menuWomen: "تعرّفي على النساء",
+      backLink: "← رجوع إلى الرئيسية",
+      heroKicker: "الأرض التي تقف خلف كل حصاد",
+      heroH1: "السودان، في ست أماكن وآلاف الأيدي الصغيرة",
+      heroP: "قبل أن تصل إلى مطبخك، تكون كل قطرة صمغ عربي، وكل زهرة كركدي مجففة، وكل سلة منسوجة يدويًا قد قطعت رحلة عبر سودان لا تراه أوروبا غالبًا. هذه نظرة أقرب على المناطق التي تنتمي إليها تعاونياتنا — أرضها وضوءها والعمل الذي يجري فيها قبل أن يُشحن أي شيء.",
+      videoCaption: "رحلة قصيرة عبر السودان — الأرض والأسواق والأيدي التي تقف خلف كل حصاد.",
+      kordofanKicker: "حيث تنمو أشجار الصمغ العربي",
+      kordofanP: "كردفان هي قلب حزام الصمغ العربي في السودان، مساحة واسعة من غابات الهشاب حيث استخرجت الأسر الصمغ من نفس الأشجار لأجيال. تنهض القرى هنا مع الشمس وتعمل بضوئها — فرز الراتنج يدويًا، وتصنيفه حسب اللون والنقاء، وتجفيفه في الساحات المفتوحة قبل أن يوضع على أي ميزان. إنه عمل بطيء وصبور، تقوم به غالبًا نساء يعرفن كل شجرة كما يعرف غيرهن شارعًا نشأن فيه. تعاونية فاطمة، التي تقف خلف صمغك العربي، متجذرة هنا.",
+      darfurKicker: "ساحل وسافانا وقرون من الحرفة",
+      darfurP: "تمتد دارفور من السافانا الجافة إلى المرتفعات البركانية، وأسواقها من أكثر الأسواق حيوية في البلاد — أكشاك من الحصير المنسوج والأقمشة المصبوغة والجلود المتوارثة عبر أسر من الحرفيين. ورغم المصاعب التي عرفتها المنطقة، ظلت تقاليدها الحرفية حية: نسج السلال والفخار والتطريز يُصنع اليوم كما كان قبل قرن. إنها أرض من المرونة، وكل قطعة منسوجة تخرج منها تحمل هذا التاريخ في نسيجها.",
+      kassalaKicker: "حيث تلاقي تلال التاكا ساحة السوق",
+      kassalaP: "تقع كسلا عند سفح تلال التاكا الحادة قرب الحدود الإريترية، بخط أفق لا يشبه أي مكان آخر في السودان. تشتهر المدينة بأسواق الفواكه والتوابل العطرة بالهيل والقرفة والحمضيات المجففة، وبتجارة الحناء والأقمشة التي تجذب تجارًا من المنطقة كلها. تسير الحياة هنا على وتيرة السوق — صباحات هادئة، ومساومة غير متعجلة، وشاي يُتقاسم بين الغرباء. بعض توابلنا تبدأ من كشك سوق يشبه هذا تمامًا.",
+      alDenderKicker: "الممر الأخضر على ضفاف النهر",
+      alDenderP: "تقع الدندر على أحد روافد النيل الأزرق، حيث تتحول الأرض إلى اللون الأخضر بشكل مفاجئ — أحواض بردي، ومواشٍ ترعى، وأراضٍ زراعية تفيض وتزهر مع تغيّر الفصول. إنها من أكثر المناطق هدوءًا التي نتعامل معها، معروفة بضفاف نهر غنية بالحياة البرية ومجتمعات زراعية صغيرة تزرع الفول السوداني والسمسم بطرق لم تتغير كثيرًا منذ عقود. هنا يحدد النهر الوتيرة، لا الساعة.",
+      portSudanKicker: "البوابة إلى البحر الأحمر",
+      portSudanP: "بورتسودان هي حيث تلتقي البلاد بالبحر — مدينة ميناء عاملة بالرافعات وقوارب الصيد والشعاب المرجانية القريبة من الساحل التي تُعد من الأقل تضررًا في العالم. وهي أيضًا المحطة الأخيرة لكل ما نشحنه تقريبًا: كل دفعة من الصمغ العربي والكركدي والتوابل التي نرسلها إلى أوروبا تمر عبر هذه الأرصفة قبل أن تصل إلى المياه المفتوحة. وخلف الصناعة، لا تزال البلدة القديمة تحتفظ بوتيرة ساحلية أهدأ.",
+      meroeKicker: "أهرامات أقدم من معظم مدن أوروبا",
+      meroeP: "قبل أن تكون جزءًا من أي طريق تجاري حديث، كانت هذه المساحة الصحراوية على ضفاف النيل مقر مملكة قديمة — أهراماتها، الأكثر حدة وعددًا من أهرامات مصر، ما تزال ترتفع بهدوء من الرمال. مروي تذكير بمدى قِدم حكاية السودان، وبكل ما عبر هذه الأرض قبل أن يوجد أي من منتجاتنا. نعتبرها الخلفية الهادئة لكل شيء آخر في هذه القائمة.",
+      religionsKicker: "إيمان متجذر في الحياة اليومية",
+      religionsH2: "أديان السودان",
+      religionsP: "الإسلام هو دين الأغلبية في السودان، ويشكّل وتيرة الحياة اليومية من أذان كل صلاة إلى الأعياد التي تجمع مجتمعات بأكملها، كعيد الفطر وعيد الأضحى. وتترسخ الطرق الصوفية هنا بعمق خاص، بحلقاتها المعروفة بالموسيقى والشعر والتجمعات الجماعية التي تشبه الاحتفال بقدر ما تشبه العبادة. وللمسيحية أيضًا تاريخ طويل في البلاد، يُمارَس أساسًا بين مجتمعات الجنوب وجماعات الشتات في مدن مثل الخرطوم، بكنائس قائمة منذ أجيال. وفي كل التقاليد، يُعاش الإيمان في السودان غالبًا بشكل جماعي — وجبات مشتركة، وصلاة مشتركة، وضيافة تُرحّب بالجيران بصرف النظر عن المسجد أو الكنيسة التي ينتمون إليها.",
+      cultureKicker: "موسيقى وطعام وفن الضيافة اليومي",
+      cultureH2: "الثقافة",
+      cultureP: "تقوم الثقافة السودانية على الضيافة — نادرًا ما يُسمح لغريب بمغادرة بيت دون أن يُقدَّم له الشاي، وغالبًا وجبة كاملة أيضًا. وتجري الموسيقى في الحياة اليومية أيضًا، من أصوات العود والطمبور إلى أغاني الأعراس التي قد تستمر حتى وقت متأخر من الليل. ولطعامها تقاليده الخاصة: الكسرة والفول المدمس على موائد الأسرة، والقهوة المتبّلة التي تُسكب بطقوس، وأطباق تتغيّر قليلًا من كردفان إلى وادي النيل إلى ساحل البحر الأحمر. ويظل اللباس التقليدي جزءًا من الحياة اليومية أيضًا، من الجلابية البيضاء الفضفاضة التي يرتديها الرجال إلى الثوب الملوّن الذي تلتف به النساء، بأنماط وألوان تحمل غالبًا معنى إقليميًا. إنها ثقافة يشكّلها الكرم والتجمع بقدر ما يشكّلها أي تقليد واحد.",
+      peopleKicker: "مجتمعات كثيرة خلف بلد واحد",
+      peopleH2: "الناس",
+      peopleP: "السودان موطن لمزيج استثنائي من المجتمعات — عرب ونوبة وبجا وفور ونوبة وعشرات الجماعات العرقية الأخرى، لكل منها لغتها وعاداتها وتاريخها الممتد لقرون. ويظهر هذا التنوع في كل شيء، من اللهجات المتحدَّثة في سوق واحد إلى الأنماط المنسوجة في سلة أو وشاح. وما يربط هذه المجتمعات غالبًا أقل ارتباطًا بالأصل المشترك وأكثر بالقيم المشتركة: احترام عميق لكبار السن، وحفاوة بالضيوف، وإحساس بالجماعة يشكّل كيف يعمل الناس ويحتفلون ويتجاوزون المواسم الصعبة معًا. وتعكس التعاونيات التي تقف خلف منتجات نيليڤا هذا التنوع نفسه — نساء من مناطق وخلفيات مختلفة، يعملن جنبًا إلى جنب.",
+      footerTag: "نيليڤا تربط منتِجات السودان بمطابخ أوروبا — اسم وقصة في كل مرة.",
+      footerShop: "المتجر", footerShop1: "صمغ عربي", footerShop2: "توابل",
+      footerAbout: "عن نيليڤا", footerAbout1: "تعاونياتنا", footerAbout2: "كيف تعمل المدفوعات", footerAbout3: "الشحن إلى الاتحاد الأوروبي",
+      footerCompany: "الشركة", footerCompany1: "Nileva Oy، فنلندا", footerCompany2: "تواصلي معنا", footerCompany3: "التقييمات",
+      footerBottom: "Nileva Oy · مسجّلة في فنلندا · تخدم أوروبا الغربية",
+      footerTerms: "الشروط", footerPrivacy: "سياسة الخصوصية",
+      navHome: "الرئيسية", navShop: "المتجر", navCartLabel: "السلة", navSearch: "بحث", navAccount: "حسابي"
+    },
+    fi: {
+      promoBar: "Ilmainen toimitus yli 59,99 € tilauksiin · 5,99 € sitä pienemmistä",
+      menuShop: "Kauppa", menuAbout: "Meistä", menuContact: "Ota yhteyttä", menuLogin: "Kirjaudu sisään",
+      menuTrack: "Seuraa tilausta", menuCulture: "Sudanin kulttuuri", menuWomen: "Tutustu naisiin",
+      backLink: "← Takaisin etusivulle",
+      heroKicker: "Maa jokaisen sadon takana",
+      heroH1: "Sudan, kuudessa paikassa ja tuhannessa pienessä kädessä",
+      heroP: "Ennen kuin se saapuu keittiöösi, jokainen gummiarabicum-pisara, jokainen kuivattu hibiskuskukka ja jokainen käsinkudottu kori on jo matkannut halki Sudanin, jota suurin osa Euroopasta ei koskaan näe. Tässä lähempi katsaus alueisiin, joita osuuskuntamme kutsuvat kodikseen — niiden maa, niiden valo, ja työ, joka tapahtuu kauan ennen kuin mikään lähtee matkaan.",
+      videoCaption: "Lyhyt matka halki Sudanin — maa, torit ja kädet jokaisen sadon takana.",
+      kordofanKicker: "Missä gummiarabicum-puut kasvavat",
+      kordofanP: "Kordofan on Sudanin gummiarabicum-vyöhykkeen sydän, laaja akaasiametsien alue, jossa perheet ovat keränneet samoja puita sukupolvien ajan. Kylät heräävät auringon mukana ja työskentelevät sen valossa — hartsia lajitellaan käsin, luokitellaan värin ja kirkkauden mukaan, ja kuivataan avoimilla pihoilla ennen kuin se koskaan näkee vaakaa. Se on hidasta, kärsivällistä työtä, jota tekevät useimmiten naiset, jotka tuntevat jokaisen puun niin kuin muut tuntevat kotikatunsa. Fatiman osuuskunta, gummiarabicumisi takana, on juurtunut juuri tähän.",
+      darfurKicker: "Sahelia, savannia ja vuosisatojen käsityötä",
+      darfurP: "Darfur ulottuu kuivasta savannista tulivuoristoon, ja sen torit ovat maan vilkkaimpia — kojuja täynnä kudottuja mattoja, värjättyjä kankaita ja nahkatöitä, joita käsityöläisperheet ovat siirtäneet sukupolvelta toiselle. Alueen kokemista vaikeuksista huolimatta käsityöperinteet ovat säilyneet: korinpunonta, savenvalanta ja koruompelu tehdään edelleen täsmälleen niin kuin vuosisata sitten. Se on sinnikkyyden maisema, ja jokainen sieltä lähtevä käsinkudottu esine kantaa tätä historiaa mukanaan.",
+      kassalaKicker: "Missä Takan kukkulat kohtaavat torin",
+      kassalaP: "Kassala sijaitsee jyrkkien Taka-kukkuloiden juurella lähellä Eritrean rajaa, ja sen siluetti on ainutlaatuinen koko Sudanissa. Kaupunki on tunnettu hedelmä- ja mausteториstaan, jotka tuoksuvat kardemummalle, kanelille ja kuivatuille sitrukselle, sekä hennan ja tekstiilien kaupasta, joka houkuttelee kauppiaita ympäri aluetta. Elämä kulkee siellä torin rytmissä — rauhalliset aamut, kiireettömät tinkimiset, muukalaisten kesken jaettu tee. Osa mausteseoksistamme alkaa juuri tällaisesta torikojusta.",
+      alDenderKicker: "Vihreä käytävä joen varrella",
+      alDenderP: "Al-Dender sijaitsee Sinisen Niilin sivuhaaran varrella, jossa maa muuttuu odottamatta vihreäksi — kaislikkoja, laiduntavaa karjaa ja peltoja, jotka tulvivat ja kukkivat vuodenaikojen mukaan. Se on yksi rauhallisimmista alueista, joiden kanssa työskentelemme, tunnettu eläimistöltään rikkaista rantapenkereistään ja pienistä maanviljelijäyhteisöistä, jotka kasvattavat maapähkinöitä ja seesamia menetelmin, jotka ovat tuskin muuttuneet vuosikymmeniin. Tahdin määrää siellä joki, ei kello.",
+      portSudanKicker: "Portti Punaiselle merelle",
+      portSudanP: "Port Sudan on paikka, jossa maa kohtaa meren — toimiva satamakaupunki nostureineen, kalastusveneineen ja rannikon edustan koralliriutoineen, jotka lukeutuvat maailman koskemattomimpiin. Se on myös viimeinen pysähdys lähes kaikelle, mitä lähetämme: joka erä gummiarabicumia, hibiskusta ja mausteita, jotka lähetämme Eurooppaan, kulkee näiden laitureiden läpi ennen avomerta. Teollisuuden takana vanhakaupunki säilyttää edelleen hitaamman, rannikkomaisen rytmin.",
+      meroeKicker: "Pyramideja, jotka ovat vanhempia kuin useimmat Euroopan kaupungit",
+      meroeP: "Kauan ennen kuin siitä tuli osa mitään nykyaikaista kauppareittiä, tämä autiomaan kaista Niilin varrella oli muinaisen kuningaskunnan istuin — sen pyramidit, terävämpiä ja lukuisampia kuin Egyptin, kohoavat yhä hiljaa hiekasta. Meroe muistuttaa siitä, kuinka vanha Sudanin tarina todella on, ja kuinka paljon on kulkenut tämän maan läpi ennen kuin yksikään tuotteemme koskaan teki niin. Ajattelemme sitä hiljaisena taustana kaikelle muulle tällä listalla.",
+      religionsKicker: "Uskoa, kudottuna arkeen",
+      religionsH2: "Sudanin uskonnot",
+      religionsP: "Islam on Sudanin enemmistön uskonto, ja se muotoilee arjen rytmiä rukouskutsusta, joka merkitsee joka päivää, juhliin, jotka tuovat koko yhteisöt yhteen, kuten Eid al-Fitr ja Eid al-Adha. Sufilaiset perinteet ovat erityisen syvällä täällä, ja paikalliset veljeskunnat ovat tunnettuja musiikistaan, runoudestaan ja yhteisöllisistä kokoontumisistaan, jotka tuntuvat yhtä paljon juhlalta kuin palvonnalta. Myös kristinuskolla on maassa pitkä historia, ja sitä harjoitetaan pääosin etelän yhteisöissä ja diasporaseurakunnissa kaupungeissa kuten Khartumissa, kirkoissa, jotka ovat seisoneet sukupolvia. Molemmissa perinteissä usko Sudanissa eletään usein yhteisöllisesti — jaetut ateriat, jaettu rukous, ja vieraanvaraisuus, joka toivottaa naapurit tervetulleiksi riippumatta siitä, mihin moskeijaan tai kirkkoon he kuuluvat.",
+      cultureKicker: "Musiikkia, ruokaa ja arjen vieraanvaraisuuden taidetta",
+      cultureH2: "Kulttuuri",
+      cultureP: "Sudanilainen kulttuuri rakentuu vieraanvaraisuudelle — vierasta harvoin päästetään kotoa pois tarjoamatta teetä, usein kokonaista ateriaa sen lisäksi. Musiikki kulkee myös läpi arjen, oud- ja tambour-soittimien kielisoinnuista häälauluihin, jotka voivat kestää pitkälle yöhön. Ruoalla on omat perinteensä: kisra ja ful medames perheen pöydällä, mausteinen kahvi kaadettuna juhlallisesti, ja ruoat, jotka muuttuvat hieman Kordofanista Niilin laaksoon ja Punaisenmeren rannikolle. Perinteinen pukeutuminen on osa arkea myös nyt, miesten väljästä valkoisesta jalabiyasta naisten värikkääseen, kietaistuun toubiin — kuvioihin ja väreihin, jotka usein kantavat alueellista merkitystä. Se on kulttuuri, jota muovaa yhtä paljon anteliaisuus ja yhdessäolo kuin mikään yksittäinen perinne.",
+      peopleKicker: "Monet yhteisöt yhden maan takana",
+      peopleH2: "Ihmiset",
+      peopleP: "Sudan on kotia poikkeukselliselle yhteisöjen kirjolle — arabeja, nubialaisia, bejoja, furilaisia, nubalaisia ja tusinoita muita etnisiä ryhmiä, joilla kaikilla on omat kielensä, tapansa ja historiansa satojen vuosien takaa. Tämä moninaisuus näkyy kaikessa, murteista, joita puhutaan yhdellä ainoalla torilla, kuvioihin, jotka on kudottu koriin tai huiviin. Näitä yhteisöjä yhdistää usein vähemmän yhteinen tausta kuin yhteiset arvot: syvä kunnioitus vanhempia kohtaan, lämpö vieraita kohtaan, ja yhteisöllisyyden tunne, joka muotoilee sitä, miten ihmiset työskentelevät, juhlivat ja selviävät vaikeista kausista yhdessä. Nilevan tuotteiden takana olevat osuuskunnat heijastavat tätä samaa moninaisuutta — naisia eri alueilta ja taustoista, työskentelemässä rinta rinnan.",
+      footerTag: "Nileva yhdistää Sudanin naistuottajat eurooppalaisiin keittiöihin — yksi nimi, yksi tarina kerrallaan.",
+      footerShop: "Kauppa", footerShop1: "Gummiarabicum", footerShop2: "Mausteet",
+      footerAbout: "Tietoa meistä", footerAbout1: "Osuuskuntamme", footerAbout2: "Miten maksut toimivat", footerAbout3: "Toimitukset EU:hun",
+      footerCompany: "Yritys", footerCompany1: "Nileva Oy, Suomi", footerCompany2: "Ota yhteyttä", footerCompany3: "Arviot",
+      footerBottom: "Nileva Oy · Rekisteröity Suomessa · Palvelee Länsi-Eurooppaa",
+      footerTerms: "Ehdot", footerPrivacy: "Tietosuoja",
+      navHome: "Koti", navShop: "Kauppa", navCartLabel: "Ostoskori", navSearch: "Haku", navAccount: "Tili"
+    },
+    sv: {
+      promoBar: "Fri frakt över 59,99 € · 5,99 € därunder",
+      menuShop: "Butik", menuAbout: "Om oss", menuContact: "Kontakt", menuLogin: "Logga in",
+      menuTrack: "Spåra beställning", menuCulture: "Sudans kultur", menuWomen: "Möt kvinnorna",
+      backLink: "← Tillbaka till start",
+      heroKicker: "Landet bakom varje skörd",
+      heroH1: "Sudan, i sex platser och tusen små händer",
+      heroP: "Innan den når ditt kök har varje droppe gummiarabicum, varje torkad hibiskusblomma, varje handvävd korg redan färdats genom ett Sudan som större delen av Europa aldrig ser. Här är en närmare titt på regionerna våra kooperativ kallar hem — deras land, deras ljus, och arbetet som sker där långt innan något skeppas.",
+      videoCaption: "En kort resa genom Sudan — landet, marknaderna och händerna bakom varje skörd.",
+      kordofanKicker: "Där gummiarabicumträden växer",
+      kordofanP: "Kordofan är hjärtat av Sudans gummiarabicumbälte, ett brett område av akacieskog där familjer har tappat samma träd i generationer. Byarna här vaknar med solen och arbetar i dess ljus — sorterar kåda för hand, graderar den efter färg och klarhet, och torkar den på öppna gårdar innan den någonsin ser en våg. Det är långsamt, tålmodigt arbete, utfört mestadels av kvinnor som känner varje träd som andra känner en gata de växte upp på. Fatimas kooperativ, det bakom ditt gummiarabicum, har sina rötter just här.",
+      darfurKicker: "Sahel, savann och sekler av hantverk",
+      darfurP: "Darfur sträcker sig från torr savann till vulkaniska högland, och dess marknader är några av de livligaste i landet — stånd med vävda mattor, färgade textilier och läderarbete som gått i arv genom generationer av hantverkare. Trots svårigheter regionen känt har dess hantverkstraditioner hållit: korgvävning, keramik och broderi görs fortfarande exakt som för ett sekel sedan. Det är ett motståndskraftens landskap, och varje handvävt föremål som lämnar det bär den historien invävd i sig.",
+      kassalaKicker: "Där Taka-kullarna möter marknadstorget",
+      kassalaP: "Kassala ligger vid foten av de branta Taka-kullarna nära den eritreanska gränsen, med en silhuett som inte liknar någon annanstans i Sudan. Staden är känd för sina frukt- och kryddmarknader, doftande av kardemumma, kanel och torkad citrus, samt för henna- och textilhandeln som drar handlare från hela regionen. Livet följer souqens rytm här — lugna morgnar, avslappnad prutning, te delat mellan främlingar. Några av våra kryddblandningar börjar i just en sådan marknadsstånd.",
+      alDenderKicker: "Den gröna korridoren längs floden",
+      alDenderP: "Al-Dender ligger längs en biflod till Blå Nilen, där landet oväntat blir grönt — vassbäddar, betande boskap och jordbruksmark som svämmar över och blommar med säsongerna. Det är en av de lugnare regionerna vi arbetar med, känd för sina viltrika flodstränder och små jordbrukssamhällen som odlar jordnötter och sesam med metoder som knappt förändrats på decennier. Här sätter floden takten, inte klockan.",
+      portSudanKicker: "Porten till Röda havet",
+      portSudanP: "Port Sudan är där landet möter havet — en fungerande hamnstad med kranar, fiskebåtar och korallrev strax utanför kusten som räknas bland de minst påverkade i världen. Det är också sista stoppet för nästan allt vi skickar: varje sats gummiarabicum, hibiskus och kryddor vi skickar till Europa passerar dessa kajer innan den når öppet vatten. Bakom industrin behåller den gamla stadsdelen fortfarande en lugnare, kustnära rytm.",
+      meroeKicker: "Pyramider äldre än de flesta av Europas städer",
+      meroeP: "Långt innan den blev del av någon modern handelsrutt var denna ödemarksremsa längs Nilen sätet för ett forntida kungarike — dess pyramider, skarpare och fler än Egyptens, reser sig fortfarande tyst ur sanden. Meroe är en påminnelse om hur gammal Sudans historia egentligen är, och hur mycket som passerat detta land innan någon av våra produkter någonsin gjorde det. Vi ser det som den tysta bakgrunden till allt annat på denna lista.",
+      religionsKicker: "Tro, invävd i vardagen",
+      religionsH2: "Sudans religioner",
+      religionsP: "Islam är majoritetstron i hela Sudan, och formar vardagens rytm från bönekallelsen som markerar varje dag till högtiderna som samlar hela samhällen, som Eid al-Fitr och Eid al-Adha. Sufitraditioner löper särskilt djupt här, med lokala ordnar kända för sin musik, poesi och gemensamma sammankomster som känns lika mycket som firande som som dyrkan. Kristendomen har också sin egen långa historia i landet, praktiserad huvudsakligen bland samhällen i söder och bland diasporaförsamlingar i städer som Khartoum, med kyrkor som stått i generationer. Genom båda traditionerna tenderar tron i Sudan att levas gemensamt — delade måltider, delad bön, och en gästfrihet som välkomnar grannar oavsett vilken moské eller kyrka de tillhör.",
+      cultureKicker: "Musik, mat och vardagens gästfrihetskonst",
+      cultureH2: "Kultur",
+      cultureP: "Sudanesisk kultur bygger på gästfrihet — en främling får sällan lämna ett hem utan att bjudas på te, och ofta en hel måltid därtill. Musik löper också genom vardagen, från oud- och tambourinstrumentens strängljud till bröllopssånger som kan pågå långt in på natten. Maten bär sina egna traditioner: kisra och ful medames på familjens bord, kryddat kaffe hällt med ceremoni, och rätter som förändras något från Kordofan till Nildalen till Röda havets kust. Traditionell klädsel är fortfarande en del av vardagen också, från den flödande vita jalabiyan som män bär till den färgstarka touben som kvinnor sveper om sig, mönster och färger som ofta bär regional betydelse. Det är en kultur formad lika mycket av generositet och samvaro som av någon enskild tradition.",
+      peopleKicker: "De många samhällena bakom ett land",
+      peopleH2: "Människor",
+      peopleP: "Sudan är hem för en extraordinär blandning av samhällen — araber, nubier, beja, fur, nuba och dussintals andra etniska grupper, var och en med sitt eget språk, sina seder och sin historia som sträcker sig sekler tillbaka. Den mångfalden syns i allt från dialekterna som talas på en enda marknad till mönstren vävda i en korg eller sjal. Vad som binder dessa samhällen samman handlar ofta mindre om gemensam bakgrund och mer om gemensamma värderingar: djup respekt för äldre, värme mot gäster, och en gemenskapskänsla som formar hur människor arbetar, firar och tar sig igenom svåra säsonger tillsammans. Kooperativen bakom Nilevas produkter speglar samma mångfald — kvinnor från olika regioner och bakgrunder, som arbetar sida vid sida.",
+      footerTag: "Nileva knyter samman Sudans kvinnliga producenter med europeiska kök — ett namn, en berättelse i taget.",
+      footerShop: "Butik", footerShop1: "Gummiarabicum", footerShop2: "Kryddor",
+      footerAbout: "Om oss", footerAbout1: "Våra kooperativ", footerAbout2: "Hur betalningar fungerar", footerAbout3: "Frakt till EU",
+      footerCompany: "Företag", footerCompany1: "Nileva Oy, Finland", footerCompany2: "Kontakt", footerCompany3: "Recensioner",
+      footerBottom: "Nileva Oy · Registrerat i Finland · Betjänar Västeuropa",
+      footerTerms: "Villkor", footerPrivacy: "Integritetspolicy",
+      navHome: "Hem", navShop: "Butik", navCartLabel: "Varukorg", navSearch: "Sök", navAccount: "Konto"
+    }
+  };
+
+  var i18nNodes = document.querySelectorAll('[data-i18n]');
+  var langButtons = document.querySelectorAll('.lang-btn');
+
+  function setLang(lang) {
+    var dict = translations[lang] || translations.en;
+    i18nNodes.forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (dict[key]) el.textContent = dict[key];
+    });
+    langButtons.forEach(function (btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('lang', lang);
+  }
+
+  langButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      setLang(btn.getAttribute('data-lang'));
+    });
+  });
+
   var galleries = {
     kordofan: { label: "Kordofan", files: ["K1.jpg","K2.jpg","K3.jpg","K4.jpg","K5.jpg","K6.jpg"] },
     darfur: { label: "Darfur", files: ["D1.jpg","D2.jpg","D3.jpg","D4.jpg","D5.jpg","D6.jpg"] },
@@ -557,7 +742,7 @@
     portsudan: { label: "Port Sudan", files: ["PS1.jpg","PS2.jpg","PS3.jpg","PS4.jpg","PS5.jpg","PS6.jpg"] },
     meroe: { label: "Meroe", files: ["M1.jpg","M2.jpg","M3.jpg","M4.jpg","M5.jpg","M6.jpg","M7.jpg"] },
     religions: { label: "Religions", files: ["I1.jpg","I2.jpg","I3.jpg","I4.jpg"] },
-    culture: { label: "Culture", files: ["CU1.jpg","CU2.jpg","CU3.jpg","CU4.jpg","CU5.jpg","CU6.jpg"] },
+    culture: { label: "Culture", files: ["CU1.jpg","CU2.jpg","CU3.jpg","CU4.jpg","CU5.jpg","CU6.jpg","CU7.jpg","CU8.jpg"] },
     people: { label: "People", files: ["O1.jpg","O2.jpg","O3.jpg","O4.jpg","O5.jpg","O6.jpg"] }
   };
 
@@ -660,23 +845,23 @@
 <nav class="bottom-nav">
   <a href="index.html">
     <svg viewBox="0 0 24 24" fill="none"><path d="M4 11l8-7 8 7v9a1 1 0 01-1 1h-4v-6H9v6H5a1 1 0 01-1-1v-9z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-    <span>Home</span>
+    <span data-i18n="navHome">Home</span>
   </a>
   <a href="shop.html">
     <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg>
-    <span>Shop</span>
+    <span data-i18n="navShop">Shop</span>
   </a>
   <a href="cart.html">
     <svg viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.4 12.2a2 2 0 002 1.8h8.2a2 2 0 002-1.6L20 8H6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="20" r="1.2" fill="currentColor"/><circle cx="17" cy="20" r="1.2" fill="currentColor"/></svg>
-    <span>Cart</span>
+    <span data-i18n="navCartLabel">Cart</span>
   </a>
   <a href="search.html">
     <svg viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="M20 20l-4.35-4.35" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-    <span>Search</span>
+    <span data-i18n="navSearch">Search</span>
   </a>
   <a href="account.html">
     <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c1.2-3.4 4-5 7-5s5.8 1.6 7 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-    <span>Account</span>
+    <span data-i18n="navAccount">Account</span>
   </a>
 </nav>
 
