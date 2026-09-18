@@ -106,6 +106,14 @@
     white-space: nowrap;
     margin-left: auto;
   }
+  .header-logo-img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    display: block;
+  }
   body[dir="rtl"] .header-logo { font-family: 'Noto Kufi Arabic', sans-serif; }
   .lang-codes {
     display: flex;
@@ -377,7 +385,8 @@
   .journey-num {
     font-family: 'Fraunces', serif;
     font-size: 20px;
-    color: var(--terracotta-soft);
+    font-weight: 600;
+    color: var(--terracotta);
   }
   body[dir="rtl"] .journey-num { font-family: 'Noto Kufi Arabic', sans-serif; }
   .journey-body h3 { font-size: 21px; margin-bottom: 8px; font-weight: 500; }
@@ -534,6 +543,13 @@
     justify-content: center;
     font-size: 12px;
     color: var(--ink-soft);
+    overflow: hidden;
+  }
+  .footer-social a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
   .footer-payments {
     display: flex;
@@ -584,7 +600,9 @@
     .top-categories { margin-top: 20px; }
     .hero h1 { font-size: 30px; max-width: 100%; }
     .hero p.lede { font-size: 15.5px; max-width: 100%; }
-    .hero-actions { flex-wrap: wrap; }
+    .hero-actions { flex-wrap: nowrap; gap: 10px; }
+    .btn-primary { padding: 12px 18px; font-size: 13.5px; white-space: nowrap; }
+    .btn-secondary { padding: 12px 4px; font-size: 13.5px; white-space: nowrap; }
     .section-head h2 { font-size: 25px; }
     .section-head { margin-bottom: 40px; }
     .journey { padding: 64px 0 60px; }
@@ -637,7 +655,7 @@
   <button class="menu-btn" aria-label="Menu">
     <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
   </button>
-  <div class="header-logo"><span>Nileva</span></div>
+  <div class="header-logo"><img class="header-logo-img" src="Logo.jpg" alt="" onerror="this.style.display='none';"><span>Nileva</span></div>
   <div class="lang-codes">
     <button class="lang-btn active" data-lang="en"><img class="lang-flag" src="UK.png" alt="">EN</button>
     <button class="lang-btn" data-lang="ar"><img class="lang-flag" src="Ara.png" alt="">AR</button>
@@ -653,7 +671,7 @@
 
 <div class="hero-banner">
   <div class="hero-banner-inner">
-    <img class="hero-banner-img" src="B1.jpg" alt="" onerror="this.style.display='none';">
+    <img class="hero-banner-img" src="hero.jpg" alt="" onerror="this.style.display='none';">
     <div class="hero-banner-overlay"></div>
     <div class="banner-dots"><span></span><span></span><span></span></div>
     <div class="hero-banner-text">
@@ -674,35 +692,35 @@
   <div class="category-scroll">
     <div class="category-card">
       <div class="category-icon" style="background: var(--terracotta-soft);">
-        <img src="T1.jpg" onerror="this.style.display='none'" alt="Gum Arabic">
+        <img src="Gum.jpg" onerror="this.style.display='none'" alt="Gum Arabic">
       </div>
       <div class="category-name" data-i18n="cat1">Gum Arabic</div>
       <div class="category-count" data-i18n="cat1n">12 items</div>
     </div>
     <div class="category-card">
       <div class="category-icon" style="background: var(--rose-soft);">
-        <img src="T2.jpg" onerror="this.style.display='none'" alt="Hibiscus & Tea">
+        <img src="Hibiscus.jpg" onerror="this.style.display='none'" alt="Hibiscus & Tea">
       </div>
       <div class="category-name" data-i18n="cat2">Hibiscus &amp; Tea</div>
       <div class="category-count" data-i18n="cat2n">18 items</div>
     </div>
     <div class="category-card">
       <div class="category-icon" style="background: #F2E4C5;">
-        <img src="T3.jpg" onerror="this.style.display='none'" alt="Spices & Seeds">
+        <img src="Seeds.jpg" onerror="this.style.display='none'" alt="Spices & Seeds">
       </div>
       <div class="category-name" data-i18n="cat3">Spices &amp; Seeds</div>
       <div class="category-count" data-i18n="cat3n">27 items</div>
     </div>
     <div class="category-card">
       <div class="category-icon" style="background: #DCE1EE;">
-        <img src="T4.jpg" onerror="this.style.display='none'" alt="Woven Goods">
+        <img src="woven.jpg" onerror="this.style.display='none'" alt="Woven Goods">
       </div>
       <div class="category-name" data-i18n="cat4">Woven Goods</div>
       <div class="category-count" data-i18n="cat4n">9 items</div>
     </div>
     <div class="category-card">
       <div class="category-icon" style="background: var(--palm-soft);">
-        <img src="T5.jpg" onerror="this.style.display='none'" alt="Oils">
+        <img src="oils.jpg" onerror="this.style.display='none'" alt="Oils">
       </div>
       <div class="category-name" data-i18n="cat5">Oils</div>
       <div class="category-count" data-i18n="cat5n">6 items</div>
@@ -761,7 +779,7 @@
 <section class="story-section" id="stories">
   <div class="wrap story-card">
     <div class="story-portrait">
-      <img src="S1.jpg" alt="" onerror="this.style.display='none';">
+      <img src="Fatima.jpg" alt="" onerror="this.style.display='none';">
       <span data-i18n="storyTag">Fatima · Kordofan, Sudan</span>
     </div>
     <div class="story-content">
@@ -864,20 +882,20 @@
     <div>
       <div class="footer-tag" data-i18n="footerTag">Nileva connects Sudan's women producers to European kitchens — one name, one story at a time.</div>
       <div class="footer-social">
-        <a href="#" aria-label="Instagram">IG</a>
-        <a href="#" aria-label="Facebook">FB</a>
-        <a href="#" aria-label="TikTok">TT</a>
-        <a href="#" aria-label="Pinterest">PI</a>
+        <a href="#" aria-label="Instagram"><img src="Instagram.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"><span class="social-fallback" style="display:none;">IG</span></a>
+        <a href="#" aria-label="Facebook"><img src="Facebook.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"><span class="social-fallback" style="display:none;">FB</span></a>
+        <a href="#" aria-label="TikTok"><img src="TikTok.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"><span class="social-fallback" style="display:none;">TT</span></a>
+        <a href="#" aria-label="Pinterest"><img src="Pinterest.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"><span class="social-fallback" style="display:none;">PI</span></a>
       </div>
       <div class="footer-payments">
-        <span class="pay-badge"><img src="PAY1.png" alt="Visa" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Visa</span></span>
-        <span class="pay-badge"><img src="PAY2.png" alt="Mastercard" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">MC</span></span>
-        <span class="pay-badge"><img src="PAY3.png" alt="PayPal" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">PayPal</span></span>
-        <span class="pay-badge"><img src="PAY4.png" alt="Apple Pay" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Apple</span></span>
-        <span class="pay-badge"><img src="PAY5.png" alt="Google Pay" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">GPay</span></span>
-        <span class="pay-badge"><img src="PAY6.png" alt="Klarna" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Klarna</span></span>
-        <span class="pay-badge"><img src="PAY7.png" alt="MobilePay" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Mobile Pay</span></span>
-        <span class="pay-badge"><img src="PAY8.png" alt="Pivo" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Pivo</span></span>
+        <span class="pay-badge"><img src="PAY1.jpg" alt="Visa" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Visa</span></span>
+        <span class="pay-badge"><img src="PAY2.jpg" alt="Mastercard" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">MC</span></span>
+        <span class="pay-badge"><img src="PAY3.jpg" alt="PayPal" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">PayPal</span></span>
+        <span class="pay-badge"><img src="PAY4.jpg" alt="Apple Pay" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Apple</span></span>
+        <span class="pay-badge"><img src="PAY5.jpg" alt="Google Pay" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">GPay</span></span>
+        <span class="pay-badge"><img src="PAY6.jpg" alt="Klarna" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Klarna</span></span>
+        <span class="pay-badge"><img src="PAY7.jpg" alt="MobilePay" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Mobile Pay</span></span>
+        <span class="pay-badge"><img src="PAY8.jpg" alt="Pivo" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Pivo</span></span>
       </div>
     </div>
     <div class="footer-cols">
