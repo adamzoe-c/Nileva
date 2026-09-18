@@ -235,7 +235,7 @@
   .gallery-strip::-webkit-scrollbar { height: 6px; }
   .gallery-strip::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
   .gallery-strip img {
-    flex: 0 0 auto; width: 180px; height: 130px; object-fit: cover;
+    flex: 0 0 auto; width: 340px; height: 260px; object-fit: cover;
     border-radius: 12px; scroll-snap-align: start; cursor: pointer;
     background: var(--ivory); transition: transform .15s ease;
   }
@@ -350,7 +350,7 @@
   @media (max-width: 640px) {
     .culture-hero h1 { font-size: 28px; }
     .city-section h2 { font-size: 22px; }
-    .gallery-strip img { width: 140px; height: 100px; }
+    .gallery-strip img { width: 260px; height: 190px; }
     .lightbox-prev, .lightbox-next { width: 38px; height: 38px; font-size: 17px; }
   }
   @media (max-width: 560px) {
@@ -413,9 +413,6 @@
   <div class="culture-hero-kicker">The land behind every harvest</div>
   <h1>Sudan, in six places and a thousand small hands</h1>
   <p>Before it reaches your kitchen, every gum arabic tear, every dried hibiscus flower, every handwoven basket has already travelled through a Sudan most of Europe never sees. Here's a closer look at the regions our cooperatives call home — their land, their light, and the work that happens there long before anything ships.</p>
-  <div class="culture-hero-img-wrap">
-    <img src="hero1.jpg" alt="Sudan landscape" onerror="this.style.display='none'">
-  </div>
 </header>
 
 <section class="wrap culture-video-section">
@@ -470,6 +467,27 @@
     <h2>Meroe</h2>
     <p>Long before it was part of any modern trade route, this stretch of desert along the Nile was the seat of an ancient kingdom — its pyramids, sharper and more numerous than Egypt's, still rise quietly from the sand. Meroe is a reminder of how old Sudan's story really is, and how much has passed through this land before a single one of our products ever did. We think of it as the quiet backdrop to everything else in this list.</p>
     <div class="gallery-strip" data-gallery="meroe"></div>
+  </section>
+
+  <section class="city-section" id="religions">
+    <div class="city-kicker">Faith, woven into daily life</div>
+    <h2>Religions of Sudan</h2>
+    <p>Islam is the majority faith across Sudan, shaping the rhythm of daily life from the call to prayer that marks each day to the festivals that bring whole communities together, like Eid al-Fitr and Eid al-Adha. Sufi traditions run especially deep here, with local orders known for their music, poetry and communal gatherings that feel as much like celebration as worship. Christianity has its own long history in the country too, practiced mainly among communities in the south and among diaspora congregations in cities like Khartoum, with churches that have stood for generations. Across both traditions, faith in Sudan tends to be lived communally — shared meals, shared prayer, and a hospitality that welcomes neighbors regardless of which mosque or church they belong to.</p>
+    <div class="gallery-strip" data-gallery="religions"></div>
+  </section>
+
+  <section class="city-section" id="culture">
+    <div class="city-kicker">Music, food and the everyday art of hospitality</div>
+    <h2>Culture</h2>
+    <p>Sudanese culture is built on hospitality — a stranger is rarely allowed to leave a home without being offered tea, and often a full meal besides. Music runs through everyday life too, from the string-driven sounds of oud and tambour to wedding songs that can last long into the night. Food carries its own traditions: kisra and ful medames on family tables, spiced coffee poured with ceremony, and dishes that change slightly from Kordofan to the Nile valley to the Red Sea coast. Traditional dress remains part of daily life as well, from the flowing white jalabiya worn by men to the colorful toub wrapped by women, patterns and colors that often carry regional meaning. It's a culture shaped as much by generosity and gathering as by any single tradition.</p>
+    <div class="gallery-strip" data-gallery="culture"></div>
+  </section>
+
+  <section class="city-section" id="people">
+    <div class="city-kicker">The many communities behind one country</div>
+    <h2>People</h2>
+    <p>Sudan is home to an extraordinary mix of communities — Arab, Nubian, Beja, Fur, Nuba and dozens of other ethnic groups, each with its own language, customs and history stretching back centuries. That diversity shows up in everything from the dialects spoken in a single market to the patterns woven into a basket or a scarf. What ties these communities together is often less about shared background and more about shared values: a deep respect for elders, warmth toward guests, and a sense of community that shapes how people work, celebrate and get through hard seasons together. The cooperatives behind Nileva's products reflect that same diversity — women from different regions and backgrounds, working side by side.</p>
+    <div class="gallery-strip" data-gallery="people"></div>
   </section>
 
 </main>
@@ -537,7 +555,10 @@
     kassala: { label: "Kassala", files: ["SS1.jpg","SS2.jpg","SS3.jpg","SS4.jpg","SS5.jpg","SS6.jpg"] },
     aldender: { label: "Al-Dender", files: ["E1.jpg","E2.jpg","E3.jpg","E4.jpg","E5.jpg","E6.jpg","E7.jpg","E8.jpg"] },
     portsudan: { label: "Port Sudan", files: ["PS1.jpg","PS2.jpg","PS3.jpg","PS4.jpg","PS5.jpg","PS6.jpg"] },
-    meroe: { label: "Meroe", files: ["M1.jpg","M2.jpg","M3.jpg","M4.jpg","M5.jpg","M6.jpg","M7.jpg"] }
+    meroe: { label: "Meroe", files: ["M1.jpg","M2.jpg","M3.jpg","M4.jpg","M5.jpg","M6.jpg","M7.jpg"] },
+    religions: { label: "Religions", files: ["I1.jpg","I2.jpg","I3.jpg","I4.jpg"] },
+    culture: { label: "Culture", files: ["CU1.jpg","CU2.jpg","CU3.jpg","CU4.jpg","CU5.jpg","CU6.jpg"] },
+    people: { label: "People", files: ["O1.jpg","O2.jpg","O3.jpg","O4.jpg","O5.jpg","O6.jpg"] }
   };
 
   // Build thumbnail strips
