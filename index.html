@@ -259,7 +259,7 @@
   body[dir="rtl"] .banner-dots { left: auto; right: 26px; }
 
   /* ---------- TOP CATEGORIES ---------- */
-  .top-categories { padding: 40px 0 8px; margin-top: 16px; }
+  .top-categories { padding-top: 40px; padding-bottom: 8px; margin-top: 16px; }
   .categories-head {
     display: flex;
     align-items: center;
@@ -324,9 +324,29 @@
 
   /* ---------- HERO ---------- */
   .hero {
-    display: block;
-    padding: 40px 0 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 56px;
   }
+  .hero-image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--ivory);
+    margin-top: 12px;
+  }
+  .hero-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  body[dir="rtl"] .hero { direction: rtl; }
   .hero-eyebrow {
     font-size: 15px;
     color: var(--rose);
@@ -364,6 +384,28 @@
   .hero-visual { position: relative; }
   .thread-svg { width: 100%; height: auto; }
   body[dir="rtl"] .hero-visual { transform: scaleX(-1); }
+
+  /* ---------- SUDAN SECTION ---------- */
+  .sudan-section { padding-top: 88px; padding-bottom: 88px; }
+  .sudan-image-wrap {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 28px;
+    overflow: hidden;
+    background: var(--ivory);
+    margin-bottom: 40px;
+  }
+  .sudan-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .sudan-content { max-width: 680px; }
+  .sudan-content .kicker { color: var(--terracotta); font-size: 14px; margin-bottom: 14px; letter-spacing: 0.02em; }
+  .sudan-content h2 { font-size: 34px; line-height: 1.3; margin-bottom: 18px; max-width: 620px; }
+  body[dir="rtl"] .sudan-content h2 { font-family: 'Noto Kufi Arabic', sans-serif; }
+  .sudan-content p { font-size: 16px; line-height: 1.75; color: var(--ink-soft); max-width: 600px; }
 
   /* ---------- INGREDIENTS ---------- */
   .ingredient-band { color: var(--white); }
@@ -422,7 +464,7 @@
   }
 
   /* ---------- JOURNEY ---------- */
-  .journey { padding: 110px 0 100px; }
+  .journey { padding-top: 110px; padding-bottom: 100px; }
   .section-head { max-width: 560px; margin-bottom: 64px; }
   .section-head .kicker { color: var(--rose); font-size: 15px; margin-bottom: 16px; }
   .section-head h2 { font-size: 36px; line-height: 1.25; }
@@ -531,7 +573,7 @@
   }
 
   /* ---------- PRODUCTS ---------- */
-  .products { padding: 100px 0; }
+  .products { padding-top: 100px; padding-bottom: 100px; }
   .product-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -578,7 +620,7 @@
   .add-to-cart:hover { background: var(--ink); color: var(--white); }
 
   /* ---------- TESTIMONIALS ---------- */
-  .testimonials { padding: 100px 0; }
+  .testimonials { padding-top: 100px; padding-bottom: 100px; }
   .testi-sub { color: var(--ink-soft); font-size: 15.5px; margin-top: 14px; max-width: 480px; }
   .testimonial-grid {
     display: grid;
@@ -664,7 +706,11 @@
   .pay-fallback { font-size: 9.5px; color: var(--ink-soft); font-weight: 600; text-align: center; display: none; }
 
   @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; gap: 28px; }
+    .hero-image-wrap { order: -1; aspect-ratio: 16/10; border-radius: 18px; }
     .hero h1 { font-size: 38px; }
+    .sudan-image-wrap { border-radius: 20px; margin-bottom: 28px; }
+    .sudan-content h2 { font-size: 26px; }
     .story-card { grid-template-columns: 1fr; }
     .product-grid { grid-template-columns: 1fr 1fr; }
     .testimonial-grid { grid-template-columns: 1fr 1fr; }
@@ -689,12 +735,18 @@
     .top-categories { margin-top: 20px; }
     .hero h1 { font-size: 30px; max-width: 100%; }
     .hero p.lede { font-size: 15.5px; max-width: 100%; }
+    .hero-image-wrap { aspect-ratio: 3/2; border-radius: 14px; margin-top: 16px; }
+    .hero { padding-top: 24px; padding-bottom: 40px; }
     .hero-actions { flex-wrap: nowrap; gap: 10px; }
+    .sudan-section { padding-top: 56px; padding-bottom: 56px; }
+    .sudan-image-wrap { aspect-ratio: 4/3; margin-bottom: 20px; }
+    .sudan-content h2 { font-size: 22px; }
+    .sudan-content p { font-size: 14.5px; }
     .btn-primary { padding: 12px 18px; font-size: 13.5px; white-space: nowrap; }
     .btn-secondary { padding: 12px 4px; font-size: 13.5px; white-space: nowrap; }
     .section-head h2 { font-size: 25px; }
     .section-head { margin-bottom: 40px; }
-    .journey { padding: 64px 0 60px; }
+    .journey { padding-top: 64px; padding-bottom: 60px; }
     .story-content h2 { font-size: 24px; }
     .story-content p { max-width: 100%; }
     .impact-bar, .impact-bar * { max-width: 100%; }
@@ -702,7 +754,7 @@
     .footer-tag { max-width: 100%; }
     .footer-cols { gap: 32px; flex-wrap: wrap; }
     .testimonial-grid { grid-template-columns: 1fr; }
-    .testimonials { padding: 64px 0; }
+    .testimonials { padding-top: 64px; padding-bottom: 64px; }
     footer.wrap { padding: 56px 18px 32px; }
   }
 
@@ -777,6 +829,21 @@
   <a href="#stories" class="menu-link" data-i18n="menuWomen">Meet the women</a>
 </nav>
 
+<header class="wrap hero" id="hero-intro">
+  <div>
+    <div class="hero-eyebrow" data-i18n="heroEyebrow">Nileva — from the Nile to your home</div>
+    <h1 data-i18n="heroH1">Every basket carries a woman's name, not just a product.</h1>
+    <p class="lede" data-i18n="heroLede">We bring gum arabic, hibiscus, spices and handwoven goods from Sudan's women farmers and artisans straight to your door in Europe — with her story on the label.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#products" data-i18n="heroBtn1">Shop the harvest</a>
+      <a class="btn-secondary" href="#stories" data-i18n="heroBtn2">Meet the women</a>
+    </div>
+  </div>
+  <div class="hero-image-wrap">
+    <img src="hero.jpg" alt="Nileva — from the Nile to your home" onerror="this.style.display='none'">
+  </div>
+</header>
+
 <section class="wrap top-categories" id="categories">
   <div class="categories-head">
     <h2 data-i18n="catH2">Top Categories</h2>
@@ -800,9 +867,9 @@
     </a>
     <a class="category-card" href="#products">
       <div class="category-icon" style="background: #F2E4C5;">
-        <img src="Seeds.jpg" onerror="this.style.display='none'" alt="Spices & Seeds">
+        <img src="Seeds.jpg" onerror="this.style.display='none'" alt="Seeds">
       </div>
-      <div class="category-name" data-i18n="cat3">Spices &amp; Seeds</div>
+      <div class="category-name" data-i18n="cat3">Seeds</div>
     </a>
     <a class="category-card" href="#products">
       <div class="category-icon" style="background: var(--palm-soft);">
@@ -813,17 +880,16 @@
   </div>
 </section>
 
-<header class="wrap hero" id="hero-intro">
-  <div>
-    <div class="hero-eyebrow" data-i18n="heroEyebrow">Nileva — from the Nile to your home</div>
-    <h1 data-i18n="heroH1">Every basket carries a woman's name, not just a product.</h1>
-    <p class="lede" data-i18n="heroLede">We bring gum arabic, hibiscus, spices and handwoven goods from Sudan's women farmers and artisans straight to your door in Europe — with her story on the label.</p>
-    <div class="hero-actions">
-      <a class="btn-primary" href="#products" data-i18n="heroBtn1">Shop the harvest</a>
-      <a class="btn-secondary" href="#stories" data-i18n="heroBtn2">Meet the women</a>
-    </div>
+<section class="wrap sudan-section" id="sudan">
+  <div class="sudan-image-wrap">
+    <img src="Sudan.jpg" alt="Sudan" onerror="this.style.display='none'">
   </div>
-</header>
+  <div class="sudan-content">
+    <div class="kicker" data-i18n="sudanKicker">The land this harvest calls home</div>
+    <h2 data-i18n="sudanH2">Where two rivers meet, and hands have never stopped working</h2>
+    <p data-i18n="sudanP">Sudan is desert and river in the same breath — market stalls waking at dawn, tea poured for strangers, pyramids older than memory rising quietly from the sand. It is also patience: generations of women who have tended this same soil, season after season, through hardship most of us will never know. Every harvest we send carries a piece of that story — of a land that gives generously, and of hands that never stopped believing the work was worth it.</p>
+  </div>
+</section>
 
 <section class="wrap journey" id="journey">
   <div class="section-head">
@@ -1017,6 +1083,11 @@
         <a href="#" data-i18n="footerAbout1">Our cooperatives</a>
         <a href="#" data-i18n="footerAbout2">How payments work</a>
         <a href="#" data-i18n="footerAbout3">Shipping to the EU</a>
+      </div>
+      <div class="footer-col" id="footer-contact-col">
+        <h4 data-i18n="footerCompany">Company</h4>
+        <a href="#" data-i18n="footerCompany1">Nileva Oy, Finland</a>
+        <a href="#" id="footer-contact" data-i18n="footerCompany2">Contact</a>
         <div class="footer-payments">
           <span class="pay-badge"><img src="visa.png" alt="Visa" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Visa</span></span>
           <span class="pay-badge"><img src="mastercard.png" alt="Mastercard" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">MC</span></span>
@@ -1025,11 +1096,6 @@
           <span class="pay-badge"><img src="klarna.png" alt="Klarna" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Klarna</span></span>
           <span class="pay-badge"><img src="stripe.png" alt="Stripe" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Stripe</span></span>
         </div>
-      </div>
-      <div class="footer-col" id="footer-contact-col">
-        <h4 data-i18n="footerCompany">Company</h4>
-        <a href="#" data-i18n="footerCompany1">Nileva Oy, Finland</a>
-        <a href="#" id="footer-contact" data-i18n="footerCompany2">Contact</a>
       </div>
     </div>
   </div>
@@ -1046,7 +1112,7 @@
       catH2: "Top Categories",
       cat1: "Gum Arabic", cat1n: "12 items",
       cat2: "Hibiscus & Tea", cat2n: "18 items",
-      cat3: "Spices & Seeds", cat3n: "27 items",
+      cat3: "Seeds", cat3n: "27 items",
       cat5: "Oils", cat5n: "6 items",
       navHome: "Home", navShop: "Shop", navCartLabel: "Cart", navSearch: "Search", navAccount: "Account",
       nav1: "How it works", nav2: "Stories", nav3: "Shop", navCta: "Shop now",
@@ -1054,6 +1120,9 @@
       heroH1: "Every basket carries a woman's name, not just a product.",
       heroLede: "We bring gum arabic, hibiscus, spices and other treasures from Sudan's women farmers and artisans straight to your door in Europe — with her story on the label.",
       heroBtn1: "Shop the harvest", heroBtn2: "Meet the women",
+      sudanKicker: "The land this harvest calls home",
+      sudanH2: "Where two rivers meet, and hands have never stopped working",
+      sudanP: "Sudan is desert and river in the same breath — market stalls waking at dawn, tea poured for strangers, pyramids older than memory rising quietly from the sand. It is also patience: generations of women who have tended this same soil, season after season, through hardship most of us will never know. Every harvest we send carries a piece of that story — of a land that gives generously, and of hands that never stopped believing the work was worth it.",
       strip1: "women producers paid directly", strip2num: "€3–6", strip2: "of each item reaches her, tracked openly", strip3: "regions across Sudan represented",
       journeyKicker: "How your order reaches you", journeyH2: "From her hands in Kordofan to your kitchen in Helsinki.",
       j1h: "She grows and harvests", j1p: "Fatima and her cooperative tap and sort gum arabic by hand, the way her mother taught her. She's paid on collection, not on delivery.",
@@ -1105,7 +1174,7 @@
       catH2: "أهم الأقسام",
       cat1: "الصمغ العربي", cat1n: "١٢ منتجًا",
       cat2: "الكركدي والشاي", cat2n: "١٨ منتجًا",
-      cat3: "توابل وبذور", cat3n: "٢٧ منتجًا",
+      cat3: "بذور", cat3n: "٢٧ منتجًا",
       cat5: "زيوت", cat5n: "٦ منتجات",
       navHome: "الرئيسية", navShop: "المتجر", navCartLabel: "السلة", navSearch: "بحث", navAccount: "حسابي",
       nav1: "كيف نعمل", nav2: "القصص", nav3: "المتجر", navCta: "تسوقي الآن",
@@ -1113,6 +1182,9 @@
       heroH1: "كل سلة تحمل اسم امرأة، لا مجرد منتج.",
       heroLede: "نجلب لكِ الصمغ العربي والكركدي والتوابل وكنوز أخرى من مزارعات وحرفيات السودان مباشرة إلى بابك في أوروبا — مع قصتها على الملصق.",
       heroBtn1: "تسوقي المحصول", heroBtn2: "تعرّفي على النساء",
+      sudanKicker: "الأرض التي ينتمي إليها هذا المحصول",
+      sudanH2: "حيث يلتقي نهران، وأيدٍ لم تتوقف يومًا عن العمل",
+      sudanP: "السودان صحراء ونهر في آنٍ واحد — أسواق تستيقظ عند الفجر، شاي يُقدَّم للغرباء، وأهرامات أقدم من الذاكرة تنهض بهدوء من الرمال. إنه أيضًا صبر: أجيال من النساء اعتنين بهذه الأرض نفسها، موسمًا بعد موسم، عبر مشقة لا يعرفها معظمنا. كل حصاد نرسله يحمل جزءًا من تلك القصة — قصة أرض تعطي بسخاء، وأيدٍ لم تتوقف يومًا عن الإيمان بأن العمل يستحق.",
       strip1: "منتِجة يُدفع لهن مباشرة", strip2num: "٣–٦ يورو", strip2: "من كل منتج يصل إليها، بشفافية كاملة", strip3: "مناطق سودانية ممثَّلة",
       journeyKicker: "كيف يصلكِ طلبك", journeyH2: "من يدَيها في كردفان إلى مطبخكِ في هلسنكي.",
       j1h: "تزرع وتحصد", j1p: "تستخرج فاطمة وتعاونيتها الصمغ العربي وتفرزه يدويًا، كما علّمتها والدتها. يُدفع لها عند الاستلام لا عند التسليم.",
@@ -1164,7 +1236,7 @@
       catH2: "Suositut kategoriat",
       cat1: "Gummiarabicum", cat1n: "12 tuotetta",
       cat2: "Hibiskus & tee", cat2n: "18 tuotetta",
-      cat3: "Mausteet & siemenet", cat3n: "27 tuotetta",
+      cat3: "Siemenet", cat3n: "27 tuotetta",
       cat5: "Öljyt", cat5n: "6 tuotetta",
       navHome: "Koti", navShop: "Kauppa", navCartLabel: "Ostoskori", navSearch: "Haku", navAccount: "Tili",
       nav1: "Näin se toimii", nav2: "Tarinat", nav3: "Kauppa", navCta: "Osta nyt",
@@ -1172,6 +1244,9 @@
       heroH1: "Jokainen kori kantaa naisen nimeä, ei vain tuotetta.",
       heroLede: "Tuomme gummiarabicumia, hibiskusta, mausteita ja muita aarteita Sudanin naisviljelijöiltä ja käsityöläisiltä suoraan ovellesi Euroopassa — hänen tarinansa mukana pakkauksessa.",
       heroBtn1: "Osta satoa", heroBtn2: "Tutustu naisiin",
+      sudanKicker: "Maa, josta tämä sato on kotoisin",
+      sudanH2: "Missä kaksi jokea kohtaa, ja kädet eivät ole koskaan lakanneet työskentelemästä",
+      sudanP: "Sudan on aavikkoa ja jokea samassa hengenvedossa — toreja jotka heräävät aamunkoitteessa, teetä tarjottuna vieraille, pyramideja jotka nousevat hiljaa hiekasta, vanhempina kuin muisti. Se on myös kärsivällisyyttä: sukupolvien ajan naiset ovat hoitaneet samaa maaperää, kausi toisensa jälkeen, vaikeuksien läpi, joita useimmat meistä eivät koskaan koe. Jokainen lähettämämme sato kantaa mukanaan palan tätä tarinaa — maasta joka antaa anteliaasti, ja käsistä jotka eivät koskaan lakanneet uskomasta työn arvoon.",
       strip1: "naistuottajaa saa maksun suoraan", strip2num: "3–6 €", strip2: "jokaisesta tuotteesta menee hänelle, avoimesti seurattuna", strip3: "aluetta Sudanissa edustettuna",
       journeyKicker: "Näin tilauksesi kulkee", journeyH2: "Hänen käsistään Kordofanissa keittiöösi Helsingissä.",
       j1h: "Hän kasvattaa ja korjaa sadon", j1p: "Fatima ja hänen osuuskuntansa kokoavat ja lajittelevat gummiarabicumin käsin, kuten hänen äitinsä opetti. Hänelle maksetaan keräyshetkellä, ei toimituksen jälkeen.",
@@ -1223,7 +1298,7 @@
       catH2: "Populära kategorier",
       cat1: "Gummiarabicum", cat1n: "12 varor",
       cat2: "Hibiskus & te", cat2n: "18 varor",
-      cat3: "Kryddor & frön", cat3n: "27 varor",
+      cat3: "Frön", cat3n: "27 varor",
       cat5: "Oljor", cat5n: "6 varor",
       navHome: "Hem", navShop: "Butik", navCartLabel: "Varukorg", navSearch: "Sök", navAccount: "Konto",
       nav1: "Så fungerar det", nav2: "Berättelser", nav3: "Butik", navCta: "Handla nu",
@@ -1231,6 +1306,9 @@
       heroH1: "Varje korg bär en kvinnas namn, inte bara en produkt.",
       heroLede: "Vi tar med gummiarabicum, hibiskus, kryddor och andra skatter från Sudans kvinnliga odlare och hantverkare direkt till din dörr i Europa — med hennes berättelse på etiketten.",
       heroBtn1: "Handla skörden", heroBtn2: "Möt kvinnorna",
+      sudanKicker: "Landet den här skörden kommer från",
+      sudanH2: "Där två floder möts, och händer aldrig har slutat arbeta",
+      sudanP: "Sudan är öken och flod på samma gång — marknader som vaknar i gryningen, te som bjuds åt främlingar, pyramider äldre än minnet som tyst reser sig ur sanden. Det är också tålamod: generationer av kvinnor som har vårdat samma jord, säsong efter säsong, genom svårigheter de flesta av oss aldrig känner. Varje skörd vi skickar bär med sig en del av den historien — om ett land som ger generöst, och händer som aldrig slutat tro att arbetet var värt det.",
       strip1: "kvinnliga producenter får betalt direkt", strip2num: "3–6 €", strip2: "av varje produkt når henne, öppet spårat", strip3: "regioner i Sudan representerade",
       journeyKicker: "Så här når din beställning dig", journeyH2: "Från hennes händer i Kordofan till ditt kök i Helsingfors.",
       j1h: "Hon odlar och skördar", j1p: "Fatima och hennes kooperativ tappar och sorterar gummiarabicum för hand, precis som hennes mor lärde henne. Hon får betalt vid insamlingen, inte vid leverans.",
