@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login — Nileva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&family=Noto+Kufi+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #FFFFFF;
+    --ivory: #FBF6EE;
+    --terracotta: #BC5730;
+    --terracotta-soft: #EFCBAE;
+    --saffron: #DDA62A;
+    --rose: #C13A5E;
+    --rose-soft: #F4D2DC;
+    --indigo: #33507E;
+    --indigo-soft: #DCE1EE;
+    --palm: #5B7A45;
+    --palm-soft: #DCE6D2;
+    --ink: #2B2620;
+    --ink-soft: #6B6357;
+    --line: #EAE3D6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  h1, h2, h3, p, span, a, div { overflow-wrap: break-word; word-break: break-word; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+    max-width: 100%;
+    position: relative;
+  }
+
+  body[dir="rtl"] { font-family: 'Noto Kufi Arabic', sans-serif; }
+  body[dir="rtl"] h1, body[dir="rtl"] h2, body[dir="rtl"] h3, body[dir="rtl"] .display {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-weight: 600;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+  /* ---------- PROMO BAR ---------- */
+  .promo-bar {
+    background: var(--indigo);
+    color: var(--white);
+    text-align: center;
+    font-size: 13.5px;
+    padding: 10px 16px;
+  }
+  .promo-bar strong { font-weight: 600; }
+
+  /* ---------- APP HEADER ---------- */
+  .app-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 16px 20px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .header-accent {
+    height: 4px;
+    background: linear-gradient(90deg, var(--terracotta), var(--saffron), var(--rose), var(--indigo), var(--palm));
+  }
+
+  .menu-btn, .cart-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 4px;
+  }
+  .header-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    margin-left: auto;
+  }
+  .header-logo-img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    display: block;
+  }
+  body[dir="rtl"] .header-logo { font-family: 'Noto Kufi Arabic', sans-serif; }
+  .lang-codes {
+    display: flex;
+    gap: 2px;
+    background: var(--ivory);
+    border-radius: 100px;
+    padding: 3px;
+    flex-shrink: 0;
+  }
+  .lang-btn {
+    padding: 5px 8px 5px 6px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: 'Work Sans', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .lang-flag {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .lang-btn.active { background: var(--white); color: var(--ink); box-shadow: 0 0 0 1px var(--line); }
+  .cart-badge {
+    position: absolute;
+    top: -4px; right: -6px;
+    background: var(--rose);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 600;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ---------- DRAWER MENU ---------- */
+  .menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(43,38,32,0.45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 90;
+  }
+  .menu-overlay.open { opacity: 1; pointer-events: auto; }
+  .menu-drawer {
+    position: fixed;
+    top: 0; bottom: 0; left: 0;
+    width: 78%;
+    max-width: 320px;
+    background: var(--white);
+    z-index: 91;
+    transform: translateX(-100%);
+    transition: transform 0.28s ease;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 8px;
+    box-shadow: 2px 0 24px rgba(0,0,0,0.12);
+  }
+  .menu-drawer.open { transform: translateX(0); }
+  body[dir="rtl"] .menu-drawer { left: auto; right: 0; transform: translateX(100%); }
+  body[dir="rtl"] .menu-drawer.open { transform: translateX(0); }
+  .menu-drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 14px 18px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 10px;
+  }
+  .menu-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--ink);
+    padding: 6px;
+    display: flex;
+  }
+  .menu-link {
+    display: block;
+    padding: 14px 16px;
+    font-size: 16px;
+    color: var(--ink);
+    border-radius: 10px;
+  }
+  .menu-link:hover, .menu-link:active { background: var(--ivory); }
+
+  /* ---------- HERO BANNER ---------- */
+  .hero-banner {
+    max-width: 1120px;
+    margin: 8px auto 0;
+    padding: 0 20px;
+  }
+  .hero-banner-inner {
+    aspect-ratio: 16/9;
+    border-radius: 22px;
+    background: linear-gradient(135deg, var(--indigo) 0%, var(--rose) 55%, var(--saffron) 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 26px;
+  }
+  .hero-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 45%);
+  }
+  .hero-banner-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-banner-text {
+    position: relative;
+    color: var(--white);
+    max-width: 320px;
+  }
+  .hero-banner-text .kicker { font-size: 12.5px; opacity: 0.9; margin-bottom: 6px; }
+  .hero-banner-text h2 { font-size: 24px; color: var(--white); line-height: 1.25; }
+  .banner-dots {
+    position: absolute;
+    bottom: 22px;
+    left: 26px;
+    display: flex;
+    gap: 6px;
+  }
+  .banner-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.5); }
+  .banner-dots span:first-child { background: var(--white); width: 16px; border-radius: 4px; }
+  body[dir="rtl"] .banner-dots { left: auto; right: 26px; }
+
+  /* ---------- TOP CATEGORIES ---------- */
+  .top-categories { padding-top: 40px; padding-bottom: 8px; margin-top: 16px; }
+  .categories-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .categories-head h2 { font-size: 26px; }
+  .cat-nav { display: flex; gap: 8px; }
+  .cat-arrow {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: none;
+    background: var(--ivory);
+    color: var(--ink);
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .category-scroll {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x;
+    max-width: 100%;
+  }
+  .category-scroll::-webkit-scrollbar { display: none; }
+  .category-card {
+    flex: 0 0 84px;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+  }
+  .category-icon {
+    width: 64px; height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 8px;
+    overflow: hidden;
+  }
+  .category-icon img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .category-name { font-size: 12.5px; font-weight: 500; margin-bottom: 1px; }
+  .category-count { font-size: 11px; color: var(--ink-soft); }
+
+  /* ---------- NAV (legacy anchors kept for section links) ---------- */
+  .nav-links { display: flex; gap: 36px; font-size: 15px; color: var(--ink-soft); }
+  .nav-cta {
+    background: var(--ink);
+    color: var(--white);
+    padding: 10px 22px;
+    border-radius: 100px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 56px;
+  }
+  .hero-image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--ivory);
+    margin-top: 12px;
+  }
+  .hero-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  body[dir="rtl"] .hero { direction: rtl; }
+  .hero-eyebrow {
+    font-size: 15px;
+    color: var(--rose);
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-size: 54px;
+    line-height: 1.1;
+    max-width: 560px;
+  }
+  body[dir="rtl"] .hero h1 { font-size: 44px; line-height: 1.35; }
+  .hero p.lede {
+    font-size: 18px;
+    color: var(--ink-soft);
+    max-width: 460px;
+    margin-top: 24px;
+  }
+  .hero-actions { display: flex; gap: 16px; margin-top: 36px; }
+  .btn-primary {
+    background: var(--indigo);
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 500;
+    display: inline-block;
+  }
+  .btn-secondary {
+    padding: 14px 6px;
+    font-size: 15px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .hero-visual { position: relative; }
+  .thread-svg { width: 100%; height: auto; }
+  body[dir="rtl"] .hero-visual { transform: scaleX(-1); }
+
+  /* ---------- SUDAN SECTION ---------- */
+  .sudan-section { padding-top: 88px; padding-bottom: 88px; }
+  .sudan-image-wrap {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 28px;
+    overflow: hidden;
+    background: var(--ivory);
+    margin-bottom: 40px;
+  }
+  .sudan-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .sudan-content { max-width: 680px; }
+  .sudan-content .kicker { color: var(--terracotta); font-size: 14px; margin-bottom: 14px; letter-spacing: 0.02em; }
+  .sudan-content h2 { font-size: 34px; line-height: 1.3; margin-bottom: 18px; max-width: 620px; }
+  body[dir="rtl"] .sudan-content h2 { font-family: 'Noto Kufi Arabic', sans-serif; }
+  .sudan-content p { font-size: 16px; line-height: 1.75; color: var(--ink-soft); max-width: 600px; }
+
+  /* ---------- INGREDIENTS ---------- */
+  .ingredient-band { color: var(--white); }
+  .ingredient-band.terracotta { background: var(--terracotta); }
+  .ingredient-band.rose { background: var(--rose); }
+  .ingredient-band.saffron { background: var(--saffron); }
+  .ingredient-block {
+    padding: 64px 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .ingredient-text h3 {
+    font-size: 32px;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  body[dir="rtl"] .ingredient-text h3 { font-family: 'Noto Kufi Arabic', sans-serif; }
+  .ingredient-text .origin-line {
+    font-size: 13.5px;
+    opacity: 0.85;
+    margin-bottom: 14px;
+  }
+  .ingredient-text p.desc {
+    font-size: 15.5px;
+    line-height: 1.6;
+    opacity: 0.95;
+    max-width: 440px;
+    margin-bottom: 22px;
+  }
+  .benefit-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+  .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14.5px;
+  }
+  .benefit-check {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 12px;
+  }
+  .ingredient-cta { font-size: 14px; font-weight: 500; opacity: 0.95; }
+  .ingredient-visual {
+    aspect-ratio: 4/3;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.16);
+  }
+
+  /* ---------- JOURNEY ---------- */
+  .journey { padding-top: 110px; padding-bottom: 100px; }
+  .section-head { max-width: 560px; margin-bottom: 64px; }
+  .section-head .kicker { color: var(--rose); font-size: 15px; margin-bottom: 16px; }
+  .section-head h2 { font-size: 36px; line-height: 1.25; }
+
+  .journey-row {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 28px;
+    padding: 34px 0;
+    border-top: 1px solid var(--line);
+  }
+  body[dir="rtl"] .journey-row { grid-template-columns: 1fr 60px; }
+  body[dir="rtl"] .journey-num { order: 2; text-align: left; }
+  .journey-row:last-child { border-bottom: 1px solid var(--line); }
+  .journey-num {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--terracotta);
+  }
+  body[dir="rtl"] .journey-num { font-family: 'Noto Kufi Arabic', sans-serif; }
+  .journey-body h3 { font-size: 21px; margin-bottom: 8px; font-weight: 500; }
+  .journey-body p { color: var(--ink-soft); max-width: 520px; font-size: 15.5px; }
+
+  /* ---------- STORY ---------- */
+  .story-section {
+    background: var(--ivory);
+    padding: 100px 0;
+  }
+  .story-card {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .story-portrait {
+    aspect-ratio: 4/5;
+    border-radius: 18px;
+    background: linear-gradient(160deg, var(--rose-soft), var(--terracotta-soft));
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 22px;
+  }
+  .story-portrait span {
+    position: relative;
+    z-index: 1;
+    background: rgba(255,255,255,0.85);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 13px;
+    color: var(--ink);
+  }
+  .story-portrait img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .story-content .kicker { color: var(--terracotta); font-size: 14px; margin-bottom: 14px; }
+  .story-content h2 { font-size: 32px; margin-bottom: 20px; max-width: 480px; }
+  .story-content p { color: var(--ink-soft); font-size: 16px; max-width: 480px; margin-bottom: 16px; }
+  .story-readmore {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 18px;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--terracotta);
+    border-bottom: 1.5px solid var(--terracotta);
+    padding-bottom: 2px;
+    margin-bottom: 4px;
+  }
+  .story-readmore:hover { color: var(--ink); border-color: var(--ink); }
+
+  .impact-bar {
+    margin-top: 30px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 26px;
+    max-width: 480px;
+  }
+  .impact-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .impact-track {
+    height: 8px;
+    background: var(--line);
+    border-radius: 100px;
+    overflow: hidden;
+    display: flex;
+  }
+  .impact-fill-1 { width: 62%; background: var(--terracotta); }
+  .impact-fill-2 { width: 38%; background: var(--saffron); }
+  .impact-legend { display: flex; gap: 20px; margin-top: 12px; font-size: 13px; color: var(--ink-soft); flex-wrap: wrap; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-inline-end: 6px; }
+
+  .qr-note {
+    margin-top: 34px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .qr-box {
+    width: 54px; height: 54px;
+    border-radius: 8px;
+    background: var(--ink);
+    flex-shrink: 0;
+  }
+
+  /* ---------- PRODUCTS ---------- */
+  .products { padding-top: 100px; padding-bottom: 100px; }
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .product-card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .product-link { display: block; color: inherit; cursor: pointer; }
+  .product-image { aspect-ratio: 4/3; position: relative; overflow: hidden; }
+  .product-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .p1 { background: linear-gradient(150deg, var(--saffron), var(--terracotta-soft)); }
+  .p2 { background: linear-gradient(150deg, var(--rose-soft), var(--indigo)); }
+  .p3 { background: linear-gradient(150deg, var(--terracotta), var(--saffron)); }
+  .product-info { padding: 10px 12px 0; }
+  .product-info .origin { font-size: 10px; color: var(--terracotta); margin-bottom: 3px; }
+  .product-info h3 { font-size: 13px; font-weight: 500; margin-bottom: 3px; line-height: 1.25; }
+  .product-info .price { color: var(--ink-soft); font-size: 12px; margin-bottom: 8px; }
+  .product-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .stars { color: var(--saffron); letter-spacing: 1px; font-size: 11px; }
+  .add-to-cart {
+    display: block;
+    width: calc(100% - 24px);
+    margin: 0 12px 12px;
+    text-align: center;
+    padding: 7px 0;
+    border-radius: 100px;
+    background: var(--white);
+    border: 1.5px solid var(--ink);
+    font-size: 11.5px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .add-to-cart:hover { background: var(--ink); color: var(--white); }
+
+  .shop-more-wrap { text-align: center; margin-top: 36px; }
+  .shop-more-btn {
+    display: inline-block;
+    padding: 13px 44px;
+    border-radius: 100px;
+    border: 1.5px solid var(--ink);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: transparent;
+  }
+  .shop-more-btn:hover { background: var(--ink); color: var(--white); }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials { padding-top: 100px; padding-bottom: 100px; }
+  .testi-sub { color: var(--ink-soft); font-size: 15.5px; margin-top: 14px; max-width: 480px; }
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 32px;
+  }
+  .testimonial-card {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 26px 22px;
+  }
+  .testimonial-card .stars { color: var(--saffron); font-size: 16px; letter-spacing: 2px; margin-bottom: 14px; }
+  .testimonial-card p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; margin-bottom: 18px; }
+  .testimonial-author { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; }
+  .testimonial-avatar {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--palm-soft);
+    color: var(--palm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .testimonials-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 32px;
+  }
+  .add-review-box {
+    border: 1.5px dashed var(--line);
+    border-radius: 14px;
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+  .add-review-box h3 { font-size: 16.5px; margin-bottom: 4px; font-weight: 500; }
+  .add-review-box p { color: var(--ink-soft); font-size: 13.5px; }
+  .add-review-btn {
+    background: var(--indigo);
+    color: var(--white);
+    padding: 12px 24px;
+    border-radius: 100px;
+    font-size: 13.5px;
+    font-weight: 500;
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .add-review-btn:hover { background: var(--ink); }
+  .testi-readmore {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    border-bottom: 1.5px solid var(--ink);
+    padding-bottom: 2px;
+    white-space: nowrap;
+  }
+  .testi-readmore:hover { color: var(--terracotta); border-color: var(--terracotta); }
+
+  /* ---------- FOOTER ---------- */
+  footer.wrap { border-top: 1px solid var(--line); padding: 64px 32px 40px; }
+  .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
+  .footer-tag { font-family: 'Fraunces', serif; font-size: 20px; max-width: 300px; }
+  body[dir="rtl"] .footer-tag { font-family: 'Noto Kufi Arabic', sans-serif; }
+  .footer-cols { display: flex; flex-direction: column; gap: 36px; }
+  .footer-col h4 { font-size: 13.5px; color: var(--ink-soft); margin-bottom: 14px; font-weight: 500; }
+  .footer-col-subhead { margin-top: 22px; }
+  .footer-col a { display: block; font-size: 14.5px; margin-bottom: 10px; color: var(--ink); }
+  .footer-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-soft); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer-legal { display: flex; gap: 16px; }
+  .footer-legal a { color: var(--ink-soft); font-size: 13px; }
+  .footer-legal a:hover { color: var(--ink); text-decoration: underline; }
+  .footer-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .footer-social a {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--ink-soft);
+    overflow: hidden;
+  }
+  .footer-social a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .footer-payments {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .pay-badge {
+    width: 46px;
+    height: 30px;
+    padding: 4px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+  }
+  .pay-badge img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  .pay-fallback { font-size: 9.5px; color: var(--ink-soft); font-weight: 600; text-align: center; display: none; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; gap: 28px; }
+    .hero-image-wrap { order: -1; aspect-ratio: 16/10; border-radius: 18px; }
+    .hero h1 { font-size: 38px; }
+    .sudan-image-wrap { border-radius: 20px; margin-bottom: 28px; }
+    .sudan-content h2 { font-size: 26px; }
+    .story-card { grid-template-columns: 1fr; }
+    .product-grid { grid-template-columns: 1fr 1fr; }
+    .testimonial-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { flex-direction: column; }
+    .ingredient-block { grid-template-columns: 1fr; padding: 48px 0; }
+    .ingredient-block .ingredient-visual { order: 0 !important; aspect-ratio: 16/9; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 18px; }
+    .app-header { padding: 14px 14px; gap: 8px; }
+    .header-logo { font-size: 17px; }
+    .lang-btn { padding: 5px 6px 5px 5px; font-size: 10.5px; gap: 3px; }
+    .lang-flag { width: 12px; height: 12px; }
+    .nav-links { display: none; }
+    .product-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .journey-row { grid-template-columns: 1fr; }
+    body[dir="rtl"] .journey-row { grid-template-columns: 1fr; }
+    .hero-banner { padding: 0 14px; }
+    .hero-banner-text h2 { font-size: 19px; line-height: 1.3; }
+    .hero-banner-text { max-width: 100%; }
+    .categories-head h2 { font-size: 21px; }
+    .top-categories { margin-top: 20px; }
+    .hero h1 { font-size: 30px; max-width: 100%; }
+    .hero p.lede { font-size: 15.5px; max-width: 100%; }
+    .hero-image-wrap { aspect-ratio: 3/2; border-radius: 14px; margin-top: 16px; }
+    .hero { padding-top: 24px; padding-bottom: 40px; }
+    .hero-actions { flex-wrap: nowrap; gap: 10px; }
+    .sudan-section { padding-top: 56px; padding-bottom: 56px; }
+    .sudan-image-wrap { aspect-ratio: 4/3; margin-bottom: 20px; }
+    .sudan-content h2 { font-size: 22px; }
+    .sudan-content p { font-size: 14.5px; }
+    .btn-primary { padding: 12px 18px; font-size: 13.5px; white-space: nowrap; }
+    .btn-secondary { padding: 12px 4px; font-size: 13.5px; white-space: nowrap; }
+    .section-head h2 { font-size: 25px; }
+    .section-head { margin-bottom: 40px; }
+    .journey { padding-top: 64px; padding-bottom: 60px; }
+    .story-content h2 { font-size: 24px; }
+    .story-content p { max-width: 100%; }
+    .impact-bar, .impact-bar * { max-width: 100%; }
+    .qr-note { font-size: 13px; }
+    .footer-tag { max-width: 100%; }
+    .footer-cols { gap: 32px; flex-wrap: wrap; }
+    .testimonial-grid { grid-template-columns: 1fr; }
+    .testimonials { padding-top: 64px; padding-bottom: 64px; }
+    footer.wrap { padding: 56px 18px 32px; }
+    .testimonials-footer { flex-direction: column; align-items: stretch; }
+    .add-review-box { flex-direction: column; align-items: flex-start; }
+    .testi-readmore { align-self: center; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
+
+  body { padding-bottom: 64px; }
+
+  /* ---------- BOTTOM NAV ---------- */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--white);
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 0 10px;
+    z-index: 50;
+  }
+  .bottom-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+  .bottom-nav a svg { width: 21px; height: 21px; }
+  .bottom-nav a.active { color: var(--indigo); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .thread-path { stroke-dasharray: 6 8; animation: dash 40s linear infinite; }
+    @keyframes dash { to { stroke-dashoffset: -1000; } }
+  }
+
+  :focus-visible { outline: 2px solid var(--indigo); outline-offset: 3px; }
+
+  /* ---------- STATIC PAGE CONTENT ---------- */
+  .page-hero { padding: 44px 0 8px; max-width: 760px; }
+  .page-hero .kicker { color: var(--rose); font-size: 14px; margin-bottom: 14px; letter-spacing: 0.02em; }
+  .page-hero h1 { font-size: 38px; line-height: 1.18; margin-bottom: 18px; }
+  .page-hero p.lede { font-size: 17px; color: var(--ink-soft); line-height: 1.7; }
+  .updated-note { font-size: 13px; color: var(--ink-soft); margin: 18px 0 0; }
+
+  .content-section { padding: 36px 0; border-bottom: 1px solid var(--line); }
+  .content-section:last-of-type { border-bottom: none; }
+  .content-section h2 { font-size: 22px; margin-bottom: 14px; }
+  .content-section p { font-size: 15.5px; line-height: 1.75; color: var(--ink-soft); max-width: 760px; }
+
+  .value-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 8px 0 4px; }
+  .value-card { background: var(--ivory); border-radius: 16px; padding: 24px; }
+  .value-card h3 { font-size: 16.5px; margin-bottom: 8px; }
+  .value-card p { font-size: 14px; color: var(--ink-soft); line-height: 1.65; margin: 0; }
+
+  .about-stats {
+    display: flex; gap: 36px; flex-wrap: wrap;
+    padding: 32px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    margin: 4px 0 4px;
+  }
+  .about-stat-num { font-family: 'Fraunces', serif; font-size: 32px; color: var(--terracotta); margin-bottom: 4px; }
+  .about-stat-label { font-size: 13.5px; color: var(--ink-soft); max-width: 180px; line-height: 1.4; }
+
+  .about-cta { padding: 48px 0 56px; text-align: left; }
+  .about-cta h2 { font-size: 26px; margin-bottom: 12px; }
+  .about-cta p { font-size: 15.5px; color: var(--ink-soft); max-width: 560px; margin-bottom: 26px; }
+  .about-cta .hero-actions { margin-top: 0; }
+  body[dir="rtl"] .about-cta { text-align: right; }
+
+  @media (max-width: 640px) {
+    .page-hero h1 { font-size: 28px; }
+    .value-grid { grid-template-columns: 1fr; }
+    .about-stats { gap: 24px; }
+    .contact-info-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- CONTACT PAGE ---------- */
+  .contact-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 8px 0 4px; }
+  .contact-info-card { background: var(--ivory); border-radius: 16px; padding: 24px; }
+  .contact-info-card h3 { font-size: 13.5px; color: var(--ink-soft); font-weight: 500; margin-bottom: 8px; }
+  .contact-info-card p { font-size: 15.5px; color: var(--ink); margin: 0; }
+  .contact-info-card p a { color: var(--indigo); font-weight: 500; }
+  .contact-info-card p a:hover { text-decoration: underline; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 16px; max-width: 520px; margin-top: 10px; }
+  .form-field { display: flex; flex-direction: column; gap: 6px; }
+  .form-field label { font-size: 13.5px; color: var(--ink-soft); }
+  .form-field input, .form-field textarea {
+    border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px;
+    font-family: 'Work Sans', sans-serif; font-size: 15px; color: var(--ink); background: var(--white);
+  }
+  .form-field textarea { resize: vertical; min-height: 130px; }
+  .form-field input:focus, .form-field textarea:focus { outline: 2px solid var(--indigo); outline-offset: 2px; }
+  .contact-form button[type="submit"] {
+    align-self: flex-start; border: none; cursor: pointer; font-family: 'Work Sans', sans-serif;
+  }
+  body[dir="rtl"] .form-field label { text-align: right; }
+
+  /* ---------- REVIEWS PAGE ---------- */
+  .rating-summary { display: flex; align-items: center; gap: 20px; margin: 8px 0 4px; }
+  .rating-summary-num { font-family: 'Fraunces', serif; font-size: 46px; color: var(--terracotta); line-height: 1; }
+  .rating-summary-stars { color: var(--saffron); font-size: 18px; letter-spacing: 2px; margin-bottom: 4px; }
+  .rating-summary-count { font-size: 13.5px; color: var(--ink-soft); }
+  .reviews-grid { margin-top: 0; }
+
+  @media (max-width: 860px) {
+    .reviews-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .reviews-grid { grid-template-columns: 1fr; }
+    .rating-summary-num { font-size: 36px; }
+  }
+
+  /* ---------- MEET THE WOMEN PAGE ---------- */
+  .women-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 0; }
+  .woman-card { background: var(--ivory); border-radius: 16px; padding: 26px 22px; }
+  .woman-avatar {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--palm-soft); color: var(--palm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: 600; margin-bottom: 14px;
+    overflow: hidden; flex-shrink: 0;
+  }
+  .woman-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .woman-avatar-fallback { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .woman-name { font-family: 'Fraunces', serif; font-size: 18px; margin-bottom: 3px; }
+  .woman-meta { font-size: 12.5px; color: var(--terracotta); margin-bottom: 12px; }
+  .woman-quote { font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; margin: 0; }
+
+  @media (max-width: 860px) {
+    .women-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .women-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- WOMAN PROFILE PAGE ---------- */
+  .profile-hero { display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap; padding: 44px 0 8px; }
+  .profile-hero-img { width: 260px; height: 260px; border-radius: 20px; overflow: hidden; flex-shrink: 0; background: var(--ivory); }
+  .profile-hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .profile-hero-fallback {
+    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+    background: var(--palm-soft); color: var(--palm);
+    font-family: 'Fraunces', serif; font-size: 56px; font-weight: 600;
+  }
+  .profile-hero-text { flex: 1; min-width: 260px; padding-top: 4px; }
+  .profile-hero-text .kicker { color: var(--rose); font-size: 14px; margin-bottom: 10px; letter-spacing: 0.02em; }
+  .profile-hero-text h1 { font-family: 'Fraunces', serif; font-size: 32px; margin-bottom: 14px; }
+  .profile-hero-text .lede { font-size: 16.5px; color: var(--ink-soft); line-height: 1.7; }
+
+  .impact-list { margin: 14px 0 0; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .impact-list li { position: relative; padding-left: 28px; font-size: 15px; color: var(--ink-soft); line-height: 1.6; }
+  .impact-list li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--palm); font-weight: 700; }
+  body[dir="rtl"] .impact-list li { padding-left: 0; padding-right: 28px; }
+  body[dir="rtl"] .impact-list li::before { left: auto; right: 0; }
+
+  @media (max-width: 640px) {
+    .profile-hero-img { width: 100%; height: 260px; }
+    .profile-hero-text h1 { font-size: 26px; }
+  }
+
+  /* ---------- WOMEN GRID CARD LINK ---------- */
+  .woman-readmore {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13.5px; font-weight: 500; color: var(--indigo); margin-top: 12px;
+  }
+  .woman-readmore:hover { text-decoration: underline; }
+
+  /* ---------- ACCOUNT PAGE ---------- */
+  .account-empty { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+  .account-empty p { margin: 0; }
+  body[dir="rtl"] .account-empty { align-items: flex-end; }
+
+  /* ---------- LOGIN PAGE ---------- */
+  .login-wrap { display: flex; justify-content: center; padding: 40px 0 64px; }
+  .login-card {
+    background: var(--white); border: 1px solid var(--line); border-radius: 24px;
+    padding: 36px 30px; max-width: 440px; width: 100%;
+    box-shadow: 0 4px 24px rgba(43, 38, 32, 0.06);
+  }
+  .login-icon {
+    width: 56px; height: 56px; border-radius: 16px; background: var(--indigo-soft);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--indigo);
+  }
+  .login-card h1 { font-family: 'Fraunces', serif; font-size: 25px; line-height: 1.25; margin-bottom: 22px; }
+
+  .social-btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%;
+    padding: 13px; border-radius: 12px; font-size: 14.5px; font-weight: 500; margin-bottom: 12px;
+    cursor: pointer; font-family: 'Work Sans', sans-serif;
+  }
+  .social-btn.google { background: var(--white); border: 1px solid var(--line); color: var(--ink); }
+  .social-btn.google:hover { background: var(--ivory); }
+  .social-btn.facebook { background: #1877F2; border: none; color: var(--white); }
+  .social-btn.facebook:hover { background: #145dc4; }
+
+  .login-divider { display: flex; align-items: center; gap: 12px; margin: 22px 0 20px; font-size: 13px; color: var(--ink-soft); }
+  .login-divider::before, .login-divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+  .login-field { margin-bottom: 16px; }
+  .login-field label { display: block; font-size: 13.5px; color: var(--ink-soft); margin-bottom: 6px; }
+  .login-field label .req { color: var(--rose); margin-left: 3px; }
+  .login-input-wrap { position: relative; }
+  .login-input-wrap svg.icon-left { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--ink-soft); width: 18px; height: 18px; }
+  .login-input-wrap input {
+    width: 100%; padding: 13px 14px 13px 42px; border: 1px solid var(--line); border-radius: 12px;
+    font-family: 'Work Sans', sans-serif; font-size: 15px; color: var(--ink); background: var(--white);
+  }
+  .login-input-wrap input:focus { outline: 2px solid var(--indigo); outline-offset: 1px; }
+  .login-toggle-eye {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; cursor: pointer; color: var(--ink-soft); padding: 2px; display: flex;
+  }
+  body[dir="rtl"] .login-field label .req { margin-left: 0; margin-right: 3px; }
+  body[dir="rtl"] .login-input-wrap input { padding: 13px 42px 13px 14px; }
+  body[dir="rtl"] .login-input-wrap svg.icon-left { left: auto; right: 14px; }
+  body[dir="rtl"] .login-toggle-eye { right: auto; left: 12px; }
+
+  .login-row { display: flex; align-items: center; justify-content: space-between; margin: 4px 0 22px; font-size: 13.5px; flex-wrap: wrap; gap: 10px; }
+  .login-remember { display: flex; align-items: center; gap: 8px; color: var(--ink-soft); cursor: pointer; }
+  .login-remember input { width: 16px; height: 16px; accent-color: var(--indigo); }
+  .login-forgot { color: var(--indigo); font-weight: 500; }
+  .login-forgot:hover { text-decoration: underline; }
+
+  .login-submit {
+    width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 15px; border: none; border-radius: 100px; background: var(--indigo); color: var(--white);
+    font-size: 15.5px; font-weight: 600; cursor: pointer; font-family: 'Work Sans', sans-serif;
+  }
+  .login-submit:hover { background: var(--ink); }
+  .login-register { text-align: center; margin-top: 20px; font-size: 14px; color: var(--ink); }
+  .login-register a { color: var(--indigo); font-weight: 600; }
+  .login-register a:hover { text-decoration: underline; }
+
+  @media (max-width: 480px) {
+    .login-card { padding: 28px 20px; border-radius: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="promo-bar" data-i18n="promoBar">Free delivery over €59.99 · €5.99 below</div>
+
+<header class="app-header">
+  <button class="menu-btn" id="menuBtn" aria-label="Menu">
+    <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+  </button>
+  <div class="header-logo"><img class="header-logo-img" src="Logo.jpg" alt="" onerror="this.style.display='none';"><span>Nileva</span></div>
+  <div class="lang-codes">
+    <button class="lang-btn active" data-lang="en"><img class="lang-flag" src="UK.png" alt="">EN</button>
+    <button class="lang-btn" data-lang="ar"><img class="lang-flag" src="Ara.png" alt="">AR</button>
+    <button class="lang-btn" data-lang="fi"><img class="lang-flag" src="Fin.png" alt="">FI</button>
+    <button class="lang-btn" data-lang="sv"><img class="lang-flag" src="Sw.png" alt="">SV</button>
+  </div>
+  <button class="cart-btn" id="cartBtn" aria-label="Cart">
+    <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M3 4h2l2.4 12.2a2 2 0 002 1.8h8.2a2 2 0 002-1.6L20 8H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="20" r="1.3" fill="currentColor"/><circle cx="17" cy="20" r="1.3" fill="currentColor"/></svg>
+    <span class="cart-badge" id="cartBadge">0</span>
+  </button>
+</header>
+<div class="header-accent"></div>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+<nav class="menu-drawer" id="menuDrawer" aria-label="Main menu">
+  <div class="menu-drawer-head">
+    <div class="header-logo"><img class="header-logo-img" src="Logo.jpg" alt="" onerror="this.style.display='none';"><span>Nileva</span></div>
+    <button class="menu-close" id="menuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <a href="shop.html" class="menu-link" data-i18n="menuShop">Shop</a>
+  <a href="about.html" class="menu-link" data-i18n="menuAbout">About us</a>
+  <a href="contact.html" class="menu-link" data-i18n="menuContact">Contact</a>
+  <a href="login.html" class="menu-link" data-i18n="menuLogin">Log in / Sign in</a>
+  <a href="track-order.html" class="menu-link" data-i18n="menuTrack">Track order</a>
+  <a href="sudan-culture.html" class="menu-link" data-i18n="menuCulture">Sudan culture</a>
+  <a href="meet-the-women.html" class="menu-link" data-i18n="menuWomen">Meet the women</a>
+</nav>
+
+<main class="wrap">
+
+<div class="login-wrap">
+  <div class="login-card">
+    <div class="login-icon">
+      <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 10V7a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </div>
+    <h1 data-i18n="loginTitle">Login to your account</h1>
+
+    <button type="button" class="social-btn google" id="googleBtn">
+      <svg viewBox="0 0 48 48" width="18" height="18">
+        <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.9 32.9 29.4 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 8 3l6-6C34.5 6.1 29.5 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z"/>
+        <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 16 18.9 13 24 13c3.1 0 5.8 1.1 8 3l6-6C34.5 6.1 29.5 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+        <path fill="#4CAF50" d="M24 44c5.3 0 10.2-2 13.9-5.4l-6.4-5.4C29.4 35 26.8 36 24 36c-5.3 0-9.8-3.4-11.4-8.1l-6.5 5C9.6 39.6 16.3 44 24 44z"/>
+        <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-1 2.9-3.2 5.2-6 6.6l6.4 5.4C39.5 37.4 44 31.5 44 24c0-1.3-.1-2.7-.4-3.5z"/>
+      </svg>
+      <span data-i18n="loginGoogle">Sign in with Google</span>
+    </button>
+
+    <button type="button" class="social-btn facebook" id="facebookBtn">
+      <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="12" fill="#fff"/><path fill="#1877F2" d="M13.6 21v-7.8h2.6l.4-3.1h-3V8.1c0-.9.2-1.5 1.5-1.5h1.6V3.9c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2v2.1H7.6v3.1h2.6V21h3.4z"/></svg>
+      <span data-i18n="loginFacebook">Sign in with Facebook</span>
+    </button>
+
+    <div class="login-divider"><span data-i18n="loginDivider">Or continue with your email</span></div>
+
+    <form id="loginForm">
+      <div class="login-field">
+        <label for="li-email" data-i18n="loginEmailLabel">Email<span class="req">*</span></label>
+        <div class="login-input-wrap">
+          <svg class="icon-left" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <input type="email" id="li-email" name="email" data-i18n-placeholder="loginEmailPlaceholder" placeholder="Email address" required>
+        </div>
+      </div>
+
+      <div class="login-field">
+        <label for="li-password" data-i18n="loginPasswordLabel">Password<span class="req">*</span></label>
+        <div class="login-input-wrap">
+          <svg class="icon-left" viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 10V7a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <input type="password" id="li-password" name="password" data-i18n-placeholder="loginPasswordPlaceholder" placeholder="Password" required>
+          <button type="button" class="login-toggle-eye" id="togglePassword" aria-label="Show password">
+            <svg viewBox="0 0 24 24" fill="none" width="19" height="19"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="login-row">
+        <label class="login-remember">
+          <input type="checkbox" name="remember">
+          <span data-i18n="loginRemember">Remember me</span>
+        </label>
+        <a class="login-forgot" href="forgot-password.html" data-i18n="loginForgot">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="login-submit">
+        <span data-i18n="loginSubmit">Login</span>
+        <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </form>
+
+    <p class="login-register">
+      <span data-i18n="loginRegisterText">Don't have an account?</span>
+      <a href="register.html" data-i18n="loginRegisterLink">Register now</a>
+    </p>
+  </div>
+</div>
+
+</main>
+
+<footer class="wrap">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-tag" data-i18n="footerTag">Nileva connects Sudan's women producers to European kitchens — one name, one story at a time.</div>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><img src="instagram.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"><span class="social-fallback" style="display:none;">IG</span></a>
+        <a href="#" aria-label="Twitter"><img src="twitter.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"><span class="social-fallback" style="display:none;">X</span></a>
+        <a href="#" aria-label="Facebook"><img src="facebook.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"><span class="social-fallback" style="display:none;">FB</span></a>
+        <a href="#" aria-label="TikTok"><img src="tik-tok.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"><span class="social-fallback" style="display:none;">TT</span></a>
+        <a href="#" aria-label="Pinterest"><img src="pinterest.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"><span class="social-fallback" style="display:none;">PI</span></a>
+      </div>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col" id="footer-about">
+        <h4 data-i18n="footerShop">Shop</h4>
+        <a href="shop.html" data-i18n="footerShop1">Gum arabic</a>
+        <a href="shop.html" data-i18n="footerShop2">Spices</a>
+        <h4 class="footer-col-subhead" data-i18n="footerAbout">About</h4>
+        <a href="cooperatives.html" data-i18n="footerAbout1">Our cooperatives</a>
+        <a href="payments.html" data-i18n="footerAbout2">How payments work</a>
+        <a href="shipping.html" data-i18n="footerAbout3">Shipping to the EU</a>
+      </div>
+      <div class="footer-col" id="footer-contact-col">
+        <h4 data-i18n="footerCompany">Company</h4>
+        <a href="about.html" data-i18n="footerCompany1">Nileva Oy, Finland</a>
+        <a href="contact.html" id="footer-contact" data-i18n="footerCompany2">Contact</a>
+        <a href="review.html" data-i18n="footerReviews">Reviews</a>
+        <a href="mailto:hello@nileva.com">hello@nileva.com</a>
+        <a href="tel:+358912345678" dir="ltr">+358 9 1234 5678</a>
+        <div class="footer-payments">
+          <span class="pay-badge"><img src="visa.png" alt="Visa" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Visa</span></span>
+          <span class="pay-badge"><img src="mastercard.png" alt="Mastercard" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">MC</span></span>
+          <span class="pay-badge"><img src="paypal.png" alt="PayPal" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">PayPal</span></span>
+          <span class="pay-badge"><img src="google.png" alt="Google Pay" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">GPay</span></span>
+          <span class="pay-badge"><img src="klarna.png" alt="Klarna" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Klarna</span></span>
+          <span class="pay-badge"><img src="stripe.png" alt="Stripe" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span class="pay-fallback">Stripe</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="footerBottom">Nileva Oy · Registered in Finland · Serving Western Europe</span>
+    <div class="footer-legal">
+      <a href="terms.html" data-i18n="footerTerms">Terms</a>
+      <a href="privacy-policy.html" data-i18n="footerPrivacy">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var translations = {
+    en: {
+      promoBar: "Free delivery over €59.99 · €5.99 below",
+      navHome: "Home", navShop: "Shop", navCartLabel: "Cart", navSearch: "Search", navAccount: "Account",
+      menuShop: "Shop", menuAbout: "About us", menuContact: "Contact", menuLogin: "Log in / Sign in", menuTrack: "Track order", menuCulture: "Sudan culture", menuWomen: "Meet the women",
+      footerTag: "Nileva connects Sudan's women producers to European kitchens — one name, one story at a time.",
+      footerShop: "Shop", footerShop1: "Gum arabic", footerShop2: "Spices",
+      footerAbout: "About", footerAbout1: "Our cooperatives", footerAbout2: "How payments work", footerAbout3: "Shipping to the EU",
+      footerCompany: "Company", footerCompany1: "Nileva Oy, Finland", footerCompany2: "Contact", footerReviews: "Reviews",
+      footerBottom: "Nileva Oy · Registered in Finland · Serving Western Europe",
+      footerTerms: "Terms", footerPrivacy: "Privacy Policy",
+      loginTitle: "Login to your account",
+      loginGoogle: "Sign in with Google",
+      loginFacebook: "Sign in with Facebook",
+      loginDivider: "Or continue with your email",
+      loginEmailLabel: "Email", loginEmailPlaceholder: "Email address",
+      loginPasswordLabel: "Password", loginPasswordPlaceholder: "Password",
+      loginRemember: "Remember me",
+      loginForgot: "Forgot password?",
+      loginSubmit: "Login",
+      loginRegisterText: "Don't have an account?",
+      loginRegisterLink: "Register now",
+      loginToast: "This is a demo — login isn't connected yet"
+    },
+    ar: {
+      promoBar: "توصيل مجاني فوق ٥٩٫٩٩ يورو · ٥٫٩٩ يورو دون ذلك",
+      navHome: "الرئيسية", navShop: "المتجر", navCartLabel: "السلة", navSearch: "بحث", navAccount: "حسابي",
+      menuShop: "المتجر", menuAbout: "من نحن", menuContact: "تواصلي معنا", menuLogin: "تسجيل الدخول", menuTrack: "تتبعي طلبك", menuCulture: "ثقافة السودان", menuWomen: "تعرّفي على النساء",
+      footerTag: "نيليڤا تربط منتِجات السودان بمطابخ أوروبا — اسم وقصة في كل مرة.",
+      footerShop: "المتجر", footerShop1: "صمغ عربي", footerShop2: "توابل",
+      footerAbout: "عن نيليڤا", footerAbout1: "تعاونياتنا", footerAbout2: "كيف تعمل المدفوعات", footerAbout3: "الشحن إلى الاتحاد الأوروبي",
+      footerCompany: "الشركة", footerCompany1: "Nileva Oy، فنلندا", footerCompany2: "تواصلي معنا", footerReviews: "التقييمات",
+      footerBottom: "Nileva Oy · مسجّلة في فنلندا · تخدم أوروبا الغربية",
+      footerTerms: "الشروط والأحكام", footerPrivacy: "سياسة الخصوصية",
+      loginTitle: "تسجيل الدخول إلى حسابك",
+      loginGoogle: "تسجيل الدخول عبر جوجل",
+      loginFacebook: "تسجيل الدخول عبر فيسبوك",
+      loginDivider: "أو تابعي عبر بريدك الإلكتروني",
+      loginEmailLabel: "البريد الإلكتروني", loginEmailPlaceholder: "عنوان البريد الإلكتروني",
+      loginPasswordLabel: "كلمة المرور", loginPasswordPlaceholder: "كلمة المرور",
+      loginRemember: "تذكرني",
+      loginForgot: "نسيت كلمة المرور؟",
+      loginSubmit: "تسجيل الدخول",
+      loginRegisterText: "ليس لديك حساب؟",
+      loginRegisterLink: "سجّلي الآن",
+      loginToast: "هذا عرض تجريبي — تسجيل الدخول غير مفعّل بعد"
+    },
+    fi: {
+      promoBar: "Ilmainen toimitus yli 59,99 € tilauksiin · 5,99 € sitä pienemmistä",
+      navHome: "Koti", navShop: "Kauppa", navCartLabel: "Ostoskori", navSearch: "Haku", navAccount: "Tili",
+      menuShop: "Kauppa", menuAbout: "Meistä", menuContact: "Ota yhteyttä", menuLogin: "Kirjaudu sisään", menuTrack: "Seuraa tilausta", menuCulture: "Sudanin kulttuuri", menuWomen: "Tutustu naisiin",
+      footerTag: "Nileva yhdistää Sudanin naistuottajat eurooppalaisiin keittiöihin — yksi nimi, yksi tarina kerrallaan.",
+      footerShop: "Kauppa", footerShop1: "Gummiarabicum", footerShop2: "Mausteet",
+      footerAbout: "Tietoa meistä", footerAbout1: "Osuuskuntamme", footerAbout2: "Miten maksut toimivat", footerAbout3: "Toimitukset EU:hun",
+      footerCompany: "Yritys", footerCompany1: "Nileva Oy, Suomi", footerCompany2: "Ota yhteyttä", footerReviews: "Arvostelut",
+      footerBottom: "Nileva Oy · Rekisteröity Suomessa · Palvelee Länsi-Eurooppaa",
+      footerTerms: "Käyttöehdot", footerPrivacy: "Tietosuojakäytäntö",
+      loginTitle: "Kirjaudu tilillesi",
+      loginGoogle: "Kirjaudu Googlella",
+      loginFacebook: "Kirjaudu Facebookilla",
+      loginDivider: "Tai jatka sähköpostillasi",
+      loginEmailLabel: "Sähköposti", loginEmailPlaceholder: "Sähköpostiosoite",
+      loginPasswordLabel: "Salasana", loginPasswordPlaceholder: "Salasana",
+      loginRemember: "Muista minut",
+      loginForgot: "Unohditko salasanan?",
+      loginSubmit: "Kirjaudu",
+      loginRegisterText: "Eikö sinulla ole tiliä?",
+      loginRegisterLink: "Rekisteröidy nyt",
+      loginToast: "Tämä on demo — kirjautuminen ei ole vielä käytössä"
+    },
+    sv: {
+      promoBar: "Fri frakt över 59,99 € · 5,99 € därunder",
+      navHome: "Hem", navShop: "Butik", navCartLabel: "Varukorg", navSearch: "Sök", navAccount: "Konto",
+      menuShop: "Butik", menuAbout: "Om oss", menuContact: "Kontakta oss", menuLogin: "Logga in", menuTrack: "Spåra beställning", menuCulture: "Sudans kultur", menuWomen: "Möt kvinnorna",
+      footerTag: "Nileva knyter samman Sudans kvinnliga producenter med europeiska kök — ett namn, en berättelse i taget.",
+      footerShop: "Butik", footerShop1: "Gummiarabicum", footerShop2: "Kryddor",
+      footerAbout: "Om oss", footerAbout1: "Våra kooperativ", footerAbout2: "Hur betalningar fungerar", footerAbout3: "Frakt till EU",
+      footerCompany: "Företag", footerCompany1: "Nileva Oy, Finland", footerCompany2: "Kontakt", footerReviews: "Recensioner",
+      footerBottom: "Nileva Oy · Registrerat i Finland · Betjänar Västeuropa",
+      footerTerms: "Villkor", footerPrivacy: "Integritetspolicy",
+      loginTitle: "Logga in på ditt konto",
+      loginGoogle: "Logga in med Google",
+      loginFacebook: "Logga in med Facebook",
+      loginDivider: "Eller fortsätt med din e-post",
+      loginEmailLabel: "E-post", loginEmailPlaceholder: "E-postadress",
+      loginPasswordLabel: "Lösenord", loginPasswordPlaceholder: "Lösenord",
+      loginRemember: "Kom ihåg mig",
+      loginForgot: "Glömt lösenordet?",
+      loginSubmit: "Logga in",
+      loginRegisterText: "Har du inget konto?",
+      loginRegisterLink: "Registrera dig nu",
+      loginToast: "Detta är en demo — inloggning är inte ansluten än"
+    }
+  };
+
+  var currentLang = 'en';
+  var nodes = document.querySelectorAll('[data-i18n]');
+  var buttons = document.querySelectorAll('.lang-btn');
+
+  function setLang(lang) {
+    currentLang = lang;
+    var dict = translations[lang] || translations.en;
+    nodes.forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (dict[key]) el.textContent = dict[key];
+    });
+    buttons.forEach(function (btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('lang', lang);
+  }
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      setLang(btn.getAttribute('data-lang'));
+    });
+  });
+
+  var scrollEl = document.querySelector('.category-scroll');
+  var arrowBtns = document.querySelectorAll('.cat-arrow');
+  if (scrollEl && arrowBtns.length) {
+    arrowBtns.forEach(function (btn, i) {
+      btn.addEventListener('click', function () {
+        var cardWidth = 84 + 16;
+        var dir = (btn.getAttribute('aria-label') === 'Previous' || i === 0) ? -1 : 1;
+        if (document.body.getAttribute('dir') === 'rtl') dir *= -1;
+        scrollEl.scrollBy({ left: dir * cardWidth * 2, behavior: 'smooth' });
+      });
+    });
+  }
+
+  /* ---- Drawer menu ---- */
+  var menuBtn = document.getElementById('menuBtn');
+  var menuDrawer = document.getElementById('menuDrawer');
+  var menuOverlay = document.getElementById('menuOverlay');
+  var menuClose = document.getElementById('menuClose');
+
+  function openMenu() {
+    menuDrawer.classList.add('open');
+    menuOverlay.classList.add('open');
+  }
+  function closeMenu() {
+    menuDrawer.classList.remove('open');
+    menuOverlay.classList.remove('open');
+  }
+  if (menuBtn) menuBtn.addEventListener('click', openMenu);
+  if (menuClose) menuClose.addEventListener('click', closeMenu);
+  if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+  document.querySelectorAll('.menu-link').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      if (link.getAttribute('data-menu-soon')) {
+        e.preventDefault();
+        showToast('Coming soon');
+      }
+      closeMenu();
+    });
+  });
+
+  /* ---- Toast helper ---- */
+  function showToast(msg) {
+    var t = document.createElement('div');
+    t.className = 'nv-toast';
+    t.textContent = msg;
+    document.body.appendChild(t);
+    requestAnimationFrame(function () { t.classList.add('show'); });
+    setTimeout(function () {
+      t.classList.remove('show');
+      setTimeout(function () { t.remove(); }, 300);
+    }, 1800);
+  }
+
+  /* ---- Cart badge ---- */
+  var cartBadge = document.getElementById('cartBadge');
+  var cartCount = 0;
+  document.querySelectorAll('.add-to-cart').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      cartCount += 1;
+      if (cartBadge) cartBadge.textContent = cartCount;
+      showToast('Added to cart');
+    });
+  });
+
+  var eyeOpenSvg = '<svg viewBox="0 0 24 24" fill="none" width="19" height="19"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/></svg>';
+  var eyeOffSvg = '<svg viewBox="0 0 24 24" fill="none" width="19" height="19"><path d="M3 3l18 18M10.6 10.6a3 3 0 004.2 4.2M9.9 5.1A10.4 10.4 0 0112 5c6.5 0 10 7 10 7a13.2 13.2 0 01-3.1 4M6.5 6.5C4 8.1 2 12 2 12s1.6 3.1 4.5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var togglePwBtn = document.getElementById('togglePassword');
+  var pwInput = document.getElementById('li-password');
+  if (togglePwBtn && pwInput) {
+    togglePwBtn.addEventListener('click', function () {
+      var isPw = pwInput.type === 'password';
+      pwInput.type = isPw ? 'text' : 'password';
+      togglePwBtn.innerHTML = isPw ? eyeOffSvg : eyeOpenSvg;
+    });
+  }
+
+  var loginForm = document.getElementById('loginForm');
+  if (loginForm) {
+    loginForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var dict = translations[currentLang] || translations.en;
+      showToast(dict.loginToast || 'This is a demo');
+    });
+  }
+  var googleBtn = document.getElementById('googleBtn');
+  var facebookBtn = document.getElementById('facebookBtn');
+  [googleBtn, facebookBtn].forEach(function (btn) {
+    if (btn) {
+      btn.addEventListener('click', function () {
+        var dict = translations[currentLang] || translations.en;
+        showToast(dict.loginToast || 'This is a demo');
+      });
+    }
+  });
+
+  // apply placeholder translations alongside text-content ones
+  var placeholderNodes = document.querySelectorAll('[data-i18n-placeholder]');
+  var _origSetLang = setLang;
+  setLang = function (lang) {
+    _origSetLang(lang);
+    var dict = translations[lang] || translations.en;
+    placeholderNodes.forEach(function (el) {
+      var key = el.getAttribute('data-i18n-placeholder');
+      if (dict[key]) el.setAttribute('placeholder', dict[key]);
+    });
+  };
+
+})();
+</script>
+
+<style>
+  .nv-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 84px;
+    transform: translate(-50%, 12px);
+    background: var(--ink);
+    color: var(--white);
+    padding: 10px 18px;
+    border-radius: 100px;
+    font-size: 13.5px;
+    font-family: 'Work Sans', sans-serif;
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 120;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  .nv-toast.show { opacity: 1; transform: translate(-50%, 0); }
+</style>
+
+<nav class="bottom-nav">
+  <a href="index.html">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M4 11l8-7 8 7v9a1 1 0 01-1 1h-4v-6H9v6H5a1 1 0 01-1-1v-9z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    <span data-i18n="navHome">Home</span>
+  </a>
+  <a href="shop.html">
+    <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg>
+    <span data-i18n="navShop">Shop</span>
+  </a>
+  <a href="cart.html">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.4 12.2a2 2 0 002 1.8h8.2a2 2 0 002-1.6L20 8H6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="20" r="1.2" fill="currentColor"/><circle cx="17" cy="20" r="1.2" fill="currentColor"/></svg>
+    <span data-i18n="navCartLabel">Cart</span>
+  </a>
+  <a href="search.html">
+    <svg viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="M20 20l-4.35-4.35" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <span data-i18n="navSearch">Search</span>
+  </a>
+  <a href="account.html">
+    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c1.2-3.4 4-5 7-5s5.8 1.6 7 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <span data-i18n="navAccount">Account</span>
+  </a>
+</nav>
+
+</body>
+</html>
